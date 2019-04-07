@@ -26,9 +26,21 @@ php artisan make:controller ControllerName
 
 
 
+---
+
+# Instruction-to-V1
+
+## Alpha阶段
+
+> Alpha阶段不使用框架，手工搭建MVC架构，熟悉网站开发流程
 
 
-### Laravel目录结构
+
+![](.\imgs\1.png)
+
+
+
+
 
 
 
