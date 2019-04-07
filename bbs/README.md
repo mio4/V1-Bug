@@ -42,7 +42,7 @@ php artisan make:controller ControllerName
 
 ### 项目架构说明
 
-![](.\imgs\2.png)
+![](https://github.com/mio4/V1-Bug/blob/feature-Mio-v0.1/bbs/imgs/2.png)
 
 ### 前后端交互逻辑举例
 
