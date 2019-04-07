@@ -1,3 +1,5 @@
+# 草稿
+
 ### 版本说明
 
 ```cmd
@@ -34,13 +36,21 @@ php artisan make:controller ControllerName
 
 > Alpha阶段不使用框架，手工搭建MVC架构，熟悉网站开发流程
 
-
+### 目录说明
 
 ![](.\imgs\1.png)
 
+### 项目架构说明
 
+![](.\imgs\2.png)
 
+### 前后端交互逻辑举例
 
+TODO
+
+### 后端逻辑举例
+
+TODO
 
 
 
