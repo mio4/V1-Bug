@@ -38,7 +38,7 @@ php artisan make:controller ControllerName
 
 ### 目录说明
 
-![](.\imgs\1.png)
+![](https://github.com/mio4/V1-Bug/blob/feature-Mio-v0.1/bbs/imgs/1.png)
 
 ### 项目架构说明
 
