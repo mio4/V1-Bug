@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/user','UserController@home');
 //Route::get('/user','UserController@action_index');
 
 //Route::get('/',function(){
@@ -24,6 +25,8 @@ Route::get('/', function () {
 //Route::get('/Hello',function(){
 //   return "Laravel";
 //});
+
+Route::get('/user/{id?}')
 
 
 

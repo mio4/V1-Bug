@@ -16,3 +16,21 @@ composer create-project laravel/laravel=5.3.* demo --prefer-dist
 
 
 
+### Laravel命令
+
+```cmd
+//生成Controller
+php artisan make:controller ControllerName
+
+```
+
+
+
+
+
+### Laravel目录结构
+
+
+
+
+
