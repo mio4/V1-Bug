@@ -21,7 +21,7 @@ class SignerController
         //检查数据是否合法
 
         //调用Service层逻辑
-        SignerService::signUp($username,$password,$email,$type);
+        $isSuccess = SignerService::signUp($username,$password,$email,$type);
         //返回合法JSON
 
     }

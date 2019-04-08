@@ -13,6 +13,6 @@ class SignerService{
         //密码MD5加密
 
         //保存到数据库
-        SignerDao::signUp($username,$password,$email,$type);
+        return SignerDao::signUp($username,$password,$email,$type);
     }
 }

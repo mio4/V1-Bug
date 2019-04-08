@@ -13,6 +13,7 @@ class SignerDao{
         $conn = self::getConnection();
         $result = mysqli_query($conn,$sql);
         mysqli_close($conn);
+        return $result;
     }
 
     public static function getConnection(){
