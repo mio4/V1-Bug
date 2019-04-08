@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="d35ec986-3ea6-4aee-94a8-2a611b4b2cce" name="wamp" url="http://localhost">
+      <webServer id="8a5b0a49-44b9-4eae-b163-afce47169d45" name="wamp" url="http://localhost">
         <fileTransfer port="0" accessType="LOCAL" />
       </webServer>
     </option>

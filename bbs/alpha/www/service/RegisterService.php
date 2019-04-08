@@ -6,13 +6,13 @@
  * Time: 23:44
  */
 
-require_once "../dao/SignerDao.php";
+require_once "../dao/RegisterDao.php";
 
-class SignerService{
+class RegisterService{
     public static function signUp($username,$password,$email,$type){
         //密码MD5加密
 
         //保存到数据库
-        return SignerDao::signUp($username,$password,$email,$type);
+        return RegisterDao::signUp($username,$password,$email,$type);
     }
 }

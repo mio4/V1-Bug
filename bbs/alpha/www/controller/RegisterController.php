@@ -6,9 +6,9 @@
  * Time: 23:40
  */
 
-require_once "../service/SignerService.php";
+require_once "../service/RegisterService.php";
 
-class SignerController
+class RegisterController
 {
     public static function signUp()
     {
@@ -21,11 +21,11 @@ class SignerController
         //检查数据是否合法
 
         //调用Service层逻辑
-        $isSuccess = SignerService::signUp($username,$password,$email,$type);
+        $isSuccess = RegisterService::signUp($username,$password,$email,$type);
         //返回合法JSON
 
     }
 }
 
-SignerController::signUp();
+RegisterController::signUp();
 

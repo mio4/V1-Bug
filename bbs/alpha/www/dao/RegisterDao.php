@@ -6,7 +6,7 @@
  * Time: 23:52
  */
 
-class SignerDao{
+class RegisterDao{
 
     public static function signUp($username,$password,$email,$type){
         $sql = "insert into user(username,password,email,type) values ('$username','$password','$email','$type')";
