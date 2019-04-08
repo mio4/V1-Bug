@@ -1,15 +1,13 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: mio
- * Date: 2019/4/7
- * Time: 23:52
+ * DAO层“登陆”数据库操作
+ * @author Cookize
  */
 
 require_once 'DatabaseBasicFunc.php';
 
 
-class SignerDao{
+class RegisterDao{
 
     /**
      * DAO层注册操作
@@ -18,8 +16,9 @@ class SignerDao{
      * @param $_email       邮箱
      * @param $_type        用户类型 TODO：内容未定
      * @return bool         注册结果
+     * TODO：异常设计
      */
-    public static function sign_up($_username, $_password, $_email, $_type)
+    public static function register($_username, $_password, $_email, $_type)
     {
         $database = new DatabaseBasicFunc();
         $data = array(
@@ -28,6 +27,7 @@ class SignerDao{
             'email'=>$_email,
             'type'=>$_type
         );
+        // TODO:检查用户名和邮箱的唯一性，抛出异常。
         $retVar = false;
         try{
             $database->startTrans();
