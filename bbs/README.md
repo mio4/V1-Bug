@@ -20,11 +20,13 @@
 
 
 
-TODO
-
 ### 后端逻辑举例
 
-TODO
+SignerController -> SignerService -> SignerDao -> MySQL
+
+PS：具体查看代码
+
+
 
 ## 其他说明
 
@@ -38,7 +40,13 @@ TODO
 
    因为如果对面不使用浏览器，而是使用请求构造工具（比如一些白帽子工具），可以绕过前端的信息校验，所以Double Check是很必要的。
 
-3. 
+3. 为什么要使用JSON交互
+
+   实现前后端分离，这样不需要在前端插入PHP代码
+
+4. 
+
+   
 
 
 
