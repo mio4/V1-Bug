@@ -15,14 +15,38 @@ class LoginController
         //从POST体获取数据
         $username = $_POST["username"];
         $password = $_POST["password"];
-        $isByName = true;
         $userInfo = null;
         // TODO:检查数据是否合法，并分类登陆方式
 
         //调用Service层逻辑
-        // TODO:选择不同中登陆服务
-        $userInfo = LoginService::login_service($username,$password,$isByName);
-        // TODO:返回合法JSON
+        try
+        {
+            $userInfo = LoginService::login_service($username,$password);
+        }
+        catch (LoginException $e)
+        {
+            $errorCode = $e->getCode();
+            switch ($errorCode)
+            {
+                case 1:
+                    {
+                        // TODO：登陆失败，用户名未注册。
+                    }
+                case 2:
+                    {
+                        // TODO：登陆失败，密码错误。
+                    }
+                case 3:
+                    {
+                        // TODO：登陆失败，邮箱未注册。
+                    }
+                default:
+                    {
+                        // TODO：登陆失败，未知错误。
+                    }
+            }
+        }
+        // TODO:登陆成功，返回用户信息（JSON）
     }
 }
 

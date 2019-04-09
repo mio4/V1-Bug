@@ -1,9 +1,11 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Cookize
- * Date: 2019/4/8
- * Time: 22:33
+ * @name        LoginService
+ * @function    登录操作Service层：
+ *                  1.分发登陆方式
+ *                  2.获取登陆结果，抛出异常
+ *                  3.登陆成功时整理反馈的信息
+ * @author      Cookize
  */
 
 require_once '../dao/LoginDao.php';
@@ -17,23 +19,30 @@ class LoginService
      * @param $_username
      * @param $_password
      * @param $_loginType
+     * @throws LoginException
      */
-    public static function login_service($_username, $_password, $_loginType){
+    public static function login_service($_key, $_password){
         // 密码MD5加密
 
         // 验证用户身份
         $retUid = '';
-        try {
-            $retUid = LoginDao::login_by_name($_username, $_password);
-        } catch (LoginException $e) {
-            // TODO:处理各种异常
-            $errorID = $e->getCode();
-            switch($errorID)
+        $_isByName = true;
+        // TODO:区别邮箱与用户名，选择不同种登陆服务
+
+        try
+        {
+            if(true == $_isByName)
             {
-                case 1: // TODO:整合DAO层的异常，上传至Controller层。
-                case 2:
-                case 3:
+                $retUid = LoginDao::login_by_name($_key, $_password);
             }
+            else
+            {
+                $retUid = LoginDao::login_by_email($_key, $_password);
+            }
+        }
+        catch (LoginException $e)
+        {
+            throw $e;                   // 传递异常至上层。
         }
 
         // TODO:获取用户信息
