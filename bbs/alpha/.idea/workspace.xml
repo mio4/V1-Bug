@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e52bbd4d-6249-44b6-8102-a095fddf1150" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/controller/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/controller/LoginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/dao/LoginDao.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/dao/LoginDao.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/dao/SignerDao.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/dao/SignerDao.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/service/LoginService.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/service/LoginService.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,14 +14,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.48277777">
+    <splitter split-orientation="horizontal" split-proportion="0.6491079">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/www/controller/LoginController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="522">
-                  <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+                <state relative-caret-position="272">
+                  <caret line="21" column="22" lean-forward="true" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
                 </state>
               </provider>
             </entry>
@@ -29,17 +29,17 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/www/service/LoginService.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="290">
-                  <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+                <state relative-caret-position="390">
+                  <caret line="41" column="20" lean-forward="true" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/www/dao/LoginDao.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-357">
-                  <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+                <state relative-caret-position="629">
+                  <caret line="81" column="63" selection-start-line="81" selection-start-column="63" selection-end-line="81" selection-end-column="63" />
                 </state>
               </provider>
             </entry>
@@ -47,36 +47,12 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/www/dao/DatabaseBasicFunc.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-2381">
-                  <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-                  <folding>
-                    <element signature="n#init_database#0;n#DatabaseBasicFunc#0;n#!!top" />
-                    <element signature="n#_connect#0;n#DatabaseBasicFunc#0;n#!!top" />
-                    <element signature="n#_addChar#0;n#DatabaseBasicFunc#0;n#!!top" />
-                    <element signature="n#_tbFields#0;n#DatabaseBasicFunc#0;n#!!top" />
-                    <element signature="n#_dataFormat#0;n#DatabaseBasicFunc#0;n#!!top" />
-                    <element signature="n#_doQuery#0;n#DatabaseBasicFunc#0;n#!!top" />
-                    <element signature="n#doSql#0;n#DatabaseBasicFunc#0;n#!!top" />
-                    <element signature="n#getLastSql#0;n#DatabaseBasicFunc#0;n#!!top" />
-                    <element signature="n#insert#0;n#DatabaseBasicFunc#0;n#!!top" />
-                    <element signature="n#delete#0;n#DatabaseBasicFunc#0;n#!!top" />
-                    <element signature="n#update#0;n#DatabaseBasicFunc#0;n#!!top" />
-                    <element signature="n#select#0;n#DatabaseBasicFunc#0;n#!!top" />
-                    <element signature="n#where#0;n#DatabaseBasicFunc#0;n#!!top" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/www/controller/RegisterController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="609">
-                  <caret line="24" column="5" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="24" selection-end-column="5" />
+                <state relative-caret-position="340">
+                  <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
                 </state>
               </provider>
             </entry>
@@ -84,8 +60,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/www/service/RegisterService.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="435">
-                  <caret line="15" column="5" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="15" selection-end-column="5" />
+                <state>
+                  <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
                   <folding>
                     <element signature="e#6#48#0#PHP" expanded="true" />
                   </folding>
@@ -93,11 +69,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/www/dao/RegisterDao.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="281">
-                  <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+                <state relative-caret-position="102">
+                  <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
                   <folding>
                     <element signature="e#6#49#0#PHP" expanded="true" />
                   </folding>
@@ -133,12 +109,17 @@
         <option value="$PROJECT_DIR$/www/dao/DatabaseConnectDAO.php" />
         <option value="$PROJECT_DIR$/www/dao/DatabaseBasicFunc.php" />
         <option value="$PROJECT_DIR$/www/dao/SignerDao.php" />
-        <option value="$PROJECT_DIR$/www/dao/RegisterDao.php" />
         <option value="$PROJECT_DIR$/www/service/RegisterService.php" />
         <option value="$PROJECT_DIR$/www/controller/RegisterController.php" />
+        <option value="$PROJECT_DIR$/www/exception/Exceptions.php" />
+        <option value="$PROJECT_DIR$/www/exception/ControllerException.php" />
+        <option value="$PROJECT_DIR$/www/exception/ServiceException.php" />
+        <option value="$PROJECT_DIR$/www/exception/DAOException.php" />
+        <option value="$PROJECT_DIR$/www/dao/RegisterDao.php" />
+        <option value="$PROJECT_DIR$/www/exception/LoginException.php" />
         <option value="$PROJECT_DIR$/www/dao/LoginDao.php" />
-        <option value="$PROJECT_DIR$/www/service/LoginService.php" />
         <option value="$PROJECT_DIR$/www/controller/LoginController.php" />
+        <option value="$PROJECT_DIR$/www/service/LoginService.php" />
       </list>
     </option>
   </component>
@@ -152,14 +133,13 @@
   <component name="PhpXdebugProxy" ide_key="PHPSTORM" host="localhost" port="9000" />
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="width" value="1944" />
-    <option name="height" value="1106" />
+    <option name="height" value="1107" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -193,12 +173,19 @@
               <item name="alpha" type="b2602c69:ProjectViewProjectNode" />
               <item name="alpha" type="462c0819:PsiDirectoryNode" />
               <item name="www" type="462c0819:PsiDirectoryNode" />
+              <item name="exception" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="alpha" type="b2602c69:ProjectViewProjectNode" />
+              <item name="alpha" type="462c0819:PsiDirectoryNode" />
+              <item name="www" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -249,26 +236,36 @@
       <workItem from="1554684867898" duration="4404000" />
       <workItem from="1554731726327" duration="2209000" />
       <workItem from="1554737978931" duration="2564000" />
+      <workItem from="1554774953087" duration="4947000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11916000" />
+    <option name="totallyTimeSpent" value="16863000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1858" height="1096" extended-state="6" />
+    <frame x="-7" y="-7" width="1233" height="735" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.16055556" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.21920136" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3294893" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.28710464" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3294893" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
@@ -353,28 +350,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/dao/DatabaseBasicFunc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2381">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-          <folding>
-            <element signature="n#init_database#0;n#DatabaseBasicFunc#0;n#!!top" />
-            <element signature="n#_connect#0;n#DatabaseBasicFunc#0;n#!!top" />
-            <element signature="n#_addChar#0;n#DatabaseBasicFunc#0;n#!!top" />
-            <element signature="n#_tbFields#0;n#DatabaseBasicFunc#0;n#!!top" />
-            <element signature="n#_dataFormat#0;n#DatabaseBasicFunc#0;n#!!top" />
-            <element signature="n#_doQuery#0;n#DatabaseBasicFunc#0;n#!!top" />
-            <element signature="n#doSql#0;n#DatabaseBasicFunc#0;n#!!top" />
-            <element signature="n#getLastSql#0;n#DatabaseBasicFunc#0;n#!!top" />
-            <element signature="n#insert#0;n#DatabaseBasicFunc#0;n#!!top" />
-            <element signature="n#delete#0;n#DatabaseBasicFunc#0;n#!!top" />
-            <element signature="n#update#0;n#DatabaseBasicFunc#0;n#!!top" />
-            <element signature="n#select#0;n#DatabaseBasicFunc#0;n#!!top" />
-            <element signature="n#where#0;n#DatabaseBasicFunc#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/service/SignerService.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="464">
@@ -395,51 +370,108 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/dao/RegisterDao.php">
+    <entry file="file://$PROJECT_DIR$/www/dao/DatabaseBasicFunc.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+        <state relative-caret-position="17">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
           <folding>
-            <element signature="e#6#49#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/service/RegisterService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="15" column="5" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="15" selection-end-column="5" />
-          <folding>
-            <element signature="e#6#48#0#PHP" expanded="true" />
+            <element signature="n#init_database#0;n#DatabaseBasicFunc#0;n#!!top" />
+            <element signature="n#_connect#0;n#DatabaseBasicFunc#0;n#!!top" />
+            <element signature="n#_addChar#0;n#DatabaseBasicFunc#0;n#!!top" />
+            <element signature="n#_tbFields#0;n#DatabaseBasicFunc#0;n#!!top" />
+            <element signature="n#_dataFormat#0;n#DatabaseBasicFunc#0;n#!!top" />
+            <element signature="n#_doQuery#0;n#DatabaseBasicFunc#0;n#!!top" />
+            <element signature="n#doSql#0;n#DatabaseBasicFunc#0;n#!!top" />
+            <element signature="n#getLastSql#0;n#DatabaseBasicFunc#0;n#!!top" />
+            <element signature="n#insert#0;n#DatabaseBasicFunc#0;n#!!top" />
+            <element signature="n#delete#0;n#DatabaseBasicFunc#0;n#!!top" />
+            <element signature="n#update#0;n#DatabaseBasicFunc#0;n#!!top" />
+            <element signature="n#select#0;n#DatabaseBasicFunc#0;n#!!top" />
+            <element signature="n#where#0;n#DatabaseBasicFunc#0;n#!!top" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/controller/RegisterController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="24" column="5" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="24" selection-end-column="5" />
+        <state relative-caret-position="340">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/controller/LoginController.php">
+    <entry file="file://$PROJECT_DIR$/www/exception/BasicException.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+        <state relative-caret-position="102">
+          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/service/LoginService.php">
+    <entry file="file://$PROJECT_DIR$/www/exception/ControllerException.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+        <state relative-caret-position="51">
+          <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/exception/ServiceException.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/exception/DAOException.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" column="4" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/service/RegisterService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
+          <folding>
+            <element signature="e#6#48#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/dao/RegisterDao.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
+          <folding>
+            <element signature="e#6#49#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/exception/LoginException.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/dao/LoginDao.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-357">
-          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+        <state relative-caret-position="629">
+          <caret line="81" column="63" selection-start-line="81" selection-start-column="63" selection-end-line="81" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/service/LoginService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="41" column="20" lean-forward="true" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/controller/LoginController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="21" column="22" lean-forward="true" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
         </state>
       </provider>
     </entry>
