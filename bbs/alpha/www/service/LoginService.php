@@ -5,8 +5,9 @@
  * @author      Cookize
  */
 
-require_once '../dao/LoginDao.php';
-require_once '../exception/LoginException.php';
+require_once '../config.php';
+require_once ROOT_PATH.'/dao/LoginDao.php';
+require_once ROOT_PATH.'/exception/LoginException.php';
 
 /**
  * Class LoginService
