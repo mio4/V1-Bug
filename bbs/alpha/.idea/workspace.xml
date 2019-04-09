@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e52bbd4d-6249-44b6-8102-a095fddf1150" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/www/controller/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/controller/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/controller/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/controller/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/dao/DatabaseBasicFunc.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/dao/DatabaseBasicFunc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/dao/LoginDao.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/dao/LoginDao.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/dao/RegisterDao.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/dao/RegisterDao.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/exception/DatabaseException.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/exception/DatabaseException.php" afterDir="false" />
-    </list>
+    <list default="true" id="e52bbd4d-6249-44b6-8102-a095fddf1150" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +15,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="116">
               <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/service/RegisterService.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="464">
+              <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+              <folding>
+                <element signature="e#6#48#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -43,15 +48,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="87">
               <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/www/exception/DatabaseException.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -84,7 +80,6 @@
         <option value="$PROJECT_DIR$/www/dao/signup.php" />
         <option value="$PROJECT_DIR$/www/controller/signup.php" />
         <option value="$PROJECT_DIR$/public/html/signup.html" />
-        <option value="$PROJECT_DIR$/www/service/SignerService.php" />
         <option value="$PROJECT_DIR$/www/controller/SignerController.php" />
         <option value="$PROJECT_DIR$/public/html/testAjax.html" />
         <option value="$PROJECT_DIR$/www/controller/testAjax.php" />
@@ -94,10 +89,6 @@
         <option value="$PROJECT_DIR$/www/exception/ControllerException.php" />
         <option value="$PROJECT_DIR$/www/exception/ServiceException.php" />
         <option value="$PROJECT_DIR$/www/exception/DAOException.php" />
-        <option value="$PROJECT_DIR$/www/service/RegisterService.php" />
-        <option value="$PROJECT_DIR$/www/exception/LoginException.php" />
-        <option value="$PROJECT_DIR$/www/exception/RegisterException.php" />
-        <option value="$PROJECT_DIR$/www/service/LoginService.php" />
         <option value="$PROJECT_DIR$/www/config.php" />
         <option value="$PROJECT_DIR$/www/controller/LoginController.php" />
         <option value="$PROJECT_DIR$/www/controller/RegisterController.php" />
@@ -105,6 +96,11 @@
         <option value="$PROJECT_DIR$/www/dao/LoginDao.php" />
         <option value="$PROJECT_DIR$/www/dao/RegisterDao.php" />
         <option value="$PROJECT_DIR$/www/exception/DatabaseException.php" />
+        <option value="$PROJECT_DIR$/www/exception/LoginException.php" />
+        <option value="$PROJECT_DIR$/www/exception/RegisterException.php" />
+        <option value="$PROJECT_DIR$/www/service/LoginService.php" />
+        <option value="$PROJECT_DIR$/www/service/RegisterService.php" />
+        <option value="$PROJECT_DIR$/www/service/SignerService.php" />
       </list>
     </option>
   </component>
@@ -243,7 +239,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23356000" />
+    <option name="totallyTimeSpent" value="24203000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -338,55 +334,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/service/SignerService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="16" column="5" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="16" selection-end-column="5" />
-          <folding>
-            <element signature="e#6#83#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/exception/ControllerException.php" />
     <entry file="file://$PROJECT_DIR$/www/exception/ServiceException.php" />
     <entry file="file://$PROJECT_DIR$/www/exception/DAOException.php" />
     <entry file="file://$PROJECT_DIR$/info/tables.sql">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/exception/RegisterException.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="13" column="52" selection-start-line="13" selection-start-column="52" selection-end-line="13" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/service/RegisterService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="7" column="50" selection-start-line="7" selection-start-column="50" selection-end-line="7" selection-end-column="50" />
-          <folding>
-            <element signature="e#6#48#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/exception/LoginException.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/service/LoginService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="13" column="16" lean-forward="true" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
-          <folding>
-            <element signature="e#6#210#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/controller/log.info">
       <provider selected="true" editor-type-id="text-editor">
@@ -471,20 +423,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/B.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/exception/BasicException.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/dao/RegisterDao.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="261">
@@ -499,6 +437,61 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="116">
           <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/exception/LoginException.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="12" column="13" lean-forward="true" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/exception/RegisterException.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/exception/BasicException.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/service/LoginService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/B.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/service/SignerService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#6#83#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/service/RegisterService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+          <folding>
+            <element signature="e#6#48#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
