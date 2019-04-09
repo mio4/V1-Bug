@@ -1,13 +1,17 @@
 <?php
 /**
- * DAO层登陆操作
- * User: Cookize
- * Date: 2019/4/8
- * Time: 22:33
+ * DAO层登陆数据库操作
+ * @name    LoginDao
+ * @author  Cookize
  */
 
 require_once 'DatabaseBasicFunc.php';
+require_once '../exception/LoginException.php';
+require_once '../exception/DatabaseException.php';
 
+/**
+ * Class LoginDao
+ */
 class LoginDao
 {
     /**
@@ -16,12 +20,21 @@ class LoginDao
      * @param $_password
      * @return string
      * @throws LoginException   登陆失败异常
-     *      ErrorCode：1----------用户名未注册
-     *      ErrorCode：2----------密码错误
+     *      ErrorCode:1----------用户名未注册
+     *      ErrorCode:2----------密码错误
+     *      ErrorCode:4----------数据库故障
      */
     public static function login_by_name($_username, $_password)
     {
         $database = new DatabaseBasicFunc();
+        try
+        {
+            $database->init_database();
+        }
+        catch (DatabaseException $e)
+        {
+            throw new LoginException('Exception:DATABASE FAILURE', 4);
+        }
 
         // 检查用户名是否存在。
         $searchUser = array(
@@ -48,7 +61,7 @@ class LoginDao
         {
             throw new LoginException('Exception:WRONG PASSWORD', 2);
         }
-
+        $database->close();
         // 返回用户ID。
         return $retUid[0];
     }
@@ -60,12 +73,21 @@ class LoginDao
      * @param $_password
      * @return string
      * @throws LoginException   登陆失败异常
-     *      ErrorCode：3----------邮箱未注册
-     *      ErrorCode：2----------密码错误
+     *      ErrorCode:3----------邮箱未注册
+     *      ErrorCode:2----------密码错误
+     *      ErrorCode:4----------数据库错误
      */
     public static function login_by_email($_email, $_password)
     {
         $database = new DatabaseBasicFunc();
+        try
+        {
+            $database->init_database();
+        }
+        catch (DatabaseException $e)
+        {
+            throw new LoginException('Exception:DATABASE FAILURE', 4);
+        }
 
         // 检查邮箱是否注册。
         $searchUser = array(
@@ -92,7 +114,7 @@ class LoginDao
         {
             throw new LoginException('Exception:WRONG PASSWORD', 2);
         }
-
+        $database->close();
         // 返回用户ID。
         return $retUid[0];
 

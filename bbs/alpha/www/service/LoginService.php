@@ -1,21 +1,26 @@
 <?php
 /**
+ * Service层登陆操作
  * @name        LoginService
- * @function    登录操作Service层：
- *                  1.分发登陆方式
- *                  2.获取登陆结果，抛出异常
- *                  3.登陆成功时整理反馈的信息
  * @author      Cookize
  */
 
 require_once '../dao/LoginDao.php';
 require_once '../exception/LoginException.php';
 
+/**
+ * Class LoginService
+ * 封装Service层登录操作：
+ *      1.分发登陆方式
+ *      2.获取登陆结果，抛出异常
+ *      3.登陆成功时整理反馈的信息
+ */
 class LoginService
 {
     /**
-     * Service层登陆处理：分发至“用户名登陆”或“邮箱登陆”
-     * 登陆成功整理并返回用户信息，登陆失败抛出异常
+     * Service层登陆处理：
+     *      1.分发至“用户名登陆”或“邮箱登陆”
+     *      2.登陆成功整理并返回用户信息，登陆失败抛出异常
      * @param $_username
      * @param $_password
      * @param $_loginType

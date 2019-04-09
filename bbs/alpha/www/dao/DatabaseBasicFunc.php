@@ -1,11 +1,15 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Cookize
- * Date: 2019/4/8
- * Time: 22:47
+ * 数据库基础操作类
+ * @name    DatabaseBasicFunc
+ * @author  Cookize
  */
 
+require_once '../exception/DatabaseException.php';
+
+/**
+ * Class DatabaseBasicFunc
+ */
 class DatabaseBasicFunc
 {
     protected static $_dbh = null;          // 静态属性，单例，防止重复使用数据库
@@ -23,11 +27,26 @@ class DatabaseBasicFunc
     protected $_field = '*';                // 搜索域
     protected $_clear = 0;                  // 标记位，0表示查询条件干净，1表示查询条件污染
     protected $_trans = 0;                  // 事务指令数
+    protected $_defaultConfig = array(
+        'host'=>'localhost',
+        'port'=>3306,
+        'user'=>'root',
+        'password'=>'',
+        'dbname'=>''
+    );                                      // 默认数据库配置
+
     /**
-     * 初始化数据库配置
+     * 初始化数据库
      * @param array $conf 数据库配置表
+     * @throws DatabaseException
      */
-    public function init_database(array $conf)
+    public function init_database(array $conf = array(
+        'host'=>'localhost',
+        'port'=>3306,
+        'user'=>'root',
+        'password'=>'',
+        'dbname'=>''
+    ))
     {
         class_exists('PDO') or die("PDO: class not exists.");
         $this->_host = $conf['host'];
@@ -37,11 +56,18 @@ class DatabaseBasicFunc
         $this->_dbName = $conf['dbname'];
         //连接数据库
         if (is_null(self::$_dbh)) {
-            $this->_connect();
+            try {
+                $this->_connect();
+            } catch (DatabaseException $e) {
+                throw $e;
+            }
         }
     }
+
     /**
      * 使用PDO连接数据库
+     * @throws DatabaseException
+     *      ErrorCode:1---------------数据库连接异常
      */
     protected function _connect()
     {
@@ -53,11 +79,13 @@ class DatabaseBasicFunc
             $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);  //设置如果sql语句执行错误则抛出异常，事务会自动回滚
             $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);          //禁用prepared statements的仿真效果(防SQL注入)
         } catch (PDOException $e) {
-            die('Connection failed: ' . $e->getMessage());
+            // die('Connection failed: ' . $e->getMessage());
+            throw new DatabaseException('Exception:FAIL TO CONNECT', 1);
         }
         $dbh->exec('SET NAMES utf8');
         self::$_dbh = $dbh;
     }
+
     /**
      * 字段和表名添加 `符号
      * 保证指令中使用关键字不出错 针对mysql
@@ -76,6 +104,7 @@ class DatabaseBasicFunc
         }
         return $value;
     }
+
     /**
      * 取得数据表的字段信息
      * @param string $tbName 表名
@@ -94,6 +123,7 @@ class DatabaseBasicFunc
         }
         return $ret;
     }
+
     /**
      * 过滤并格式化数据表字段
      * @param string $tbName 数据表名
@@ -140,6 +170,7 @@ class DatabaseBasicFunc
         }
         return $ret;
     }
+
     /**
      * 执行查询 主要针对 SELECT, SHOW 等指令
      * @param string $sql sql指令
@@ -153,6 +184,7 @@ class DatabaseBasicFunc
         $result = $pdostmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+
     /**
      * 执行语句 针对 INSERT, UPDATE 以及DELETE,exec结果返回受影响的行数
      * @param string $sql sql指令
@@ -163,6 +195,7 @@ class DatabaseBasicFunc
         $this->_sql = $sql;
         return self::$_dbh->exec($this->_sql);
     }
+
     /**
      * 执行sql语句
      * @param string $sql SQL指令
@@ -180,6 +213,7 @@ class DatabaseBasicFunc
             return $this->_doQuery($sql); //查询操作
         }
     }
+
     /**
      * 获取最近一次查询的sql语句
      * @return String 执行的SQL
@@ -188,6 +222,7 @@ class DatabaseBasicFunc
     {
         return $this->_sql;
     }
+
     /**
      * 数据库插入
      * @param string $tbName 操作的数据表名
@@ -204,6 +239,7 @@ class DatabaseBasicFunc
         $sql = "insert into " . $tbName . "(" . implode(',', array_keys($data)) . ") values(" . implode(',', array_values($data)) . ")";
         return $this->_doExec($sql);
     }
+
     /**
      * 数据库删除
      * @param string $tbName 操作的数据表名
