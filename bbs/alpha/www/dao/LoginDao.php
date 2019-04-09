@@ -5,9 +5,10 @@
  * @author  Cookize
  */
 
-require_once 'DatabaseBasicFunc.php';
-require_once '../exception/LoginException.php';
-require_once '../exception/DatabaseException.php';
+require_once '../config.php';
+require_once ROOT_PATH.'/exception/BasicException.php';
+require_once ROOT_PATH.'/exception/LoginException.php';
+require_once ROOT_PATH.'/exception/DatabaseException.php';
 
 /**
  * Class LoginDao

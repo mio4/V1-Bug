@@ -5,8 +5,9 @@
  * @author      Cookize
  */
 
-require_once '../service/LoginService.php';
-require_once '../exception/LoginException.php';
+require_once '../config.php';
+require_once ROOT_PATH.'/service/LoginService.php';
+require_once ROOT_PATH.'/exception/LoginException.php';
 
 /**
  * Class LoginController

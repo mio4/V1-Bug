@@ -4,8 +4,9 @@
  * @author Cookize
  */
 
-require_once '../service/RegisterService.php';
-require_once '../exception/RegisterException.php';
+require_once '../config.php';
+require_once ROOT_PATH.'/service/RegisterService.php';
+require_once ROOT_PATH.'/exception/RegisterException.php';
 
 /**
  * Class RegisterController

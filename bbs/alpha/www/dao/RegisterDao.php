@@ -5,9 +5,9 @@
  * @author  Cookize
  */
 
-require_once 'DatabaseBasicFunc.php';
-require_once '../exception/RegisterException.php';
-require_once '../exception/DatabaseException.php';
+require_once '../config.php';
+require_once ROOT_PATH.'/exception/DatabaseException.php';
+require_once ROOT_PATH.'/exception/RegisterException.php';
 
 
 /**

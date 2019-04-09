@@ -5,6 +5,9 @@
  * @author      Cookize
  */
 
+require_once '../config.php';
+require_once ROOT_PATH.'/exception/BasicException.php';
+
 /**
  * Class DatabaseException
  * ErrorCode:
