@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: mio
- * Date: 2019/4/2
- * Time: 21:48
+ * Date: 2019/4/5
+ * Time: 20:21
  */
 
-phpinfo();
+$username = "";
