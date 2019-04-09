@@ -1,13 +1,17 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Cookize
- * Date: 2019/4/8
- * Time: 22:33
+ * Controller层登陆控制操作
+ * @name        LoginController
+ * @author      Cookize
  */
 
 require_once '../service/LoginService.php';
+require_once '../exception/LoginException.php';
 
+/**
+ * Class LoginController
+ * 封装Controller层登陆控制操作
+ */
 class LoginController
 {
     public static function login()
