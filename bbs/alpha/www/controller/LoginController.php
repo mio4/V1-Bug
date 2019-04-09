@@ -16,11 +16,12 @@ class LoginController
         $username = $_POST["username"];
         $password = $_POST["password"];
         $isByName = true;
+        $userInfo = null;
         // TODO:检查数据是否合法，并分类登陆方式
 
         //调用Service层逻辑
         // TODO:选择不同中登陆服务
-        $isSuccess = RegisterService::register_service($username,$password,$email,$type);
+        $userInfo = LoginService::login_service($username,$password,$isByName);
         // TODO:返回合法JSON
     }
 }
