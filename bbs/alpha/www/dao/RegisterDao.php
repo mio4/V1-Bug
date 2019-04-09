@@ -8,6 +8,7 @@
 require_once '../config.php';
 require_once ROOT_PATH.'/exception/DatabaseException.php';
 require_once ROOT_PATH.'/exception/RegisterException.php';
+require_once ROOT_PATH.'/dao/DatabaseBasicFunc.php';
 
 
 /**
@@ -47,10 +48,10 @@ class RegisterDao{
             'type'=>$_type
         );
         $searchName = array(
-            'username'=>$_username
+            'username'=>"'$_username'"
         );
         $searchEmail = array(
-            'email'=>$_email
+            'email'=>"'$_email'"
         );
         // 检查用户名和邮箱的唯一性。
         $database->where($searchName);

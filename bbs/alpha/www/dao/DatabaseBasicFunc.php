@@ -33,7 +33,7 @@ class DatabaseBasicFunc
         'port'=>3306,
         'user'=>'root',
         'password'=>'',
-        'dbname'=>''
+        'dbname'=>'WEDO'
     );                                      // 默认数据库配置
 
     /**
@@ -46,7 +46,7 @@ class DatabaseBasicFunc
         'port'=>3306,
         'user'=>'root',
         'password'=>'',
-        'dbname'=>''
+        'dbname'=>'WEDO'
     ))
     {
         class_exists('PDO') or die("PDO: class not exists.");
@@ -293,6 +293,7 @@ class DatabaseBasicFunc
     public function select($tbName = '')
     {
         $sql = "select " . trim($this->_field) . " from " . $tbName . " " . trim($this->_where) . " " . trim($this->_order) . " " . trim($this->_limit);
+        echo $sql.'<br>';
         $this->_clear = 1;
         $this->_clear();
         return $this->_doQuery(trim($sql));

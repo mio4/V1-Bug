@@ -27,6 +27,7 @@ class LoginController
         try
         {
             $userInfo = LoginService::login_service($username,$password);
+            echo 'Login Success<br>';
         }
         catch (LoginException $e)
         {
@@ -36,18 +37,26 @@ class LoginController
                 case 1:
                     {
                         // TODO：登陆失败，用户名未注册。
+                        echo $e->getMessage().'<br>';
+                        break;
                     }
                 case 2:
                     {
                         // TODO：登陆失败，密码错误。
+                        echo $e->getMessage().'<br>';
+                        break;
                     }
                 case 3:
                     {
                         // TODO：登陆失败，邮箱未注册。
+                        echo $e->getMessage().'<br>';
+                        break;
                     }
                 default:
                     {
                         // TODO：登陆失败，未知错误。
+                        echo $e->getMessage().'<br>';
+                        break;
                     }
             }
         }
@@ -55,3 +64,4 @@ class LoginController
     }
 }
 
+LoginController::login();

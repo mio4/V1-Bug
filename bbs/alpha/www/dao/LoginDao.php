@@ -6,7 +6,7 @@
  */
 
 require_once '../config.php';
-require_once ROOT_PATH.'/exception/BasicException.php';
+require_once ROOT_PATH.'/dao/DatabaseBasicFunc.php';
 require_once ROOT_PATH.'/exception/LoginException.php';
 require_once ROOT_PATH.'/exception/DatabaseException.php';
 
@@ -39,7 +39,7 @@ class LoginDao
 
         // 检查用户名是否存在。
         $searchUser = array(
-            'username'=>$_username
+            'username'=>"'$_username'"
         );
         $fieldParam = array(
             'uid'
@@ -54,8 +54,8 @@ class LoginDao
 
         // 检验密码是否正确。
         $checkPassword = array(
-            'uid'=>$retUid[0],
-            'password'=>$_password
+            'uid'=>$retUid[0]['uid'],
+            'password'=>"'$_password'"
         );
         $database->where($checkPassword);
         if(1 != count($database->select('User')))
@@ -92,7 +92,7 @@ class LoginDao
 
         // 检查邮箱是否注册。
         $searchUser = array(
-            'username'=>$_email
+            'email'=>"'$_email'"
         );
         $fieldParam = array(
             'uid'
@@ -108,7 +108,7 @@ class LoginDao
         // 检验密码是否正确。
         $checkPassword = array(
             'uid'=>$retUid[0],
-            'password'=>$_password
+            'password'=>"'$_password'"
         );
         $database->where($checkPassword);
         if(1 != count($database->select('User')))
