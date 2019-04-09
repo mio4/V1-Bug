@@ -47,13 +47,330 @@
         </li>
       </ul>
     </div> 
-    <ul class='nav navbar-nav navbar-right'>
+    <ul class="nav navbar-nav navbar-right">
       <form class="form-inline pull-right">
         <input class="form-control" type="text" placeholder="搜索...">
         <button class="btn btn-success" type="button">搜索</button>
       </form>
     </ul>
   </nav>
+  <div class="container">
+    <div class="row" style="height:100%;">
+	    <div class="col-md-4 text-center">
+        <div class="card" style="margin-top: 100px;">
+          <img class="card-img-top" src="./images/usr.png" alt="头像" style="width:100%;">
+          <div class="card-body">
+            <h4 class="card-title">姓名</h4>
+            <p class="card-text">个性签名</p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 50px;">
+          <ul class="list-group">
+
+            <li class="list-group-item list-group-item-success">
+              <div class="row" style="line-height: 40px;">
+                <div class="col-8">
+                  <form class="form-inline">
+                    <label>邮箱:</label>
+                    <label id="mail-info">123@qq.com</label>
+                  </form>
+                </div>
+                <div class="col-4">
+                  <button type="button" class="btn btn-primary" id="mail-rev" data-toggle="modal" data-target="#mail-mod">修改</button>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item list-group-item-primary">
+              <div class="row" style="line-height: 40px;">
+                <div class="col-8">
+                  <form class="form-inline">
+                    <label>用户名:</label>
+                    <label id="usr-info">dalige</label>
+                  </form>
+                </div>
+                <div class="col-4">
+                  <button type="button" class="btn btn-primary disabled" id="usr-rev">修改</button>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item list-group-item-warning">
+              <div class="row" style="line-height: 40px;">
+                <div class="col-8">
+                  <form class="form-inline">
+                    <label>昵称:</label>
+                    <label id="nick-info">大力哥</label>
+                  </form>
+                </div>
+                <div class="col-4">
+                  <button type="button" class="btn btn-primary" id="nick-rev" data-toggle="modal" data-target="#nick-mod">修改</button>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item list-group-item-secondary">
+              <div class="row" style="line-height: 40px;">
+                <div class="col-8">
+                  <form class="form-inline">
+                    <label>入坑时间:</label>
+                    <label id="time-info">3小时</label>
+                  </form>
+                </div>
+                <div class="col-4">
+                  <button type="button" class="btn btn-primary disabled" id="time-rev">修改</button>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item list-group-item-danger">
+              <div class="row" style="line-height: 40px;"><!--不设置line-height会导致字不在列表行的垂直中间位置-->
+                <div class="col-8"><!--通过行布局来让不同组件位于同一行-->
+                  <form class="form-inline"><!--通过使用form的form-inline来让不同的组件位于同一行-->
+                    <label>密码:</label>
+                    <label id="pwd-info">********</label>
+                  </form>
+                </div>
+                <div class="col-4">
+                  <button type="button" class="btn btn-primary" id="pwd-rev" data-toggle="modal" data-target="#pwd-mod">修改</button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      
+      <div class="col-md-8 text-center">
+        <div class="card" style="margin-top: 100px;">
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#my-col">收藏</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#my-fol">关注</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#my-rel">我发布的项目</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#my-join">我参与的项目</a>
+            </li>
+          </ul>
+          <!-- Tab panes -->
+          <div class="tab-content" style=" height: 800px; overflow-y: scroll;">
+            <div id="my-col" class="container tab-pane active"><br>
+              <h3>收藏</h3>
+              <div class="media border p-3 mb-5" style="height:200px">
+                <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle" style="width:100px;">
+                <div class="media-body" background="./images/holiday.jpg" style="background-repeat:no-repeat; background-size: 100% 100%; background-attachment: fixed;">
+                  <h4>创意一</h4>
+                  <p>创意内容介绍</p>      
+                </div>
+              </div>
+              <div class="media border p-3 mb-5" style="height:200px">
+                <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle" style="width:100px;">
+                <div class="media-body">
+                  <h4>创意二</h4>
+                  <p>创意内容介绍</p>      
+                </div>
+              </div>
+              <div class="media border p-3 mb-5" style="height:200px">
+                <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle" style="width:100px;">
+                <div class="media-body" background="./images/holiday.jpg" style="background-repeat:no-repeat; background-size: 100% 100%; background-attachment: fixed;">
+                  <h4>创意三</h4>
+                  <p>创意内容介绍</p>      
+                </div>
+              </div>
+              <div class="media border p-3 mb-5" style="height:200px">
+                <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle" style="width:100px;">
+                <div class="media-body">
+                  <h4>创意四</h4>
+                  <p>创意内容介绍</p>      
+                </div>
+              </div>
+            </div>
+
+            <div id="my-fol" class="container tab-pane fade"><br>
+              <h3>关注</h3>
+              <div class="media border p-3 mb-5" style="height:200px">
+                <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle" style="width:100px;">
+                <div class="media-body" background="./images/holiday.jpg" style="background-repeat:no-repeat; background-size: 100% 100%; background-attachment: fixed;">
+                  <h4>创意一</h4>
+                  <p>创意内容介绍</p>      
+                </div>
+              </div>
+              <div class="media border p-3 mb-5" style="height:200px">
+                <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle" style="width:100px;">
+                <div class="media-body">
+                  <h4>创意二</h4>
+                  <p>创意内容介绍</p>      
+                </div>
+              </div>
+              <div class="media border p-3 mb-5" style="height:200px">
+                <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle" style="width:100px;">
+                <div class="media-body" background="./images/holiday.jpg" style="background-repeat:no-repeat; background-size: 100% 100%; background-attachment: fixed;">
+                  <h4>创意三</h4>
+                  <p>创意内容介绍</p>      
+                </div>
+              </div>
+              <div class="media border p-3 mb-5" style="height:200px">
+                <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle" style="width:100px;">
+                <div class="media-body">
+                  <h4>创意四</h4>
+                  <p>创意内容介绍</p>      
+                </div>
+              </div>
+            </div>
+
+            <div id="my-rel" class="container tab-pane fade"><br>
+              <h3>我发布的项目</h3>
+              <div class="media border p-3 mb-5" style="height:200px">
+                <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle" style="width:100px;">
+                <div class="media-body" background="./images/holiday.jpg" style="background-repeat:no-repeat; background-size: 100% 100%; background-attachment: fixed;">
+                  <h4>创意一</h4>
+                  <p>创意内容介绍</p>      
+                </div>
+              </div>
+              <div class="media border p-3 mb-5" style="height:200px">
+                <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle" style="width:100px;">
+                <div class="media-body">
+                  <h4>创意二</h4>
+                  <p>创意内容介绍</p>      
+                </div>
+              </div>
+              <div class="media border p-3 mb-5" style="height:200px">
+                <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle" style="width:100px;">
+                <div class="media-body" background="./images/holiday.jpg" style="background-repeat:no-repeat; background-size: 100% 100%; background-attachment: fixed;">
+                  <h4>创意三</h4>
+                  <p>创意内容介绍</p>      
+                </div>
+              </div>
+              <div class="media border p-3 mb-5" style="height:200px">
+                <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle" style="width:100px;">
+                <div class="media-body">
+                  <h4>创意四</h4>
+                  <p>创意内容介绍</p>      
+                </div>
+              </div>
+            </div>
+
+            <div id="my-join" class="container tab-pane fade"><br>
+              <h3>我参与的项目</h3>
+              <div class="media border p-3 mb-5" style="height:200px">
+                <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle" style="width:100px;">
+                <div class="media-body" background="./images/holiday.jpg" style="background-repeat:no-repeat; background-size: 100% 100%; background-attachment: fixed;">
+                  <h4>创意一</h4>
+                  <p>创意内容介绍</p>      
+                </div>
+              </div>
+              <div class="media border p-3 mb-5" style="height:200px">
+                <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle" style="width:100px;">
+                <div class="media-body">
+                  <h4>创意二</h4>
+                  <p>创意内容介绍</p>      
+                </div>
+              </div>
+              <div class="media border p-3 mb-5" style="height:200px">
+                <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle" style="width:100px;">
+                <div class="media-body" background="./images/holiday.jpg" style="background-repeat:no-repeat; background-size: 100% 100%; background-attachment: fixed;">
+                  <h4>创意三</h4>
+                  <p>创意内容介绍</p>      
+                </div>
+              </div>
+              <div class="media border p-3 mb-5" style="height:200px">
+                <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle" style="width:100px;">
+                <div class="media-body">
+                  <h4>创意四</h4>
+                  <p>创意内容介绍</p>      
+                </div>
+              </div>
+            </div>
+
+          </div><!--tab-content-->
+        </div><!--card-->
+      </div><!--col-8-->
+
+    </div>
+  </div>
+  
+  <div class="modal fade" id="mail-mod">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">修改邮箱</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" style="width:100px">邮箱</span>
+              </div>
+              <input type="text" class="form-control" placeholder="请输入新邮箱" id="mail-new" name="mail-new" required>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="nick-mod">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">修改昵称</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" style="width:100px">昵称</span>
+              </div>
+              <input type="text" class="form-control" placeholder="请输入新昵称" id="nick-new" name="nick-new" required>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="pwd-mod">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">修改密码</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" style="width:100px">密码</span>
+              </div>
+              <input type="text" class="form-control" placeholder="请输入新密码" id="pwd-new" name="pwd-new" required>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" style="width:100px">确认密码</span>
+              </div>
+              <input type="text" class="form-control" placeholder="请再次输入新密码" id="pwd-con-new" name="pwd-con-new" required>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+		  
+		    
 </body>
 </html>
     
