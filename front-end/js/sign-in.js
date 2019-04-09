@@ -1,18 +1,10 @@
-function validate_required(field,alerttxt)
-{
-with (field)
-  {
-  if (value==null||value=="")
-    {alert(alerttxt);return false}
-  else {return true}
-  }
+function sign_in(){
+	var data = toJSON();
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("POST","usr/sign_in",false);
+	xmlhttp.send(data);
 }
-
-function validate_form(thisform)
-{
-with (thisform)
-  {
-  if (validate_required(email,"Email must be filled out!")==false)
-    {email.focus();return false}
-  }
+function toJSON(){
+	x=$("form").serializeArray();
+	return x;
 }

@@ -1,22 +1,3 @@
-/*  $(function () {
-            var tabLen = document.getElementById("tableID");
-            var jsonT = "[";
-            for (var i = 1; i < tabLen.rows.length; i++) {
-                    jsonT += '{"ID":' + tabLen.rows[i].cells[0].innerHTML + ',"Name":"' + tabLen.rows[i].cells[1].innerHTML + '","Age":' + tabLen.rows[i].cells[2].innerHTML + ',"Gender":"' + tabLen.rows[i].cells[3].innerHTML + '"},'
-            }
-            jsonT= jsonT.substr(0, jsonT.length - 1);
-            jsonT += "]";
-            $.ajax({
-                type: 'post',
-                url: '/Home/GetJson',
-                data:{students:jsonT},
-                success: function (data) {
-                    alert(1);
-                }
-            });      
-        });
-*/
-
 var read_clicked;
 window.onload=function(){
     read_clicked = false;
@@ -30,8 +11,27 @@ function sign_up(){
 	}
 	var data = toJSON();
 	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("POST","usr/sign_up",false);
-	xmlhttp.send(data);
+	xmlhttp.open("POST","usr/sign_up",true);
+	xmlhttp.setRequestHeader('content-type', 'application/json');
+
+    xmlhttp.onreadystatechange=function(){
+      if (xmlhttp.readyState==4){
+      	if(xmlhttp.getResponseHeader('content-type')==='application/json'){
+	      var result = JSON.parse(xmlhttp.responseText);	
+	  	  if(result.status===400){
+            alert('注册失败');
+	      }
+	      else{
+	      	alert("注册成功");
+	      }
+        }
+        else{
+        	console.log(xmlhttp.responseText);
+        }
+        
+      }
+    }
+	xmlhttp.send(JSON.stringify(data));
 }
 function sign_up_check(){
 	var tmp = document.getElementById("usr").value;
