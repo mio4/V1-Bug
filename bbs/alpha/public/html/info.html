@@ -43,22 +43,29 @@
           <a class="nav-link" href="#">个人信息</a>
         </li>
       </ul>
-    </div> 
-    <ul class="nav navbar-nav navbar-right">
-      <form class="form-inline pull-right">
+      <form class="form-inline">
         <input class="form-control" type="text" placeholder="搜索...">
         <button class="btn btn-success" type="button">搜索</button>
       </form>
+    </div> 
+    <ul class="nav navbar-nav">
+      <div class="media">
+        <div class="media-body">     
+          <a href="./sign-in.html" class="btn btn-danger" type="button">登出</a>           
+        </div>     
+        <img src="./images/usr.png" alt="头像" class="ml-3 rounded-circle" style="width:40px;">
+      </div>
     </ul>
   </nav>
+
   <div class="container">
-    <div class="row" style="height:100%;">
+    <div class="row" style="height:800px;">
 	    <div class="col-md-4 text-center">
         <div class="card" style="margin-top: 100px;">
           <img class="card-img-top" src="./images/usr.png" alt="头像" style="width:100%;">
           <div class="card-body">
             <h4 class="card-title">昵称</h4>
-            <a href="./sign-in.html" class="card-text">退出登录</p>
+            <button type="button" class="btn btn-primary" id="nick-rev" data-toggle="modal" data-target="#nick-mod">修改昵称</button>
           </div>
         </div>
 
@@ -91,20 +98,7 @@
                 </div>
               </div>
             </li>
-            <li class="list-group-item list-group-item-warning">
-              <div class="row" style="line-height: 40px;">
-                <div class="col-8">
-                  <form class="form-inline">
-                    <label>昵称:</label>
-                    <label id="nick-info">大力哥</label>
-                  </form>
-                </div>
-                <div class="col-4">
-                  <button type="button" class="btn btn-primary" id="nick-rev" data-toggle="modal" data-target="#nick-mod">修改</button>
-                </div>
-              </div>
-            </li>
-            <li class="list-group-item list-group-item-secondary">
+            <li class="list-group-item list-group-item-danger">
               <div class="row" style="line-height: 40px;">
                 <div class="col-8">
                   <form class="form-inline">
@@ -117,7 +111,7 @@
                 </div>
               </div>
             </li>
-            <li class="list-group-item list-group-item-danger">
+            <li class="list-group-item list-group-item-warning">
               <div class="row" style="line-height: 40px;"><!--不设置line-height会导致字不在列表行的垂直中间位置-->
                 <div class="col-8"><!--通过行布局来让不同组件位于同一行-->
                   <form class="form-inline"><!--通过使用form的form-inline来让不同的组件位于同一行-->
@@ -153,12 +147,12 @@
             </li>
           </ul>
           <!-- Tab panes -->
-          <div class="tab-content" style=" height: 800px; overflow-y: scroll;">
+          <div class="tab-content" style=" height: 743px; overflow-y: scroll;"><!--可以设计scroll安装的位置-->
             <div id="my-col" class="container tab-pane active"><br>
               <h3>收藏</h3>
               <div class="media border p-3 mb-5" style="height:200px">
                 <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle" style="width:100px;">
-                <div class="media-body" background="./images/holiday.jpg" style="background-repeat:no-repeat; background-size: 100% 100%; background-attachment: fixed;">
+                <div class="media-body">
                   <h4>创意一</h4>
                   <p>创意内容介绍</p>      
                 </div>
