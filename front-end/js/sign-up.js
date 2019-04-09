@@ -37,6 +37,10 @@ function sign_up_check(){
 	var tmp = document.getElementById("usr").value;
 	//alert(tmp);
 	var p = /^[0-9a-zA-Z]+$/; 
+	if(tmp==""){
+		alert("请输入用户名");
+		return false;
+	}
 	if(!p.test(tmp)){
 		alert("用户名只能包含数字和字母")
 		return false;
@@ -47,6 +51,10 @@ function sign_up_check(){
 	}
 	
 	tmp = document.getElementById("pwd").value;
+	if(tmp==""){
+		alert("请输入密码");
+		return false;
+	}
 	if(!p.test(tmp)){
 		alert("密码只能包含数字和字母")
 		return false;
@@ -55,11 +63,13 @@ function sign_up_check(){
 		alert("密码长度必须在8至16位之间");
 		return false;
 	}
+
 	var tmp2 = document.getElementById("pwd-con").value;
 	if(tmp!=tmp2){
 		alert("两次输入密码不一致");
 		return false;
 	}
+	
 	if(read_clicked == false){
 		alert("请确认服务协议");
 		return false;
