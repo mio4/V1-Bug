@@ -1,8 +1,9 @@
 function sign_in(){
-	var data = $("form").serializeArray();
+	url = "";
+	var data = $("#form-sign-in").serializeArray();
 	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("POST","usr/sign_in",true);
-	xmlhttp.setRequestHeader('content-type', 'application/json');
+	xmlhttp.open("POST",url,true);
+	xmlhttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
 
     xmlhttp.onreadystatechange=function(){
       if (xmlhttp.readyState===4){

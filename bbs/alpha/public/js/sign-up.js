@@ -3,16 +3,19 @@ window.onload=function(){
     read_clicked = false;
 }
 function read_con(){
-	read_clicked = true;
+	read_clicked = !read_clicked;
 }
 function sign_up(){
 	if(!sign_up_check()){
 		return;
 	}
+
+	url = "";//修改url
+
 	var data = toJSON();
 	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("POST","usr/sign_up",true);
-	xmlhttp.setRequestHeader('content-type', 'application/json');
+	xmlhttp.open("POST",url,true);
+	xmlhttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
 
     xmlhttp.onreadystatechange=function(){
       if (xmlhttp.readyState==4){
@@ -34,7 +37,7 @@ function sign_up(){
 	xmlhttp.send(JSON.stringify(data));
 }
 function sign_up_check(){
-	var tmp = document.getElementById("usr").value;
+	var tmp = document.getElementById("username-sign-up").value;
 	//alert(tmp);
 	var p = /^[0-9a-zA-Z]+$/; 
 	if(!p.test(tmp)){
@@ -46,7 +49,7 @@ function sign_up_check(){
 		return false;
 	}
 	
-	tmp = document.getElementById("pwd").value;
+	tmp = document.getElementById("password-sign-up").value;
 	if(!p.test(tmp)){
 		alert("密码只能包含数字和字母")
 		return false;
@@ -55,7 +58,7 @@ function sign_up_check(){
 		alert("密码长度必须在8至16位之间");
 		return false;
 	}
-	var tmp2 = document.getElementById("pwd-con").value;
+	var tmp2 = document.getElementById("password-con-sign-up").value;
 	if(tmp!=tmp2){
 		alert("两次输入密码不一致");
 		return false;
@@ -67,7 +70,6 @@ function sign_up_check(){
 	return true;
 }
 function toJSON(){
-	x=$("form").serializeArray();
-	//console.log(JSON.stringify(x));
+	x=$("#form-sign-up").serializeArray();
 	return x;
 }

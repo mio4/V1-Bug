@@ -191,7 +191,7 @@
                     <div class="login-reg-form-wrap  pr-lg-50">
                         <h2>已经拥有账户?</h2>
 
-                        <form action="#" method="post">
+                        <form id="form-sign-in">
                             <div class="single-input-item">
                                 <input id="username-sign-in" name="username-sign-in" type="email" placeholder="请输入邮箱/用户名" required />
                             </div>
@@ -214,9 +214,10 @@
                             </div>
 
                             <div class="single-input-item">
-                                <button class="btn">登录</button>
+                               
                             </div>
                         </form>
+                        <button class="btn" onClick="sign_in()">登录</button>
                     </div>
                 </div>
                 <!-- Login Content End -->
@@ -225,26 +226,26 @@
                 <div class="col-lg-7 mt-30 mt-lg-0">
                     <div class="login-reg-form-wrap">
                         <h2>注册</h2>
-                        <form action="#" method="post">
+                        <form id="form-sign-up">
 
                             <div class="single-input-item">
-                                <input id="email-sign-up" name="email-sign-up" type="email" placeholder="请输入邮箱" required />
+                                <input vaule id="email-sign-up" name="email-sign-up" type="email" placeholder="请输入邮箱" required />
                             </div>
 
                             <div class="single-input-item">
-                                <input id="username-sign-up" name="username-sign-up" type="text" placeholder="请输入用户名" required />
+                                <input vaule id="username-sign-up" name="username-sign-up" type="text" placeholder="请输入用户名" required />
                             </div>
 
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="single-input-item">
-                                        <input id="password-sign-up" name="password-sign-up" type="password" placeholder="请输入密码" required />
+                                        <input vaule id="password-sign-up" name="password-sign-up" type="password" placeholder="请输入密码" required />
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="single-input-item">
-                                        <input id="password-con-sign-up" name="password-con-sign-up" type="password" placeholder="请再次输入密码" required />
+                                        <input vaule id="password-con-sign-up" name="password-con-sign-up" type="password" placeholder="请再次输入密码" required />
                                     </div>
                                 </div>
                             </div>
@@ -258,7 +259,7 @@
                                         </div>
                                         <div class="custom-control custom-checkbox mt-4">
                                             <input type="checkbox" class="custom-control-input" id="I-agree">
-                                            <label class="custom-control-label" for="I-agree">我同意服务协议</label>
+                                            <label class="custom-control-label" for="I-agree" onClick="read_con()">我同意服务协议</label>
                                         </div>
 
                                     </div>
@@ -272,10 +273,11 @@
                             <!--<div>
                                 <button class="btn">阅读服务协议</button>
                             </div>-->
-                            <div class="single-input-item">
-                                <button class="btn">注册</button>
+                            <div>
+                                
                             </div>
                         </form>
+                        <button class="btn" onClick="sign_up()">注册</button>
                     </div>
                 </div>
                 <!-- Register Content End -->
@@ -520,5 +522,9 @@
 
 <!--=== Active Js ===-->
 <script src="assets/js/active.js"></script>
+
+<!--=== Function Js ===-->
+<script src="../js/sign-in.js"></script>
+<script src="../js/sign-up.js"></script>
 </body>
 </html>
