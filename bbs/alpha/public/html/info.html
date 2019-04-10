@@ -10,7 +10,6 @@
   <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
   <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
-  <link href="https://github.com/iconic/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet"><!--使用icon-->
   <style>
     .carousel-inner img {
       width: 100%;
@@ -290,19 +289,20 @@
           <h4 class="modal-title">修改邮箱</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-        <div class="modal-body">
-          <form>
+        <form name="mail-form" action="post.php" method="post">
+          <div class="modal-body">
             <div class="input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text" style="width:100px">邮箱</span>
               </div>
-              <input type="text" class="form-control" placeholder="请输入新邮箱" id="mail-new" name="mail-new" required>
+              <input type="email" class="form-control" placeholder="请输入新邮箱" id="mail-new" name="mail-new" required autofocus>
             </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
-        </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary mr-3" data-dismiss="modal">返回</button>
+            <input type="submit" class="btn btn-primary" value="确定">
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -314,19 +314,20 @@
           <h4 class="modal-title">修改昵称</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-        <div class="modal-body">
-          <form>
+        <form name="nickname-form" action="post.php" method="post" onsubmit="return check_nickname_form()">
+          <div class="modal-body">
             <div class="input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text" style="width:100px">昵称</span>
               </div>
-              <input type="text" class="form-control" placeholder="请输入新昵称" id="nick-new" name="nick-new" required>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
-        </div>
+              <input type="text" class="form-control" placeholder="请输入新昵称" id="nickname-input" name="nickname-input" required autofocus>
+            </div>  
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary mr-3" data-dismiss="modal">返回</button>
+            <input type="submit" class="btn btn-primary" value="确定">
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -338,30 +339,63 @@
           <h4 class="modal-title">修改密码</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-        <div class="modal-body">
-          <form>
+        <form name="password-form" action="post.php" method="post" onsubmit="return check_password_form()">
+          <div class="modal-body">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" style="width:100px">密码</span>
               </div>
-              <input type="text" class="form-control" placeholder="请输入新密码" id="pwd-new" name="pwd-new" required>
+              <input type="password" class="form-control" placeholder="请输入新密码" id="password-input" name="password-input" required autofocus>
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" style="width:100px">确认密码</span>
               </div>
-              <input type="text" class="form-control" placeholder="请再次输入新密码" id="pwd-con-new" name="pwd-con-new" required>
+              <input type="password" class="form-control" placeholder="请再次输入新密码" id="password-con-input" name="password-con-input" required>
             </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
-        </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary mr-3" data-dismiss="modal">返回</button>
+            <input type="submit" class="btn btn-primary" value="确定">
+          </div>
+        </form>
       </div>
     </div>
   </div>
 		  
 		    
+<script>
+  function check_password_form()
+  {
+    var p = /^[0-9a-zA-Z]+$/; 
+    /*var tmp = document.getElementById("password-input").value;
+    var tmp_con = document.getElementById("password-con-input").value;*/
+    var pwd = $("#password-input").val();
+    if(!p.test(pwd)){
+      alert("密码只能包含数字和字母")
+      return false;
+    }
+    if(pwd.length < 8 || pwd.length > 16){
+      alert("密码长度必须在8至16位之间");
+      return false;
+    }
+    var pwd_con = $("#password-con-input").val();
+    if(pwd != pwd_con){
+      alert("两次输入密码不一致");
+      return false;
+    }
+    return true;
+  }
+
+  function check_nickname_form(){
+    var nick = $("#nickname-input").val();
+    if(nick.length > 16){
+      alert("昵称长度不能超过16位");
+      return false;
+    }
+    return true;
+  }
+</script>
 </body>
 </html>
     
