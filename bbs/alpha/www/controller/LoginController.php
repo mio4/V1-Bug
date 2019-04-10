@@ -20,21 +20,27 @@ class LoginController
      */
     public static function login()
     {
-        session_start();
+        //session_start();
         //从POST体获取数据
-        $username = trim($_POST["username"]);
-        $password = trim($_POST["password"]);
+        $input = trim($_POST["loginInfo"]);
+        $input = json_decode($input, true);
+        $username = $input[0]['value'];
+        $password = $input[1]['value'];
         $userInfo = null;
+        header('content-type:application/json');
+        $ret = array('status'=>404);
         // TODO:检查数据是否合法，并分类登陆方式
 
         //调用Service层逻辑
         try
         {
             $userInfo = LoginService::login_service($username,$password);
-            // echo 'Login Success<br>';
-            $_SESSION['status'] = 200;
-            $_SESSION['username'] = $username;
-            header('Location: ../../public/html/main.html');
+            //$_SESSION['status'] = 200;
+            //$_SESSION['username'] = $username;
+            //header('Location: ../../public/html/main.html');
+            $ret['status'] = 200;
+
+            echo json_encode($ret);
             exit;
         }
         catch (LoginException $e)
@@ -67,9 +73,11 @@ class LoginController
                         break;
                     }
             }
-            $_SESSION['status'] = 400;
-            header('Location: ../../public/html/sign-in.html');
-            exit();
+            //$_SESSION['status'] = 400;
+            //header('Location: ../../public/html/sign-in.html');
+            $ret['status'] = 400;
+            echo json_encode($ret);
+            exit;
         }
     }
 }
