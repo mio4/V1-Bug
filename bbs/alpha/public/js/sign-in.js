@@ -5,7 +5,7 @@ function sign_in(){
 	xmlhttp.setRequestHeader('content-type', 'application/json');
 
     xmlhttp.onreadystatechange=function(){
-      if (xmlhttp.readyState==4){
+      if (xmlhttp.readyState===4){
       	if(xmlhttp.getResponseHeader('content-type')==='application/json'){
 	      var result = JSON.parse(xmlhttp.responseText);	
 	  	  if(result.status===400){

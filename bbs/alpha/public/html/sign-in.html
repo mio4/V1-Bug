@@ -8,6 +8,7 @@
   <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
   <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <script src="../js/sign-in.js"></script>
   <link href="https://github.com/iconic/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet"><!--使用icon-->
   <style>
     .carousel-inner img {
@@ -87,8 +88,8 @@
           <div class="input-group mb-4 input-group-lg">
             <input type="password" class="form-control" style="margin-right:40px; margin-left:40px;" placeholder="请输入密码" name="password" required>
           </div>
-          <button type="submit" class="btn btn-primary btn-lg" style="width:120px;" id="sign-in" data-toggle="modal" data-target="#cla">登录</button>
         </form>
+        <button type="button" class="btn btn-primary btn-lg" style="width:120px;" id="sign-in" data-toggle="modal" data-target="#cla" onclick="sign_in()">登录</button>
         <a href="./sign-up.html"><p style="color:#FFFFFF">没有账户?注册</p></a>       
       </div>
     </div>
