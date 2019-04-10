@@ -60,8 +60,22 @@ PS：具体查看代码
 
 
 
-
 # 草稿
+
+TODO
+
+- [ ] 开启/关闭Laravel CSRF校验
+- [ ] 
+
+```cmd
+# 视图教程
+https://blog.csdn.net/studyphp123/article/details/81871366
+
+```
+
+
+
+
 
 ### 版本说明
 
