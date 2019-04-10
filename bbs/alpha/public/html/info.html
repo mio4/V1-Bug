@@ -10,7 +10,6 @@
   <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
   <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
-  <link href="https://github.com/iconic/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet"><!--使用icon-->
   <style>
     .carousel-inner img {
       width: 100%;
@@ -43,22 +42,29 @@
           <a class="nav-link" href="#">个人信息</a>
         </li>
       </ul>
-    </div> 
-    <ul class="nav navbar-nav navbar-right">
-      <form class="form-inline pull-right">
+      <form class="form-inline">
         <input class="form-control" type="text" placeholder="搜索...">
         <button class="btn btn-success" type="button">搜索</button>
       </form>
+    </div> 
+    <ul class="nav navbar-nav">
+      <div class="media">
+        <div class="media-body">     
+          <a href="./sign-in.html" class="btn btn-danger" type="button">登出</a>           
+        </div>     
+        <img src="./images/usr.png" alt="头像" class="ml-3 rounded-circle" style="width:40px;">
+      </div>
     </ul>
   </nav>
+
   <div class="container">
-    <div class="row" style="height:100%;">
+    <div class="row" style="height:800px;">
 	    <div class="col-md-4 text-center">
         <div class="card" style="margin-top: 100px;">
           <img class="card-img-top" src="./images/usr.png" alt="头像" style="width:100%;">
           <div class="card-body">
             <h4 class="card-title">昵称</h4>
-            <a href="./sign-in.html" class="card-text">退出登录</p>
+            <button type="button" class="btn btn-primary" id="nick-rev" data-toggle="modal" data-target="#nick-mod">修改昵称</button>
           </div>
         </div>
 
@@ -91,20 +97,7 @@
                 </div>
               </div>
             </li>
-            <li class="list-group-item list-group-item-warning">
-              <div class="row" style="line-height: 40px;">
-                <div class="col-8">
-                  <form class="form-inline">
-                    <label>昵称:</label>
-                    <label id="nick-info">大力哥</label>
-                  </form>
-                </div>
-                <div class="col-4">
-                  <button type="button" class="btn btn-primary" id="nick-rev" data-toggle="modal" data-target="#nick-mod">修改</button>
-                </div>
-              </div>
-            </li>
-            <li class="list-group-item list-group-item-secondary">
+            <li class="list-group-item list-group-item-danger">
               <div class="row" style="line-height: 40px;">
                 <div class="col-8">
                   <form class="form-inline">
@@ -117,7 +110,7 @@
                 </div>
               </div>
             </li>
-            <li class="list-group-item list-group-item-danger">
+            <li class="list-group-item list-group-item-warning">
               <div class="row" style="line-height: 40px;"><!--不设置line-height会导致字不在列表行的垂直中间位置-->
                 <div class="col-8"><!--通过行布局来让不同组件位于同一行-->
                   <form class="form-inline"><!--通过使用form的form-inline来让不同的组件位于同一行-->
@@ -153,12 +146,12 @@
             </li>
           </ul>
           <!-- Tab panes -->
-          <div class="tab-content" style=" height: 800px; overflow-y: scroll;">
+          <div class="tab-content" style=" height: 743px; overflow-y: scroll;"><!--可以设计scroll安装的位置-->
             <div id="my-col" class="container tab-pane active"><br>
               <h3>收藏</h3>
               <div class="media border p-3 mb-5" style="height:200px">
                 <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle" style="width:100px;">
-                <div class="media-body" background="./images/holiday.jpg" style="background-repeat:no-repeat; background-size: 100% 100%; background-attachment: fixed;">
+                <div class="media-body">
                   <h4>创意一</h4>
                   <p>创意内容介绍</p>      
                 </div>
@@ -296,19 +289,20 @@
           <h4 class="modal-title">修改邮箱</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-        <div class="modal-body">
-          <form>
+        <form name="mail-form" action="post.php" method="post">
+          <div class="modal-body">
             <div class="input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text" style="width:100px">邮箱</span>
               </div>
-              <input type="text" class="form-control" placeholder="请输入新邮箱" id="mail-new" name="mail-new" required>
+              <input type="email" class="form-control" placeholder="请输入新邮箱" id="mail-new" name="mail-new" required autofocus>
             </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
-        </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary mr-3" data-dismiss="modal">返回</button>
+            <input type="submit" class="btn btn-primary" value="确定">
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -320,19 +314,20 @@
           <h4 class="modal-title">修改昵称</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-        <div class="modal-body">
-          <form>
+        <form name="nickname-form" action="post.php" method="post" onsubmit="return check_nickname_form()">
+          <div class="modal-body">
             <div class="input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text" style="width:100px">昵称</span>
               </div>
-              <input type="text" class="form-control" placeholder="请输入新昵称" id="nick-new" name="nick-new" required>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
-        </div>
+              <input type="text" class="form-control" placeholder="请输入新昵称" id="nickname-input" name="nickname-input" required autofocus>
+            </div>  
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary mr-3" data-dismiss="modal">返回</button>
+            <input type="submit" class="btn btn-primary" value="确定">
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -344,30 +339,63 @@
           <h4 class="modal-title">修改密码</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-        <div class="modal-body">
-          <form>
+        <form name="password-form" action="post.php" method="post" onsubmit="return check_password_form()">
+          <div class="modal-body">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" style="width:100px">密码</span>
               </div>
-              <input type="text" class="form-control" placeholder="请输入新密码" id="pwd-new" name="pwd-new" required>
+              <input type="password" class="form-control" placeholder="请输入新密码" id="password-input" name="password-input" required autofocus>
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" style="width:100px">确认密码</span>
               </div>
-              <input type="text" class="form-control" placeholder="请再次输入新密码" id="pwd-con-new" name="pwd-con-new" required>
+              <input type="password" class="form-control" placeholder="请再次输入新密码" id="password-con-input" name="password-con-input" required>
             </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
-        </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary mr-3" data-dismiss="modal">返回</button>
+            <input type="submit" class="btn btn-primary" value="确定">
+          </div>
+        </form>
       </div>
     </div>
   </div>
 		  
 		    
+<script>
+  function check_password_form()
+  {
+    var p = /^[0-9a-zA-Z]+$/; 
+    /*var tmp = document.getElementById("password-input").value;
+    var tmp_con = document.getElementById("password-con-input").value;*/
+    var pwd = $("#password-input").val();
+    if(!p.test(pwd)){
+      alert("密码只能包含数字和字母")
+      return false;
+    }
+    if(pwd.length < 8 || pwd.length > 16){
+      alert("密码长度必须在8至16位之间");
+      return false;
+    }
+    var pwd_con = $("#password-con-input").val();
+    if(pwd != pwd_con){
+      alert("两次输入密码不一致");
+      return false;
+    }
+    return true;
+  }
+
+  function check_nickname_form(){
+    var nick = $("#nickname-input").val();
+    if(nick.length > 16){
+      alert("昵称长度不能超过16位");
+      return false;
+    }
+    return true;
+  }
+</script>
 </body>
 </html>
     

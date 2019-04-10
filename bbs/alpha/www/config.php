@@ -4,3 +4,4 @@
  */
 
 define('ROOT_PATH', dirname(__FILE__));
+define('HTML_PATH', 'localhost:9002/bbs/alpha/public/html');
