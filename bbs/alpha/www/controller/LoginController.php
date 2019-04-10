@@ -35,7 +35,7 @@ class LoginController
             $_SESSION['status'] = 200;
             $_SESSION['username'] = $username;
             header('Location: ../../public/html/main.html');
-            //exit;
+            exit;
         }
         catch (LoginException $e)
         {
@@ -69,7 +69,7 @@ class LoginController
             }
             $_SESSION['status'] = 400;
             header('Location: ../../public/html/sign-in.html');
-            //exit();
+            exit();
         }
     }
 }
