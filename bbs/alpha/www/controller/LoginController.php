@@ -18,8 +18,8 @@ class LoginController
     public static function login()
     {
         //从POST体获取数据
-        $username = $_POST["username"];
-        $password = $_POST["password"];
+        $username = $_POST["usr"];
+        $password = $_POST["pwd"];
         $userInfo = null;
         // TODO:检查数据是否合法，并分类登陆方式
 
