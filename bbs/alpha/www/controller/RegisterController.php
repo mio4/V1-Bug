@@ -39,6 +39,7 @@ class RegisterController
             }
         }
         // TODO:返回注册成功信息
+
     }
 }
 
