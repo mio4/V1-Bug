@@ -39,7 +39,6 @@ class LoginController
             //$_SESSION['username'] = $username;
             //header('Location: ../../public/html/main.html');
             $ret['status'] = 200;
-
             echo json_encode($ret);
             exit;
         }

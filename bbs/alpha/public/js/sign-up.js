@@ -1,7 +1,7 @@
 var read_clicked;
 window.onload=function(){
     read_clicked = false;
-}
+};
 function read_con(){
 	read_clicked = !read_clicked;
 }
@@ -10,15 +10,16 @@ function sign_up(){
 		return;
 	}
 
-	url = "";//修改url
+	url = "../../www/controller/RegisterController.php";//修改url
 
-	var data = toJSON();
+	var data = $("#form-sign-up").serializeArray();
+	console.log(data);
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("POST",url,true);
 	xmlhttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
 
     xmlhttp.onreadystatechange=function(){
-      if (xmlhttp.readyState==4){
+      if (xmlhttp.readyState===4){
       	if(xmlhttp.getResponseHeader('content-type')==='application/json'){
 	      var result = JSON.parse(xmlhttp.responseText);	
 	  	  if(result.status===400){
@@ -31,17 +32,16 @@ function sign_up(){
         else{
         	console.log(xmlhttp.responseText);
         }
-        
       }
-    }
-	xmlhttp.send(JSON.stringify(data));
+    };
+	xmlhttp.send("RegInfo="+JSON.stringify(data));
 }
 function sign_up_check(){
 	var tmp = document.getElementById("username-sign-up").value;
 	//alert(tmp);
 	var p = /^[0-9a-zA-Z]+$/; 
 	if(!p.test(tmp)){
-		alert("用户名只能包含数字和字母")
+		alert("用户名只能包含数字和字母");
 		return false;
 	}
 	if(tmp.length > 16 || tmp.length < 8){
@@ -51,7 +51,7 @@ function sign_up_check(){
 	
 	tmp = document.getElementById("password-sign-up").value;
 	if(!p.test(tmp)){
-		alert("密码只能包含数字和字母")
+		alert("密码只能包含数字和字母");
 		return false;
 	}
 	if(tmp.length > 16 || tmp.length < 8){
@@ -59,17 +59,13 @@ function sign_up_check(){
 		return false;
 	}
 	var tmp2 = document.getElementById("password-con-sign-up").value;
-	if(tmp!=tmp2){
+	if(tmp!==tmp2){
 		alert("两次输入密码不一致");
 		return false;
 	}
-	if(read_clicked == false){
+	if(read_clicked === false){
 		alert("请确认服务协议");
 		return false;
 	}
 	return true;
-}
-function toJSON(){
-	x=$("#form-sign-up").serializeArray();
-	return x;
 }
