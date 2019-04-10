@@ -81,16 +81,14 @@
 
         <form action="../../www/controller/LoginController.php" method="post">
           <div class="input-group mb-4 input-group-lg">
-            <input type="text" class="form-control" style="margin-right:40px; margin-left:40px;" placeholder="请输入用户名" id="usr" name="usr" required autofocus>
+            <input type="text" class="form-control" style="margin-right:40px; margin-left:40px;" placeholder="请输入用户名" name="username" required autofocus>
           </div>
           
           <div class="input-group mb-4 input-group-lg">
-            <input type="password" class="form-control" style="margin-right:40px; margin-left:40px;" placeholder="请输入密码" id="pwd" name="pwd" required>
+            <input type="password" class="form-control" style="margin-right:40px; margin-left:40px;" placeholder="请输入密码" name="password" required>
           </div>
-          <button type="submit" class="btn btn-primary btn-lg" style="width:120px;" id="sign-in" data-toggle="modal" data-target="#cla" onClick="sign_in()">登录</button>
+          <button type="submit" class="btn btn-primary btn-lg" style="width:120px;" id="sign-in" data-toggle="modal" data-target="#cla">登录</button>
         </form>
-
-        <!--<button type="button" class="btn btn-primary btn-lg" style="width:120px;" id="sign-in" data-toggle="modal" data-target="#cla" onClick="sign_in()">登录</button>-->
         <a href="./sign-up.html"><p style="color:#FFFFFF">没有账户?注册</p></a>       
       </div>
     </div>
