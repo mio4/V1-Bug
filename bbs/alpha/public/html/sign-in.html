@@ -8,7 +8,7 @@
   <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
   <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="../js/sign-in.js"></script>
+  <script src="../js/sign-in.js"></script>
   <link href="https://github.com/iconic/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet"><!--使用icon-->
   <style>
     .carousel-inner img {
@@ -27,7 +27,7 @@
   </style>
 </head>
 
-<body background="./images/sign-in-bg.jpg" style="background-repeat:no-repeat; background-size: 100% 100%; background-attachment: fixed;">
+<body background="./images/space.jpg" style="background-repeat:no-repeat; background-size: 100% 100%; background-attachment: fixed;">
   
   <div class="container-fluid text-center" style="margin-top:100px">
     <div class="row">
@@ -80,18 +80,17 @@
           <p class="text-success fontset">WEDO</p>
         </div>
 
-        <form style="margin-top:100px">
+        <form action="../../www/controller/LoginController.php" method="post">
           <div class="input-group mb-4 input-group-lg">
-            <input type="text" class="form-control" style="margin-right:40px; margin-left:40px;" placeholder="请输入用户名" id="usr" required autofocus>
+            <input type="text" class="form-control" style="margin-right:40px; margin-left:40px;" placeholder="请输入用户名" name="username" required autofocus>
           </div>
           
           <div class="input-group mb-4 input-group-lg">
-            <input type="password" class="form-control" style="margin-right:40px; margin-left:40px;" placeholder="请输入密码" id="pwd" required>
+            <input type="password" class="form-control" style="margin-right:40px; margin-left:40px;" placeholder="请输入密码" name="password" required>
           </div>
         </form>
-
-        <button type="button" class="btn btn-primary btn-lg" style="width:120px;" id="sign-in" data-toggle="modal" data-target="#cla" onClick="sign_in()">登录</button>
-        <a href="./sign-up.html"><p class="text-warning" type="align:right;">没有账户?注册</p></a>       
+        <button type="button" class="btn btn-primary btn-lg" style="width:120px;" id="sign-in" data-toggle="modal" data-target="#cla" onclick="sign_in()">登录</button>
+        <a href="./sign-up.html"><p style="color:#FFFFFF">没有账户?注册</p></a>       
       </div>
     </div>
   </div>

@@ -293,7 +293,7 @@ class DatabaseBasicFunc
     public function select($tbName = '')
     {
         $sql = "select " . trim($this->_field) . " from " . $tbName . " " . trim($this->_where) . " " . trim($this->_order) . " " . trim($this->_limit);
-        echo $sql.'<br>';
+        // $sql.'<br>';
         $this->_clear = 1;
         $this->_clear();
         return $this->_doQuery(trim($sql));

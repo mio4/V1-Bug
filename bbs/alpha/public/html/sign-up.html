@@ -7,10 +7,6 @@
   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
   <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
-	
-  <script src="../js/sign-up.js"></script>
-  
-  
   <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
   <style>
   
@@ -27,33 +23,30 @@
 </div>
 
 <div class="container-fluid text-center" style="margin-top:30px; width:600px">
-  <form id="sign-up-form">
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" style="width:100px">邮箱</span>
-      </div>
-      <input type="email" class="form-control" placeholder="请输入邮箱" id="mail" name="mail" required autofocus>
-    </div>
-    
+  <form id="form-sign-up" action="../../www/controller/RegisterController.php" method="post">
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text" style="width:100px">用户名</span>
       </div>
-      <input type="text" class="form-control" placeholder="请输入用户名" id="usr" name="usr" required>
+      <input id="username-sign-up" type="text" class="form-control" placeholder="请输入用户名" name="username" required>
     </div>
-    
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" style="width:100px">邮箱</span>
+      </div>
+      <input id="email-sign-up" type="email" class="form-control" placeholder="请输入邮箱" name="email" required autofocus>
+    </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text" style="width:100px">密码</span>
       </div>
-      <input type="password" class="form-control" placeholder="请输入密码" id="pwd" name="pwd" required>
+      <input id="password-sign-up" type="password" class="form-control" placeholder="请输入密码" name="password" required>
     </div>
-    
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text" style="width:100px">确认密码</span>
       </div>
-      <input type="password" class="form-control" placeholder="请再次输入密码" id="pwd-con" name="pwd-con" required>
+      <input id="password-con-sign-up" type="password" class="form-control" placeholder="请再次输入密码" name="password-confirm" required>
     </div>
     
     <div class="input-group mb-3">
@@ -61,15 +54,15 @@
         <span class="input-group-text" style="width:100px">身份</span>
       </div>
 	  <div></div>
-      <div class="form-check form-check-inline">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" value="" id="iden-ord" name="iden-ord">普通用户&ensp;
+      <div>
+        <label class="radio-inline">
+          <input type="radio" name="type" value="0" checked> 普通用户
         </label>
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" value="" id="iden-dev" name="iden-dev">开发者&ensp;
+        <label class="radio-inline">
+          <input type="radio" name="type" value="1"> 开发者
         </label>
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" value="" id="iden-lab" name="iden-lab">实验室官方
+        <label class="radio-inline">
+          <input type="radio" name="type" value="2"> 实验室
         </label>
       </div>
     </div>
@@ -77,7 +70,7 @@
 
     <div class="mb-3">
       <button type="button" id = "zpz-test" class="btn btn-primary" data-toggle="modal" data-target="#cla" style="width:150px;">阅读服务协议</button>
-      <button type="button" class="btn btn-primary" onClick="sign_up()" style="width:150px">注册</button>
+      <button type="button" class="btn btn-primary"  style="width:150px" onClick="sign_up()">注册</button>
       <a href="./sign-in.html" type="button" id="ret" class="btn btn-primary" style="width:150px">返回登录界面</a>
       <!--<div class="input-group-prepend">
         <span class="input-group-text" style="width:100px" data-toggle="modal" data-target="#disclaimer">免责声明</span>
@@ -194,6 +187,6 @@
   });
   
 </script>
-
+<script src="../js/sign-up.js" type="text/javascript"></script>
 </body>
 </html>
