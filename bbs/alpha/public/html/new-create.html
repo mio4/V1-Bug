@@ -74,11 +74,14 @@
                 <div class="col-md-7 col-lg-6 mt-xs-10">
                     <div class="site-setting-menu">
                         <ul class="nav justify-content-center justify-content-md-end">
-                            <li><a href="jifenguize.html">积分规则</a></li>
-                            <li><a href="password-revise.html">修改密码</a></li>
+                            <li><a href="point-rule.html">积分规则</a></li>
+                            <li><a href="info.html">修改密码</a></li>
                             <li><a href="new-sign-in.html">登录</a></li>
                             <li><a href="new-sign-in.html">注册</a></li>
+                            <li id="top-nickname"></li>
+                            <li id="top-image"></li>
                         </ul>
+                        
                     </div>
                 </div>
             </div>
@@ -138,8 +141,8 @@
                 <li><a href="new-lab.html">实验室项目区</a></li>
             </ul>
         </li>
-        <li><a href="new-lab.html">个人信息</a></li>
-        <li><a href="new-info.html">关于我们</a></li>
+        <li><a href="info.html">个人信息</a></li>
+        <li><a href="about-us.html">关于我们</a></li>
     </ul>
 </nav>
                     </div>
@@ -428,8 +431,8 @@
         <div class="container">
             <div class="row">
                 <!-- Copyright Text Area -->
-                <div class="col-md-6 m-auto text-center text-md-left order-last order-md-first">
-                    <p>Copyright &copy; 2018.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+                <div class="col-md-3 m-auto text-center text-md-left order-last order-md-first">
+                    <p>Copyright &copy; V1-Bug制造有限公司</p>
                 </div>
                 <!-- Copyright Text Area -->
             </div>
@@ -445,6 +448,12 @@
 
 
 <!--=======================Javascript============================-->
+<script>
+    function aaa(){
+        document.getElementById("top-nickname").innerHTML = '<a href="info.html">欢迎！昵称</a>'
+        document.getElementById("top-image").innerHTML = '<img src="./images/usr.png" alt="头像" class="ml-3 rounded-circle" style="width:30px;">'
+    }
+</script>
 <!--=== Jquery Min Js ===-->
 <script src="assets/js/vendor/jquery-3.3.1.min.js"></script>
 <!--=== Jquery Migrate Min Js ===-->
