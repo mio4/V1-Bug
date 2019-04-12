@@ -11,11 +11,14 @@ URL：
 | 字段                | 含义             | 类型   | 限制                 |
 | ------------------- | ---------------- | ------ | -------------------- |
 | project_name        | 项目名           | string | 不超过20个字         |
-| photo_url           | 项目照片         | string | 项目简介中包含的照片 |
 | project_describe    | 项目描述         | bool   | 不超过5000个字       |
 |                     | 悬赏分           | int    | 有了积分系统再说吧   |
-| project_participate | 允许参与开发人数 | int    | 无                   |
+| project_participate | 允许参与开发人数 | int    | 0-10人               |
 | project_class       | 项目类型         | int    | 具体分类再讨论       |
+| photo_urls          | 项目照片         | array  | 项目简介中包含的照片 |
+| photo_1             | 项目照片1        | string | 照片1的url           |
+| photo_2             | 项目照片2        | string | 照片2的url           |
+| 类推                |                  |        |                      |
 
 响应：
 
