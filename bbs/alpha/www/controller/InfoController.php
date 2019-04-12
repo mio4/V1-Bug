@@ -73,4 +73,93 @@ class InfoController
         $data = htmlspecialchars($data);
         return $data;
     }
+
+    public static function getFavorites() {
+        $current_page   = empty($_GET['page']) ? 1 : $_GET['page'];
+        $previous_page  = $current_page - 1;
+        $next_page      = $current_page + 1;
+        header('content-type:application/json');
+        $ret = array(
+            'status'=>404,
+            'project'=>null
+        );
+        $userid = $_SESSION["userid"]; //TODO: SESSION
+
+        try {
+            $ret['project'] = InfoService::getFavorites($userid, $current_page);
+            $ret['status'] = 200;
+            echo json_encode($ret);
+            exit;
+        } catch (Exception $e) {
+            $ret['status'] = 400;
+            echo json_encode($ret);
+            exit;
+        }
+    }
+    public static function getFollows() {
+        $current_page   = empty($_GET['page']) ? 1 : $_GET['page'];
+        $previous_page  = $current_page - 1;
+        $next_page      = $current_page + 1;
+        header('content-type:application/json');
+        $ret = array(
+            'status'=>404,
+            'follow'=>null
+        );
+        $userid = $_SESSION["userid"]; //TODO: SESSION
+
+        try {
+            $ret['follow'] = InfoService::getFollows($userid, $current_page);
+            $ret['status'] = 200;
+            echo json_encode($ret);
+            exit;
+        } catch (Exception $e) {
+            $ret['status'] = 400;
+            echo json_encode($ret);
+            exit;
+        }
+    }
+    public static function getContributors() {
+        $current_page   = empty($_GET['page']) ? 1 : $_GET['page'];
+        $previous_page  = $current_page - 1;
+        $next_page      = $current_page + 1;
+        header('content-type:application/json');
+        $ret = array(
+            'status'=>404,
+            'contributor'=>null
+        );
+        $userid = $_SESSION["userid"]; //TODO: SESSION
+
+        try {
+            $ret['contributor'] = InfoService::getContributors($userid, $current_page);
+            $ret['status'] = 200;
+            echo json_encode($ret);
+            exit;
+        } catch (Exception $e) {
+            $ret['status'] = 400;
+            echo json_encode($ret);
+            exit;
+        }
+    }
+    public static function getProjects() {
+        $current_page   = empty($_GET['page']) ? 1 : $_GET['page'];
+        $previous_page  = $current_page - 1;
+        $next_page      = $current_page + 1;
+        header('content-type:application/json');
+        $ret = array(
+            'status'=>404,
+            'project'=>null
+        );
+        $userid = $_SESSION["userid"]; //TODO: SESSION
+
+        try {
+            $ret['project'] = InfoService::getProjects($userid, $current_page);
+            $ret['status'] = 200;
+            echo json_encode($ret);
+            exit;
+        } catch (Exception $e) {
+            $ret['status'] = 400;
+            echo json_encode($ret);
+            exit;
+        }
+    }
 }
