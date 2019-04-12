@@ -36,7 +36,7 @@ class UserDao
 
         // 检查用户名是否存在。
         $searchUser = array(
-            'username'=>"'$_username'"
+            'user_name'=>"'$_username'"
         );
         $fieldParam = array(
             'uid'
@@ -88,7 +88,7 @@ class UserDao
 
         // 检查邮箱是否注册。
         $searchUser = array(
-            'email'=>"'$_email'"
+            'user_email'=>"'$_email'"
         );
         $fieldParam = array(
             'uid'
@@ -143,16 +143,16 @@ class UserDao
         }
 
         $data = array(
-            'username'=>$_username,
+            'user_name'=>$_username,
             'password'=>$_password,
-            'email'=>$_email,
-            'type'=>$_type
+            'user_email'=>$_email,
+            'user_kind'=>$_type
         );
         $searchName = array(
-            'username'=>"'$_username'"
+            'user_name'=>"'$_username'"
         );
         $searchEmail = array(
-            'email'=>"'$_email'"
+            'user_email'=>"'$_email'"
         );
         // 检查用户名和邮箱的唯一性。
         $database->where($searchName);
