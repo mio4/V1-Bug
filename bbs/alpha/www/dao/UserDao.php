@@ -8,6 +8,7 @@
 require_once '../config.php';
 require_once ROOT_PATH.'/dao/DatabaseBasicFunc.php';
 require_once ROOT_PATH.'/exception/LoginException.php';
+require_once ROOT_PATH.'/exception/RegisterException.php';
 require_once ROOT_PATH.'/exception/DatabaseException.php';
 
 class UserDao
@@ -170,7 +171,8 @@ class UserDao
 
         // 保存注册信息。
         $retVar = false;
-        try{
+        try
+        {
             $database->startTrans();
             $retVar = $database->insert('User',$data) > 0;
             $database->commit();
