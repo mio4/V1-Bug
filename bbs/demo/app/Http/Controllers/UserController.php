@@ -30,8 +30,7 @@ class UserController extends Controller
 
     public function signUpProcess()
     {
-        $input = request()->all();
-        var_dump($input);
-        exit;
+       echo "OK";
+       exit;
     }
 }
