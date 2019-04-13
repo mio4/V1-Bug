@@ -68,4 +68,10 @@ class ProjectService
     }
 
     // TODO:管理项目图片
+
+
+    public static function participate()
+    {
+
+    }
 }

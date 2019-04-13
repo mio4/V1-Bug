@@ -15,12 +15,13 @@ class ProjectDao
     /**
      * 创建项目，存储项目的基本信息：名称、简述、种类、
      * @param $_name string 项目名称
+     * @param $_ownerName string 项目创建者名称
      * @param $_info string 项目简述
      * @param $_kind int    项目类型
      * @param int $_reward 项目悬赏
      * @throws ProjectException
      */
-    public static function create_project($_name, $_info, $_kind, $_reward = 0)
+    public static function create_project($_name, $_ownerName, $_info, $_kind, $_reward = 0)
     {
         $database = new DatabaseBasicFunc();
         try
@@ -34,6 +35,7 @@ class ProjectDao
 
         $data = array(
             'project_name'=>$_name,
+            'project_owner'=>$_ownerName,
             'project_info'=>$_info,
             'project_kind'=>$_kind,
             'project_reward'=>$_reward
@@ -51,7 +53,6 @@ class ProjectDao
         $retPid = $database->select('Project');
         if(0 != count($retPid))
         {
-            // TODO:抛出错误，项目重名
             throw new ProjectException('Exception:DUPLICATE NAME', 1);
         }
         $retVar = false;
@@ -138,4 +139,5 @@ class ProjectDao
         }
         return;
     }
+
 }
