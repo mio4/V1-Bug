@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试往后台发送JSON</title>
+    <script src="../js/jquery-1.11.0.js"></script>
+</head>
+<body>
+    <button id="send">发送Ajax请求</button>
+</body>
+<script type="text/javascript">
+    document.getElementById("send").onclick = function(){ //监听button的点击事件
+        var data = {};
+        data["param1"] = "val1";
+        data["param2"] = "val2";
+//        var rootPath = window.document.location.pathname; // /demo/public/html/testJson.html
+//        alert(rootPath);
+//        var curPath = window.document.location.href; // http://localhost/demo/public/html/testJson.html
+//        alert(curPath);
+        var testUrl1 = "http://localhost:80/demo/public/testJson2"; //绝对路径
+        var testUrl2 = "../testJson2"; //相对路径
+
+        $.ajax({
+            url:testUrl2,
+            type:'POST',
+            dataType:'json',
+            contentType:"application/json;charset=UTF-8",
+            data:JSON.stringify(data),
+            success:function(data){
+                console.log(data);
+            }
+        })
+    }
+</script>
+</html>
