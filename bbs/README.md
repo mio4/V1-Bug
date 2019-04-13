@@ -100,9 +100,8 @@ composer create-project laravel/laravel=5.3.* demo --prefer-dist
 ```cmd
 //生成Controller
 php artisan make:controller ControllerName
-
+//生成Model
+PHP artisan make:model testModel
 ```
 
 
-
----
