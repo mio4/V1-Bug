@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -44,3 +45,8 @@ Route::get("/testView2","TestController@testView2");
 
 //------------ 路由测试 ------------
 
+//------------ 注册登录 ------------
+Route::group(['prefix' => 'usr'], function(){
+    Route::get('/sign-up', 'UserController@signUpPage');
+    Route::post('/sign-up', 'UserController@signUpProcess');
+});
