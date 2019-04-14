@@ -16,7 +16,7 @@
             </label>
             <label for="password">
                 密码：
-                <input type="text"
+                <input type="password"
                        name="password"
                        placeholder="User Name"
                 >
@@ -24,5 +24,6 @@
             <button type="submit">登陆</button>
             {!! csrf_field() !!}
         </form>
+        @include('components.validationErrorMessage')
     </div>
 @endsection

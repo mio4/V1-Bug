@@ -10,10 +10,13 @@ class User extends Model
 
     protected $primaryKey = 'uid';
 
-    protected $fillLabel = [
+    protected $fillable = [
         'user_email',
         'password',
         'user_kind',
-        'user_name'
+        'user_name',
+        'user_regTime'
     ];
+
+    public $timestamps = false;
 }

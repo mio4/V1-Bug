@@ -73,19 +73,22 @@ class UserController extends Controller
                 ->withInput();                  // 保存原输入
         }
 
-        $input['password'] = Hash::make($input['password']);    // 使用APP_KEY进行加密
-        //$User = User::create($input);
-        $retVar = DB::table('user')->insert([
-            'user_name'=>$input['user_name'],
-            'user_email'=>$input['user_email'],
-            'user_kind'=>$input['user_kind'],
-            'password'=>$input['password'],
-            'user_regTime'=>date("Y-m-d")
-        ]);
-
-        if(true == $retVar)
+        $searchName = User::where('user_name', $input['user_name'])->get();
+        $searchEmail = User::where('user_email', $input['user_email'])->get();
+        if($searchName->count() != 0 || $searchEmail->count() != 0)
         {
-            return redirect('usr/sign-up')
+            return redirect('usr/sign-in')
+                ->with(['status'=>400]);
+        }
+
+
+        $input['password'] = Hash::make($input['password']);    // 使用APP_KEY进行加密
+        $input['user_regTime'] = date("Y-m-d");
+        $User = User::create($input);
+
+        if(null != $User)
+        {
+            return redirect('main')
                 ->with(['status'=>200]);
         }
         else{
@@ -123,17 +126,37 @@ class UserController extends Controller
 
         if($validator->fails())
         {
-            return redirect('usr/sign-up')
+            return redirect('usr/sign-in')
                 ->withErrors($validator)        // 带错误信息的重定向
                 ->withInput();                  // 保存原输入
         }
 
-        // TODO: 改用ORM操作数据库
+        // 验证密码。
+        $user = User::where('user_name', $input['user_name'])->firstOrFail();
+        $isPasswordCorrect = Hash::check($input['password'], $user->password);
+        if(!$isPasswordCorrect)
+        {
+            $errorMessage = [
+                'msg' => [
+                    '密码认证错误'
+                ]
+            ];
+            return redirect('usr/sign-in')
+                ->withErrors($errorMessage)
+                ->withInput();
+        }
 
+        // 登陆成功，写session
+        session()->put('uid', $user->uid);
+
+        // 返回首页
+        return redirect('main');
     }
 
     public function signOut()
     {
+        session()->forget('uid');
 
+        return redirect('main');
     }
 }
