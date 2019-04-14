@@ -6,7 +6,7 @@
  */
 
 require_once '../config.php';
-require_once ROOT_PATH.'/dao/LoginDao.php';
+require_once ROOT_PATH.'/dao/UserDao.php';
 require_once ROOT_PATH.'/exception/LoginException.php';
 
 /**
@@ -39,11 +39,11 @@ class LoginService
         {
             if(true == $_isByName)
             {
-                $retUid = LoginDao::login_by_name($_key, $_password);
+                $retUid = UserDao::login_by_name($_key, $_password);
             }
             else
             {
-                $retUid = LoginDao::login_by_email($_key, $_password);
+                $retUid = UserDao::login_by_email($_key, $_password);
             }
         }
         catch (LoginException $e)
@@ -56,6 +56,5 @@ class LoginService
 
         // TODO:整理用户信息，上传至Controller层。
         return '';
-
     }
 }
