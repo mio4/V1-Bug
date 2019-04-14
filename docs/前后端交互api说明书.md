@@ -64,9 +64,10 @@ URL：/usr/info/mail
 
 响应：
 
-| 字段   | 含义          | 类型 |
-| ------ | ------------- | ---- |
-| status | 200：修改成功 | int  |
+| 字段   | 含义                          | 类型 |
+| ------ | ----------------------------- | ---- |
+| status | 200：修改成功                 | int  |
+| status | 401：更改失败（邮箱已被注册） | int  |
 
 
 
@@ -221,4 +222,166 @@ URL：/usr/info/participate
 | project_intro | 项目简介                                         | string |
 
 
+
+URL：/usr/info/collect
+
+说明：更改收藏状态
+
+方法：POST
+
+`header`：    `content-type`:`application/json`
+
+参数：
+
+| 字段          | 含义         | 类型 | 限制                     |
+| ------------- | ------------ | ---- | ------------------------ |
+| collect       | 更改收藏状态 | int  | 0：取消收藏 1：添加收藏  |
+| participateid | 项目ID       | int  | 是存在的数据库中的项目号 |
+
+响应：
+
+| 字段   | 含义          | 类型 |
+| ------ | ------------- | ---- |
+| status | 200：修改成功 | int  |
+
+
+
+URL：/usr/info/collect_status
+
+说明：获取收藏状态
+
+方法：GET
+
+`header`：    `content-type`:`application/json`
+
+参数：
+
+| 字段          | 含义   | 类型 | 限制                     |
+| ------------- | ------ | ---- | ------------------------ |
+| participateid | 项目ID | int  | 是存在的数据库中的项目号 |
+
+响应：
+
+| 字段   | 含义                | 类型 |
+| ------ | ------------------- | ---- |
+| status | 0：未收藏 1：已收藏 | int  |
+
+
+
+URL：/usr/info/attention
+
+说明：更改关注状态
+
+方法：POST
+
+`header`：    `content-type`:`application/json`
+
+参数：
+
+| 字段      | 含义         | 类型 | 限制                    |
+| --------- | ------------ | ---- | ----------------------- |
+| attention | 更改关注状态 | int  | 0：取消关注 1：添加关注 |
+| user_id   | 被关注者ID   | int  | 是已注册的用户          |
+
+响应：
+
+| 字段   | 含义          | 类型 |
+| ------ | ------------- | ---- |
+| status | 200：修改成功 | int  |
+
+
+
+URL：/usr/info/attention_status
+
+说明：获取关注状态
+
+方法：GET
+
+`header`：    `content-type`:`application/json`
+
+参数：
+
+| 字段    | 含义       | 类型 | 限制           |
+| ------- | ---------- | ---- | -------------- |
+| user_id | 被关注者ID | int  | 是已注册的用户 |
+
+响应：
+
+| 字段   | 含义                | 类型 |
+| ------ | ------------------- | ---- |
+| status | 0：未关注 1：已关注 | int  |
+
+
+
+URL：/usr/info/delete_project
+
+说明：删除创意项目
+
+方法：POST
+
+`header`：    `content-type`:`application/json`
+
+参数：
+
+| 字段       | 含义               | 类型 | 限制                 |
+| ---------- | ------------------ | ---- | -------------------- |
+| project_id | 要删除的创意项目ID | int  | 是存在于数据库的项目 |
+
+响应：
+
+| 字段   | 含义          | 类型 |
+| ------ | ------------- | ---- |
+| status | 200：修改成功 | int  |
+
+
+
+URL：/usr/info/create_project
+
+说明：发布创意项目
+
+方法：POST
+
+`header`：    `content-type`:`application/json`
+
+参数：
+
+| 字段                | 含义               | 类型   | 限制                      |
+| ------------------- | ------------------ | ------ | ------------------------- |
+| project_name        | 创意项目标题       | string | 1-30个字符                |
+| project_class       | 选择项目分类       | int    | 0：生活<br>1：科技<br>2： |
+| project_grade       | 悬赏分             | int    | 0-10000<br>单人次悬赏分   |
+| project_participant | 参与者上限         | int    | 0-10<br>为0不接受悬赏     |
+| project_time        | 发布时间           | time   |                           |
+| project_intro       | 简介               | string | 10-300个字符              |
+| project_cover       | 封面 待修改        |        |                           |
+| project_pic         | 视图片上传形式修改 |        |                           |
+
+响应：
+
+| 字段   | 含义          | 类型 |
+| ------ | ------------- | ---- |
+| status | 200：发布成功 | int  |
+
+
+
+URL：/usr/info/comment
+
+说明：发布评论
+
+方法：POST
+
+`header`：    `content-type`:`application/json`
+
+参数：
+
+| 字段       | 含义               | 类型   | 限制                     |
+| ---------- | ------------------ | ------ | ------------------------ |
+| project_id | 被评论的创意项目ID | int    | 是存在的数据库中的项目号 |
+| comment    | 评论内容           | string | 1-200个字符 评论内容     |
+
+响应：
+
+| 字段   | 含义          | 类型 |
+| ------ | ------------- | ---- |
+| status | 200：评论成功 | int  |
 
