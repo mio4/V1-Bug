@@ -53,3 +53,8 @@ Route::group(['prefix' => 'usr'], function(){
     Route::get('/sign-up', 'UserController@signUpPage');
     Route::post('/sign-up', 'UserController@signUpProcess');
 });
+Route::group(['prefix' => 'usr'], function(){
+    Route::get('/sign-in', 'UserController@signInPage');
+    Route::post('/sign-in', 'UserController@signInProcess');
+    Route::get('/sign-out', 'UsrController@signOut');
+});

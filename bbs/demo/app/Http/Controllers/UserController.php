@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\DataEntity\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -36,27 +38,29 @@ class UserController extends Controller
         // var_dump($input);
 
         $rules = [
-            'nickname' => [
+            'user_name' => [
                 'required',
-                'max:50'
+                'max:16',
+                'min:8',
             ],
-            'e-mail' => [
+            'user_email' => [
                 'required',
-                'max:50',
                 'email'
             ],
             'password' => [
                 'required',
                 'same:password_confirmation',
-                'min:6'
+                'min:8',
+                'max:16'
             ],
             'password_confirmation' => [
                 'required',
-                'min:6'
+                'min:8',
+                'max:16'
             ],
-            'type' => [
+            'user_kind' => [
                 'required',
-                'in:G,A'
+                'in:G,A,L'
             ]
         ];
 
@@ -70,6 +74,66 @@ class UserController extends Controller
         }
 
         $input['password'] = Hash::make($input['password']);    // 使用APP_KEY进行加密
-        exit;
+        //$User = User::create($input);
+        $retVar = DB::table('user')->insert([
+            'user_name'=>$input['user_name'],
+            'user_email'=>$input['user_email'],
+            'user_kind'=>$input['user_kind'],
+            'password'=>$input['password'],
+            'user_regTime'=>date("Y-m-d")
+        ]);
+
+        if(true == $retVar)
+        {
+            return redirect('usr/sign-up')
+                ->with(['status'=>200]);
+        }
+        else{
+            return redirect('usr/sign-up')
+                ->with(['status'=>400]);
+        }
+    }
+
+    public function signInPage()
+    {
+        $binding = [
+            'title' => '登陆'
+        ];
+        return view('signIn', $binding);
+    }
+
+    public function signInProcess()
+    {
+        $input = request()->all();
+
+        $rules = [
+            'user_name' => [
+                'required',
+                'max:16',
+                'min:8',
+            ],
+            'password' => [
+                'required',
+                'min:8',
+                'max:16'
+            ]
+        ];
+
+        $validator = Validator::make($input, $rules);
+
+        if($validator->fails())
+        {
+            return redirect('usr/sign-up')
+                ->withErrors($validator)        // 带错误信息的重定向
+                ->withInput();                  // 保存原输入
+        }
+
+        // TODO: 改用ORM操作数据库
+
+    }
+
+    public function signOut()
+    {
+
     }
 }
