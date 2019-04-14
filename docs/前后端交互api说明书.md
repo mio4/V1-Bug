@@ -1,4 +1,4 @@
-URL：/usr/sign_up
+## URL：/usr/sign_up
 
 说明：用户注册信息
 
@@ -23,9 +23,9 @@ URL：/usr/sign_up
 | ------ | ------------------------------------------------------------ | ---- |
 | status | 返回成功与否 200：注册成功 401：注册失败（用户已经注册）404：链接失败，找不到对象 | int  |
 
+***
 
-
-URL：/usr/sign_in
+## URL：/usr/sign_in
 
 说明：用户登录信息
 
@@ -46,9 +46,9 @@ URL：/usr/sign_in
 | ------ | ------------------------------------------------------------ | ---- |
 | status | 返回成功与否 200：注册成功 401：登录失败（用户未注册） 403：没有权限（密码错误）404：网络繁忙 | int  |
 
+***
 
-
-URL：/usr/info/mail
+## URL：/usr/{usr_id}/info/mail
 
 说明：修改用户邮箱
 
@@ -69,9 +69,9 @@ URL：/usr/info/mail
 | status | 200：修改成功                 | int  |
 | status | 401：更改失败（邮箱已被注册） | int  |
 
+***
 
-
-URL：/usr/info/name
+## URL：/usr/{usr_id}/info/name
 
 说明：修改用户昵称
 
@@ -91,9 +91,9 @@ URL：/usr/info/name
 | ------ | ------------- | ---- |
 | status | 200：修改成功 | int  |
 
+***
 
-
-URL：/usr/info/password
+## URL：/usr/{usr_id}/info/password
 
 说明：修改用户密码
 
@@ -113,9 +113,9 @@ URL：/usr/info/password
 | ------ | ------------- | ---- |
 | status | 200：修改成功 | int  |
 
+***
 
-
-URL：/usr/info/collection
+## URL：/usr/{usr_id}/collection
 
 说明：获取用户收藏
 
@@ -140,9 +140,9 @@ URL：/usr/info/collection
 | project_name  | 项目名                                           | string |
 | project_intro | 项目简介                                         | string |
 
+***
 
-
-URL：/usr/info/follow
+## URL：/usr/{usr_id}/follow
 
 说明：获取用户关注的项目
 
@@ -167,9 +167,9 @@ URL：/usr/info/follow
 | project_name  | 项目名                                           | string |
 | project_intro | 项目简介                                         | string |
 
+***
 
-
-URL：/usr/info/public
+## URL：/usr/{usr_id}/public
 
 说明：获取用户发布的项目
 
@@ -194,9 +194,9 @@ URL：/usr/info/public
 | project_name  | 项目名                                           | string |
 | project_intro | 项目简介                                         | string |
 
+***
 
-
-URL：/usr/info/participate
+## URL：/usr/{usr_id}/participate
 
 说明：获取用户参与的项目
 
@@ -221,9 +221,9 @@ URL：/usr/info/participate
 | project_name  | 项目名                                           | string |
 | project_intro | 项目简介                                         | string |
 
+***
 
-
-URL：/usr/info/collect
+## URL：/usr/{usr_id}/collect
 
 说明：更改收藏状态
 
@@ -244,9 +244,9 @@ URL：/usr/info/collect
 | ------ | ------------- | ---- |
 | status | 200：修改成功 | int  |
 
+***
 
-
-URL：/usr/info/collect_status
+## URL：/usr/{usr_id}/collect
 
 说明：获取收藏状态
 
@@ -266,9 +266,9 @@ URL：/usr/info/collect_status
 | ------ | ------------------- | ---- |
 | status | 0：未收藏 1：已收藏 | int  |
 
+***
 
-
-URL：/usr/info/attention
+## URL：/usr/{usr_id}/attention
 
 说明：更改关注状态
 
@@ -289,9 +289,9 @@ URL：/usr/info/attention
 | ------ | ------------- | ---- |
 | status | 200：修改成功 | int  |
 
+***
 
-
-URL：/usr/info/attention_status
+## URL：/usr/{usr_id}/attention
 
 说明：获取关注状态
 
@@ -311,9 +311,9 @@ URL：/usr/info/attention_status
 | ------ | ------------------- | ---- |
 | status | 0：未关注 1：已关注 | int  |
 
+***
 
-
-URL：/usr/info/delete_project
+## URL：/project/{project_id}
 
 说明：删除创意项目
 
@@ -333,9 +333,9 @@ URL：/usr/info/delete_project
 | ------ | ------------- | ---- |
 | status | 200：修改成功 | int  |
 
+***
 
-
-URL：/usr/info/create_project
+## URL：/project/{project_id}
 
 说明：发布创意项目
 
@@ -362,9 +362,9 @@ URL：/usr/info/create_project
 | ------ | ------------- | ---- |
 | status | 200：发布成功 | int  |
 
+***
 
-
-URL：/usr/info/comment
+## URL：/project/{project_id}/comment
 
 说明：发布评论
 
@@ -385,9 +385,9 @@ URL：/usr/info/comment
 | ------ | ------------- | ---- |
 | status | 200：评论成功 | int  |
 
+***
 
-
-URL：/usr/info/participate_project
+## URL：/usr/{usr_id}/participate
 
 说明：参与项目
 
