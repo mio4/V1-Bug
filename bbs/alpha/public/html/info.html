@@ -27,6 +27,7 @@
 
 <!-- Modernizer JS -->
 <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+
 <style>
     .carousel-inner img {
       width: 100%;
@@ -204,7 +205,7 @@
           <img class="card-img-top" src="./images/usr.png" alt="头像" style="width:100%;">
           <div class="card-body">
             <h4 class="card-title">昵称</h4>
-            <button type="button" class="btn btn-primary" id="nick-rev" data-toggle="modal" data-target="#nick-mod">修改昵称</button>
+            <button type="button" class="btn btn-primary" id="nick-rev" data-toggle="modal" data-target="#nick-mod" >修改昵称</button>
           </div>
         </div>
 
@@ -273,13 +274,13 @@
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
-              <a class="nav-link active" data-toggle="tab" href="#my-col">收藏</a>
+              <a class="nav-link active" data-toggle="tab" href="#my-collection">收藏</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#my-fol">关注</a>
+              <a class="nav-link" data-toggle="tab" href="#my-follow">关注</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#my-rel">我发布的项目</a>
+              <a class="nav-link" data-toggle="tab" href="#my-release">我发布的项目</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" data-toggle="tab" href="#my-join">我参与的项目</a>
@@ -287,77 +288,79 @@
           </ul>
           <!-- Tab panes -->
           <div class="tab-content" style=" height: 684px; overflow-y: scroll;"><!--可以设计scroll安装的位置-->
-            <div id="my-col" class="container tab-pane active"><br>
-              <div class="media border p-3 mb-5" style="height:100px">
-                <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>创意一</h3>
-                  <p>创意内容介绍</p>    
+            <div id="my-collection" class="container tab-pane active"><br>
+              <div id="my-collection-show">
+                <!--div class="media border p-3 mb-5" style="height:100px">
+                  <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
+                  <div class="media-body">
+                    <h3>创意一</h3>
+                    <p>创意内容介绍</p>    
+                  </div>
                 </div>
-              </div>
-              <div class="media border p-3 mb-5" style="height:100px">
-                <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>创意二</h3>
-                  <p>创意内容介绍</p>   
+                <div class="media border p-3 mb-5" style="height:100px">
+                  <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
+                  <div class="media-body">
+                    <h3>创意二</h3>
+                    <p>创意内容介绍</p>   
+                  </div>
                 </div>
-              </div>
-              <div class="media border p-3 mb-5" style="height:100px">
-                <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>创意三</h3>
-                  <p>创意内容介绍</p>      
+                <div class="media border p-3 mb-5" style="height:100px">
+                  <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
+                  <div class="media-body">
+                    <h3>创意三</h3>
+                    <p>创意内容介绍</p>      
+                  </div>
                 </div>
-              </div>
-              <div class="media border p-3 mb-5" style="height:100px">
-                <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>创意四</h3>
-                  <p>创意内容介绍</p>    
+                <div class="media border p-3 mb-5" style="height:100px">
+                  <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
+                  <div class="media-body">
+                    <h3>创意四</h3>
+                    <p>创意内容介绍</p>    
+                  </div>
                 </div>
-              </div>
-              <div class="media border p-3 mb-5" style="height:100px">
-                <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>创意五</h3>
-                  <p>创意内容介绍</p>    
+                <div class="media border p-3 mb-5" style="height:100px">
+                  <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
+                  <div class="media-body">
+                    <h3>创意五</h3>
+                    <p>创意内容介绍</p>    
+                  </div>
                 </div>
-              </div>
-              <div class="media border p-3 mb-5" style="height:100px">
-                <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>创意六</h3>
-                  <p>创意内容介绍</p>   
+                <div class="media border p-3 mb-5" style="height:100px">
+                  <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
+                  <div class="media-body">
+                    <h3>创意六</h3>
+                    <p>创意内容介绍</p>   
+                  </div>
                 </div>
-              </div>
-              <div class="media border p-3 mb-5" style="height:100px">
-                <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>创意七</h3>
-                  <p>创意内容介绍</p>      
+                <div class="media border p-3 mb-5" style="height:100px">
+                  <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
+                  <div class="media-body">
+                    <h3>创意七</h3>
+                    <p>创意内容介绍</p>      
+                  </div>
                 </div>
-              </div>
-              <div class="media border p-3 mb-5" style="height:100px">
-                <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>创意八</h3>
-                  <p>创意内容介绍</p>    
-                </div>
+                <div class="media border p-3 mb-5" style="height:100px">
+                  <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
+                  <div class="media-body">
+                    <h3>创意八</h3>
+                    <p>创意内容介绍</p>    
+                  </div>
+                </div-->
               </div>
               <div class="products-settings-option d-block d-md-flex mb-3">
                 <nav class="page-pagination">
-                  <ul class="pagination">
-                    <li><a href="#" aria-label="Previous">&laquo;</a></li>
+                  <ul id="my-collection-pages" class="pagination">
+                    <!--li><a href="#" aria-label="Previous">&laquo;</a></li>
                     <li><a class="current" href="#">1</a></li>
                     <li><a href="#">2</a></li>
                     <li><a href="#">3</a></li>
-                    <li><a href="#" aria-label="Next">&raquo;</a></li>
+                    <li><a href="#" aria-label="Next">&raquo;</a></li-->
                   </ul>
                 </nav>
               </div>
             </div>
 
-            <div id="my-fol" class="container tab-pane fade"><br>
+            <div id="my-follow" class="container tab-pane fade"><br>
               <div class="media border p-3 mb-5" style="height:100px">
                 <img src="./images/usr.png" alt="头像" class="mr-3 mt-3 rounded-circle big-icon">
                 <div class="media-body">
@@ -399,7 +402,7 @@
               </div>
             </div>
 
-            <div id="my-rel" class="container tab-pane fade"><br>
+            <div id="my-release" class="container tab-pane fade"><br>
               <div class="media border p-3 mb-5" style="height:100px">
                 <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
                 <div class="media-body">
@@ -430,12 +433,12 @@
               </div>
               <div class="products-settings-option d-block d-md-flex mb-3">
                 <nav class="page-pagination">
-                  <ul class="pagination">
-                    <li><a href="#" aria-label="Previous">&laquo;</a></li>
+                  <ul id="my-release-pages" class="pagination">
+                    <!--li><a href="#" aria-label="Previous">&laquo;</a></li>
                     <li><a class="current" href="#">1</a></li>
                     <li><a href="#">2</a></li>
                     <li><a href="#">3</a></li>
-                    <li><a href="#" aria-label="Next">&raquo;</a></li>
+                    <li><a href="#" aria-label="Next">&raquo;</a></li-->
                   </ul>
                 </nav>
               </div>
@@ -497,19 +500,19 @@
           <h3 class="modal-title">修改邮箱</h3>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-        <form name="mail-form">
+        <form>
           <div class="modal-body">
             <div class="input-group input-group-lg">
               <div class="input-group-prepend">
                 <span class="input-group-text" style="width:100px">邮箱</span>
               </div>
-              <input type="email" class="form-control" placeholder="请输入新邮箱" id="mail-new" name="mail-new" required autofocus>
+              <input type="email" class="form-control" placeholder="请输入新邮箱" id="mail-input" name="mail-input" required autofocus>
             </div>
           </div>
         </form>
         <div class="modal-footer">
             <button type="button" class="btn btn-primary mr-3" data-dismiss="modal">返回</button>
-            <button type="button" class="btn btn-primary" onclick="check_mail_form()">确定</button>
+            <button type="button" class="btn btn-primary" id="mail-ok">确定</button>
         </div>
       </div>
     </div>
@@ -534,7 +537,7 @@
         </form>
         <div class="modal-footer">
             <button type="button" class="btn btn-primary mr-3" data-dismiss="modal">返回</button>
-            <button type="button" class="btn btn-primary" onclick="check_nickname_form()">确定</button>
+            <button type="button" class="btn btn-primary" id="nickname-ok">确定</button>
         </div>
       </div>
     </div>
@@ -565,7 +568,7 @@
         </form>
         <div class="modal-footer">
             <button type="button" class="btn btn-primary mr-3" data-dismiss="modal">返回</button>
-            <button type="button" class="btn btn-primary" onclick="check_password_form()">确定</button>
+            <button type="button" class="btn btn-primary" id = "password-ok">确定</button>
         </div>
       </div>
     </div>
@@ -696,14 +699,7 @@
     return true;
   }
 
-  function check_nickname_form(){
-    var nick = $("#nickname-input").val();
-    if(nick.length > 16){
-      alert("昵称长度不能超过16位");
-      return false;
-    }
-    return true;
-  }
+
 
   function check_mail_form(){
 
@@ -735,6 +731,7 @@
 <!--=== Function Js ===-->
 <script src="../js/sign-in.js"></script>
 <script src="../js/sign-up.js"></script>
+<script src="../js/info.js"></script>
 </body>
 </html>
     
