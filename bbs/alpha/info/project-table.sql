@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS `project`;
 CREATE TABLE IF NOT EXISTS `project`(
     `pid`           int(8) primary key auto_increment,
-    `project_owner` varvhar(32) not null references `user`(`user_name`),
+    `project_owner` varchar(32) not null references `user`(`user_name`),
     `project_name`  varchar(32) not null,
     `project_reward`int(8) not null,
     `project_photo` varchar(128),

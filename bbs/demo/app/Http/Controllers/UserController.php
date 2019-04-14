@@ -134,7 +134,7 @@ class UserController extends Controller
         // 验证密码。
         $user = User::where('user_name', $input['user_name'])->firstOrFail();
         $isPasswordCorrect = Hash::check($input['password'], $user->password);
-        if(!$isPasswordCorrect)
+        if(is_null($isPasswordCorrect))
         {
             $errorMessage = [
                 'msg' => [

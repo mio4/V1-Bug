@@ -48,14 +48,47 @@ Route::post("/testFileUpload","TestController@testFileUpload");
 
 //------------ 路由测试 ------------
 
+//------------ 主要页面 ------------
+Route::get('/main', 'MainController@mainPage');
+//------------ 主要页面 ------------
+
 //------------ 注册登录 ------------
 Route::group(['prefix' => 'usr'], function(){
+    // 注册页面
     Route::get('/sign-up', 'UserController@signUpPage');
+    // 注册请求
     Route::post('/sign-up', 'UserController@signUpProcess');
-});
-Route::group(['prefix' => 'usr'], function(){
+    // 登陆页面
     Route::get('/sign-in', 'UserController@signInPage');
+    // 登录请求
     Route::post('/sign-in', 'UserController@signInProcess');
+    // 登出请求
     Route::get('/sign-out', 'UserController@signOut');
 });
-Route::get('/main', 'MainController@mainPage');
+//------------ 注册登录 ------------
+
+//------------ 项目管理 ------------
+Route::group(['prefix' => 'project'], function(){
+    // 浏览项目列表
+    Route::get('/', 'ProjectController@projectListPage');
+    // 创建项目
+    Route::get('/create', 'ProjectController@projectCreateProgress')
+        ->middleware['user.online'];
+    // 管理项目清单
+    Route::get('/manage', 'ProjectController@projectManageListPage');
+
+    Route::group(['prefix' => '{project_id}'], function(){
+        // 浏览项目页面
+        Route::get('/', 'ProjectController@projectItemPage');
+        // 修改项目信息页面
+        Route::get('/edit', 'ProjectController@projectItemEditPage')
+            ->middleware['user.online'];;
+        // 修改项目信息请求
+        Route::put('/edit', 'ProjectController@projectItemUpdateProgress')
+            ->middleware['user.online'];;
+
+        // TODO 添加更多功能
+    });
+});
+
+//------------ 项目管理 ------------
