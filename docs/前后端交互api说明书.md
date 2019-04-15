@@ -246,7 +246,7 @@
 
 ***
 
-## URL：/usr/{usr_id}/collect
+## URL：/usr/{usr_id}/collect_status
 
 说明：获取收藏状态
 
@@ -268,9 +268,7 @@
 
 ***
 
-## URL：/usr/{usr_id}/attention
-
-说明：更改关注状态
+## URL：/usr/{usr_id}/focus
 
 方法：POST
 
@@ -291,7 +289,7 @@
 
 ***
 
-## URL：/usr/{usr_id}/attention
+## URL：/usr/{usr_id}/focus_status
 
 说明：获取关注状态
 
@@ -313,7 +311,7 @@
 
 ***
 
-## URL：/project/{project_id}
+## URL：/project/delete_project
 
 说明：删除创意项目
 
@@ -335,7 +333,7 @@
 
 ***
 
-## URL：/project/{project_id}
+## URL：/project/create_project
 
 说明：发布创意项目
 
