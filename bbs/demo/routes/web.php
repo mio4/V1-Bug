@@ -73,8 +73,8 @@ Route::group(['prefix' => 'project'], function(){
     Route::get('/', 'ProjectController@projectListPage');
     // 创建项目
     Route::get('/create', 'ProjectController@projectCreateProgress')
-        ->middleware['user.online'];
-    // 管理项目清单
+        ->middleware('user.online');
+    //    // 管理项目清单
     Route::get('/manage', 'ProjectController@projectManageListPage');
 
     Route::group(['prefix' => '{project_id}'], function(){
@@ -82,10 +82,10 @@ Route::group(['prefix' => 'project'], function(){
         Route::get('/', 'ProjectController@projectItemPage');
         // 修改项目信息页面
         Route::get('/edit', 'ProjectController@projectItemEditPage')
-            ->middleware['user.online'];;
+            ->middleware('user.online');
         // 修改项目信息请求
         Route::put('/edit', 'ProjectController@projectItemUpdateProgress')
-            ->middleware['user.online'];;
+            ->middleware('user.online');
 
         // TODO 添加更多功能
     });

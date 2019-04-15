@@ -6,7 +6,7 @@
     <div class="content">
         <h1>{{ $title }}</h1>
 
-        <form action="./" method="post">
+        <form action="edit" method="post">
             {{ method_field('PUT') }}
 
             <label for="project_name">
@@ -18,7 +18,7 @@
                 >
             </label>
             <br>
-            <label for="project_kind">
+            <label for="project_reward">
                 项目类型：
                 <input type="text"
                        name="project_kind"
@@ -26,13 +26,12 @@
                        value="{{ old('project_kind') }}"
                 >
             </label>
-            <br>
             <label for="project_reward">
-                项目类型：
+                项目悬赏：
                 <input type="text"
-                       name="project_kind"
-                       placeholder="Project kind"
-                       value="{{ old('project_kind') }}"
+                       name="project_reward"
+                       placeholder="Project reward"
+                       value="{{ old('project_reward') }}"
                 >
             </label>
             <br>

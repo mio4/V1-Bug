@@ -6,7 +6,8 @@ CREATE TABLE IF NOT EXISTS `project`(
     `project_reward`int(8) not null,
     `project_photo` varchar(128),
     `project_info`  text not null,
-    `project_kind`  int(8) not null
+    `project_kind`  varchar(1) not null,
+    `project_createTime` date not null
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `comment`;

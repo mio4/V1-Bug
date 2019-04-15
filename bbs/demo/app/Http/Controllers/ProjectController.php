@@ -12,7 +12,7 @@ class ProjectController extends Controller
     {
         $projectData = [
             'project_name' => '',
-            'project_owner' => 0,
+            'project_owner' => session()->get('uid'),
             'project_info' => '',
             'project_kind' => '',
             'project_reward' => 0,
@@ -22,19 +22,20 @@ class ProjectController extends Controller
 
         $newProject = Project::create($projectData);
 
-        return redirect('project/'.$projectData->pid.'/edit');
+        return redirect('project/'.$newProject->pid.'/edit');
     }
 
     public function projectItemEditPage($project_id)
     {
-        $searchProject = Project::where('project_id', $project_id)->findOrFail();
+        $searchProject = Project::where('pid', intVal($project_id))->firstOrFail();
         if(is_null($searchProject))
         {
             // TODO 未找到项目
         }
 
         $binding = [
-            'title' => '编辑项目信息'
+            'title' => '编辑项目信息',
+            'pid' => $searchProject->pid
         ];
 
         // 重定向至编辑页面
@@ -43,7 +44,7 @@ class ProjectController extends Controller
 
     public function projectItemUpdateProgress($project_id)
     {
-        $project = Project::where('pid', $project_id)->findOrFail();
+        $project = Project::where('pid', intVal($project_id))->firstOrFail();
         $input = request()->all();
 
         $rules = [
@@ -75,7 +76,10 @@ class ProjectController extends Controller
                 ->withInput();
         }
 
+        $project->update($input);
+
         // 创建成功，进入项目页面
-        return redirect('project/'.$project_id);
+        // return redirect('project/'.$project_id);
+        return redirect('main');
     }
 }

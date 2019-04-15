@@ -9,7 +9,7 @@ class MainController extends Controller
     public function mainPage()
     {
         $binding = [
-            'title' => '注册'
+            'title' => '主页面'
         ];
         return view('main-page', $binding);
     }
