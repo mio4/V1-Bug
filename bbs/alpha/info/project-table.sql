@@ -1,11 +1,13 @@
 DROP TABLE IF EXISTS `project`;
 CREATE TABLE IF NOT EXISTS `project`(
     `pid`           int(8) primary key auto_increment,
+    `project_owner` varchar(32) not null references `user`(`user_name`),
     `project_name`  varchar(32) not null,
     `project_reward`int(8) not null,
     `project_photo` varchar(128),
     `project_info`  text not null,
-    `project_kind`  int(8) not null
+    `project_kind`  varchar(1) not null,
+    `project_createTime` date not null
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `comment`;
@@ -26,4 +28,11 @@ CREATE TABLE IF NOT EXISTS `reply`(
     `reply_time`  datetime not null,
     `reply_info`  text not null,
     `reply_thumbs_up` int(8) not null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `projectDeveloper`;
+CREATE TABLE IF NOT EXISTS `projectDeveloper`(
+    `pid`           int(8) primary key references `project`(`pid`),
+    `uid`           int(8) primary key references `user`(`uid`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;

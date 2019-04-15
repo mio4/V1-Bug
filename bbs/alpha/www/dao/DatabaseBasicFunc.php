@@ -160,7 +160,7 @@ class DatabaseBasicFunc
                 else if (preg_match('/^\(\w*(\+|\-|\*|\/)?\w*\)$/i', $val))
                 {
                     // 支持在字段的值里面直接使用其它字段 ,例如 (score+1) (name) 必须包含括号
-                    $val = $val;
+                    // $val = $val;
                 }
                 else if (is_string($val))
                 {
@@ -228,14 +228,14 @@ class DatabaseBasicFunc
      * 数据库插入
      * @param string $tbName 操作的数据表名
      * @param array $data 字段-值的一维数组
-     * @return int|void
+     * @return int
      */
     public function insert($tbName, array $data)
     {
         $data = $this->_dataFormat($tbName, $data);
         if (!$data)
         {
-            return;
+            return 0 ;
         }
         $sql = "insert into " . $tbName . "(" . implode(',', array_keys($data)) . ") values(" . implode(',', array_values($data)) . ")";
         return $this->_doExec($sql);
@@ -274,7 +274,7 @@ class DatabaseBasicFunc
         $data = $this->_dataFormat($tbName, $data);
         if (!$data)
         {
-            return;
+            return 0 ;
         }
         $valArr = '';
         foreach ($data as $k => $v)
@@ -437,9 +437,10 @@ class DatabaseBasicFunc
         $this->_trans++;
         return;
     }
+
     /**
      * 用于非自动提交状态下面的查询提交
-     * @return boolen
+     * @return bool
      */
     public function commit()
     {
@@ -453,7 +454,7 @@ class DatabaseBasicFunc
     }
     /**
      * 事务回滚
-     * @return boolen
+     * @return bool
      */
     public function rollback()
     {
