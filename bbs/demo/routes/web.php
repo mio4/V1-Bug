@@ -52,7 +52,7 @@ Route::post("/testFileUpload","TestController@testFileUpload");
 Route::get('/main', 'MainController@mainPage');
 //------------ 主要页面 ------------
 
-//------------ 注册登录 ------------
+//------------ 注册登录&修改个人信息 ------------
 Route::group(['prefix' => 'usr'], function(){
     // 注册页面
     Route::get('/sign-up', 'UserController@signUpPage');
@@ -64,8 +64,15 @@ Route::group(['prefix' => 'usr'], function(){
     Route::post('/sign-in', 'UserController@signInProcess');
     // 登出请求
     Route::get('/sign-out', 'UserController@signOut');
+    //修改用户昵称
+    Route::get('/info/name','UserController@changeName');
+    //修改用户密码
+    Route::get('/info/password','UserController@changePwd');
+    //FIXME 邮箱不用修改
+    Route::get('/info/mail','UserController@changeEmail');
+
 });
-//------------ 注册登录 ------------
+//------------ 注册登录&修改个人信息 ------------
 
 //------------ 项目管理 ------------
 Route::group(['prefix' => 'project'], function(){
