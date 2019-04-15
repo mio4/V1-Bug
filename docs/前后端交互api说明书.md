@@ -314,7 +314,7 @@
 
 ***
 
-## URL：/project/delete_project
+## URL：/project/{project_id}
 
 说明：删除创意项目
 
