@@ -37,7 +37,7 @@ class UserController extends Controller
     public function signUpProcess()
     {
         $input = request()->all();
-
+        $response = [];
         $rules = [
             'user_name' => [
                 'required',
@@ -61,7 +61,7 @@ class UserController extends Controller
             ],
             'user_kind' => [
                 'required',
-                'in:G,A,L'
+                'in:G,O'
             ]
         ];
 
@@ -69,19 +69,19 @@ class UserController extends Controller
 
         if($validator->fails())
         {
-            return redirect('usr/sign-up')
-                ->withErrors($validator)        // 带错误信息的重定向
-                ->withInput();                  // 保存原输入
+            $response['status'] = 400;
+            $response['massage'] = $validator;
+            return response()->json($validator);
         }
 
         $searchName = User::where('user_name', $input['user_name'])->get();
         $searchEmail = User::where('user_email', $input['user_email'])->get();
         if($searchName->count() != 0 || $searchEmail->count() != 0)
         {
-            return redirect('usr/sign-in')
-                ->with(['status'=>400]);
+            $response['status'] = 400;
+            $response['massage'] = '用户已存在';
+            return response()->json($response);
         }
-
 
         $input['password'] = Hash::make($input['password']);    // 使用APP_KEY进行加密
         $input['user_regTime'] = date("Y-m-d");
@@ -89,13 +89,14 @@ class UserController extends Controller
 
         if(null != $User)
         {
-            return redirect('main')
-                ->with(['status'=>200]);
+            $response['status'] = 200;
+            $response['redirect'] = 'main';
         }
         else{
-            return redirect('usr/sign-up')
-                ->with(['status'=>400]);
+            $response['status'] = 400;
+            $response['massage'] = '网络繁忙';
         }
+        return response()->json($response);
     }
 
     public function signInPage()
@@ -110,6 +111,7 @@ class UserController extends Controller
     public function signInProcess()
     {
         $input = request()->all();
+        $response = [];
 
         $rules = [
             'user_name' => [
@@ -128,31 +130,28 @@ class UserController extends Controller
 
         if($validator->fails())
         {
-            $response = [
-                'status' => 400,
-            ];
-            return response()->json($response);;
+            $response['status'] = 400;
+            return response()->json($response);
         }
 
         // 验证密码。
-        $user = User::where('user_name', $input['user_name'])->firstOrFail();
+        $user = User::where('user_name', $input['user_name'])->first();
+        if(is_null($user))
+        {
+            $response['status'] = 400;
+            return response()->json($response);
+        }
         $isPasswordCorrect = Hash::check($input['password'], $user->password);
         if(is_null($isPasswordCorrect))
         {
-            $response = [
-                'status' => 400,
-            ];
+            $response['status'] = 400;
             return response()->json($response);
         }
 
         // 登陆成功，写session
         session()->put('uid', $user->uid);
-
-        $response = [
-            'status' => 200,
-            'redirect' => 'main',
-        ];
-
+        $response['status'] = 200;
+        $response['redirect'] = 'main';
         return response()->json($response);
     }
 
