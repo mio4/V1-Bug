@@ -37,7 +37,7 @@ class ProjectController extends Controller
      */
     public function projectItemEditPage($project_id)
     {
-        $searchProject = Project::where('pid', intVal($project_id))->firstOrFail();
+        $searchProject = Project::where('pid', intVal($project_id))->first();
         if(is_null($searchProject))
         {
             // TODO 未找到项目
@@ -59,7 +59,7 @@ class ProjectController extends Controller
      */
     public function projectItemUpdateProgress($project_id)
     {
-        $project = Project::where('pid', intVal($project_id))->firstOrFail();
+        $project = Project::where('pid', intVal($project_id))->first();
         $input = request()->all();
 
         $rules = [
@@ -119,7 +119,7 @@ class ProjectController extends Controller
      */
     public function projectItemPage($project_id)
     {
-        $searchProject = Project::where('pid', intVal($project_id))->firstOrFail();
+        $searchProject = Project::where('pid', intVal($project_id))->first();
 
         $binding = [
             'title' => '项目',
