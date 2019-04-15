@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="meta description">
 
-    <title>create-idea</title>
+    <title>idea</title>
 
     <!--=== Favicon ===-->
 <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon"/>
@@ -24,7 +24,8 @@
 <link href="assets/css/helper.min.css" rel="stylesheet">
 <!--=== Main Style CSS ===-->
 <link href="assets/css/style.css" rel="stylesheet">
-
+<!--=== Other CSS ===-->
+<link href="assets/css/selfdefinition.css" rel="stylesheet">
 <!-- Modernizer JS -->
 <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
 
@@ -32,17 +33,12 @@
     <script src="http://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="http://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style>
-        body{
-            opacity:0.9;
-            background-repeat:no-repeat; 
-            background-size: 100% 100%; 
-            background-attachment: fixed;
-        }
-    </style>
+<style>
+
+</style>
 </head>
 
-<body>
+<body class="bg-holiday">
 <!--== Start Header Section ==-->
 <header id="header-area">
     <!-- Start PreHeader Area -->
@@ -75,8 +71,8 @@
                         <ul class="nav justify-content-center justify-content-md-end">
                             <li><a href="point-rule.html">积分规则</a></li>
                             <li><a href="info.html">修改密码</a></li>
-                            <li><a href="new-sign-in.html">登录</a></li>
-                            <li><a href="new-sign-in.html">注册</a></li>
+                            <li><a href="sign-in-up.html">登录</a></li>
+                            <li><a href="sign-in-up.html">注册</a></li>
                             <li id="top-nickname"></li>
                             <li id="top-image"></li>
                         </ul>
@@ -116,7 +112,7 @@
                 <!-- Mini Cart Area Start -->
                 <div class="col-12 col-md-3 col-xl-2 m-auto text-center text-lg-right mt-xs-15">
                     <div class="minicart-wrapper">
-                        <button class="btn btn-minicart">发布实验室项目 <!--<sup class="cart-count">3</sup>--></button>
+                        <a href="idea-post.html" class="btn btn-minicart">发布创意 <!--<sup class="cart-count">3</sup>--></a>
                     </div>
                 </div>
                 <!-- Mini Cart Area End -->
@@ -133,17 +129,17 @@
                 <div class="col-2 col-lg-9 d-none d-lg-block">
                     <div class="main-menu-wrap">
                         <nav class="mainmenu">
-                            <ul class="main-navbar clearfix">
-                                <li class="dropdown-show"><a href="new-main.html" class="arrow-toggle">主界面</a>
-                                    <ul class="dropdown-nav sub-dropdown">
-                                        <li><a href="new-create.html">创意区</a></li>
-                                        <li><a href="new-lab.html">实验室项目区</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="info.html">个人信息</a></li>
-                                <li><a href="about-us.html">关于我们</a></li>
-                            </ul>
-                        </nav>
+    <ul class="main-navbar clearfix">
+        <li class="dropdown-show"><a href="main.html" class="arrow-toggle">主界面</a>
+            <ul class="dropdown-nav sub-dropdown">
+                <li><a href="idea.html">创意区</a></li>
+                <li><a href="lab.html">实验室项目区</a></li>
+            </ul>
+        </li>
+        <li><a href="info.html">个人信息</a></li>
+        <li><a href="about-us.html">关于我们</a></li>
+    </ul>
+</nav>
                     </div>
                 </div>
                 <!-- Main Menu End -->
@@ -161,9 +157,8 @@
             <div class="col-lg-12">
                 <div class="page-breadcrumb">
                     <ul class="nav">
-                        <li><a href="new-main.html">主界面</a></li>
-                        <li><a href="new-create.html">创意区</a></li>
-                        <li><a href="create-idea.html" class="active">发布创意</a></li>
+                        <li><a href="main.html">主界面</a></li>
+                        <li><a href="idea.html" class="active">创意区</a></li>
                     </ul>
                 </div>
             </div>
@@ -171,21 +166,175 @@
     </div>
 </div>
 <!--== End Page Breadcrumb ==-->
-
+  
+   
 <!--== Page Content Wrapper Start ==-->
 <div id="page-content-wrapper">
     <div class="container">
-        <div class="single-product-page-content">
-            <h1>发布创意</h1>
-            <div class = "row">
-                <div class = "col-md-2">
-                </div>
-                <div class = "col-md-4 text-center">
+        <div class="row">
+            <!-- Start Shop Page Content -->
+            <div class="col-lg-12">
+                <div class="shop-page-content-wrap">
+                    <div class="products-settings-option d-block d-md-flex">
+                        <div class="product-cong-left d-flex align-items-center">
+                            <ul class="product-view d-flex align-items-center">
+                                <li class="box-gird current"><i class="fa fa-th"></i></li>
+                                <li class="list"><i class="fa fa-list-ul"></i></li>
+                            </ul>
+                            <span class="show-items">排列方式</span>
+                        </div>
 
-                </div>
-                <div class = "col-md-2">
+                        <div class="product-sort_by d-flex align-items-center mt-3 mt-md-0">
+                            <label for="sort">排序方式:</label>
+                            <select name="sort" id="sort">
+                                <option value="时间">时间</option>
+                                <option value="名称">名称</option>
+                                <option value="热度">热度</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="shop-page-products-wrap">
+                        <div class="products-wrapper">
+                            <div class="row">
+                                <!-- Single Product Start -->
+                                <div class="col-lg-3 col-sm-6">
+                                    <div class="single-product-item">
+                                        <figure class="product-thumb">
+                                            <a href="idea-detail.html"><img src="assets/img/product-1.jpg"
+                                                                               alt="Product"></a>
+                                            <a href="idea-detail.html" class="btn btn-round btn-cart" title="Quick View"><i
+                                                class="fa fa-eye"></i></a>
+                                        </figure>
+                                        <div class="product-details">
+                                            <h2 class="product-title"><a href="single-product.html">创意名称
+                                                </a></h2>
+                                            <p class="pro-desc"><br /></p>
+                                            <p class="pro-desc">创意介绍</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Single Product End -->
+
+                                <!-- Single Product Start -->
+                                <div class="col-lg-3 col-sm-6">
+                                    <div class="single-product-item">
+                                        <figure class="product-thumb">
+                                            <a href="idea-detail.html"><img src="assets/img/product-1.jpg"
+                                                                               alt="Product"></a>
+                                            <a href="idea-detail.html" class="btn btn-round btn-cart" title="Quick View"><i
+                                                class="fa fa-eye"></i></a>
+                                        </figure>
+                                        <div class="product-details">
+                                            <h2 class="product-title"><a href="single-product.html">创意名称
+                                                </a></h2>
+                                            <p class="pro-desc"><br /></p>
+                                            <p class="pro-desc">创意介绍</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Single Product End -->
+
+                                <!-- Single Product Start -->
+                                <div class="col-lg-3 col-sm-6">
+                                    <div class="single-product-item">
+                                        <figure class="product-thumb">
+                                            <a href="idea-detail.html"><img src="assets/img/product-1.jpg"
+                                                                               alt="Product"></a>
+                                            <a href="idea-detail.html" class="btn btn-round btn-cart" title="Quick View"><i
+                                                class="fa fa-eye"></i></a>
+                                        </figure>
+                                        <div class="product-details">
+                                            <h2 class="product-title"><a href="single-product.html">创意名称
+                                                </a></h2>
+                                            <p class="pro-desc"><br /></p>
+                                            <p class="pro-desc">创意介绍</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Single Product End -->
+
+                                <!-- Single Product Start -->
+                                <div class="col-lg-3 col-sm-6">
+                                    <div class="single-product-item">
+                                        <figure class="product-thumb">
+                                            <a href="idea-detail.html"><img src="assets/img/product-1.jpg"
+                                                                               alt="Product"></a>
+                                            <a href="idea-detail.html" class="btn btn-round btn-cart" title="Quick View"><i
+                                                class="fa fa-eye"></i></a>
+                                        </figure>
+                                        <div class="product-details">
+                                            <h2 class="product-title"><a href="single-product.html">创意名称
+                                                </a></h2>
+                                            <p class="pro-desc"><br /></p>
+                                            <p class="pro-desc">创意介绍</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Single Product End -->
+
+                                <!-- Single Product Start -->
+                                <div class="col-lg-3 col-sm-6">
+                                    <div class="single-product-item">
+                                        <figure class="product-thumb">
+                                            <a href="idea-detail.html"><img src="assets/img/product-1.jpg"
+                                                                               alt="Product"></a>
+                                            <a href="idea-detail.html" class="btn btn-round btn-cart" title="Quick View"><i
+                                                class="fa fa-eye"></i></a>
+                                        </figure>
+                                        <div class="product-details">
+                                            <h2 class="product-title"><a href="single-product.html">创意名称
+                                                </a></h2>
+                                            <p class="pro-desc"><br /></p>
+                                            <p class="pro-desc">创意介绍</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Single Product End -->
+
+                                <!-- Single Product Start -->
+                                <div class="col-lg-3 col-sm-6">
+                                    <div class="single-product-item">
+                                        <figure class="product-thumb">
+                                            <a href="idea-detail.html"><img src="assets/img/product-1.jpg"
+                                                                               alt="Product"></a>
+                                            <a href="idea-detail.html" class="btn btn-round btn-cart" title="Quick View"><i
+                                                class="fa fa-eye"></i></a>
+                                        </figure>
+                                        <div class="product-details">
+                                            <h2 class="product-title"><a href="single-product.html">创意名称
+                                                </a></h2>
+                                            <p class="pro-desc"><br /></p>
+                                            <p class="pro-desc">创意介绍</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Single Product End -->
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="products-settings-option d-block d-md-flex">
+                        <nav class="page-pagination">
+                            <ul class="pagination">
+                                <li><a href="#" aria-label="Previous">&laquo;</a></li>
+                                <li><a class="current" href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#" aria-label="Next">&raquo;</a></li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
+            <!-- End Shop Page Content -->
         </div>
     </div>
 </div>
@@ -294,26 +443,6 @@
 
 
 <!--=======================Javascript============================-->
-<script>
-    function aaa(){
-        document.getElementById("top-nickname").innerHTML = '<a href="info.html">欢迎！昵称</a>'
-        document.getElementById("top-image").innerHTML = '<img src="./assets/img/usr.png" alt="头像" class="ml-3 rounded-circle" style="width:30px;">'
-    }
-</script>
-
-<!-- 加载编辑器的容器 -->
-<script id="container" name="content" type="text/plain">
-    这里写你的初始化内容
-</script>
-<!-- 配置文件 -->
-<script type="text/javascript" src="ueditor.config.js"></script>
-<!-- 编辑器源码文件 -->
-<script type="text/javascript" src="ueditor.all.js"></script>
-<!-- 实例化编辑器 -->
-<script type="text/javascript">
-    var ue = UE.getEditor('container');
-</script>
-
 <!--=== Jquery Min Js ===-->
 <script src="assets/js/vendor/jquery-3.3.1.min.js"></script>
 <!--=== Jquery Migrate Min Js ===-->

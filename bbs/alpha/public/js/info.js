@@ -149,37 +149,37 @@ var a = '{\
     "total": 7,\
     "project": [{\
         "photo_url": "www.werwe.com",\
-        "project_name": "江苏苏州",\
+        "project_name": "江苏苏州1",\
         "project_intro": "中国"\
     },\
     {\
         "photo_url": "www.werwe.com",\
-        "project_name": "江苏苏州",\
+        "project_name": "江苏苏州2",\
         "project_intro": "中国"\
     },\
     {\
         "photo_url": "www.werwe.com",\
-        "project_name": "江苏苏州",\
+        "project_name": "江苏苏州3",\
         "project_intro": "中国"\
     },\
     {\
         "photo_url": "www.werwe.com",\
-        "project_name": "江苏苏州",\
+        "project_name": "江苏苏州4",\
         "project_intro": "中国"\
     },\
     {\
         "photo_url": "www.werwe.com",\
-        "project_name": "江苏苏州",\
+        "project_name": "江苏苏州5",\
         "project_intro": "中国"\
     },\
     {\
         "photo_url": "www.werwe.com",\
-        "project_name": "江苏苏州",\
+        "project_name": "江苏苏州6",\
         "project_intro": "中国"\
     },\
     {\
         "photo_url": "www.werwe.com",\
-        "project_name": "江苏苏州",\
+        "project_name": "江苏苏州7",\
         "project_intro": "中国"\
     }\
     ]\
@@ -229,12 +229,12 @@ function click_page_collection(page_num){
 	for(var i=page_start;i<=page_end;i++){
 		string = string +  
 		 '<div class="media border p-3 mb-5" style="height:100px"> \
-                <img src="./images/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon"> \
+                <img src="./assets/img/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon"> \
                 <div class="media-body"> \
                   <h3>';
-        string = string + a.project[i-1].project_name;
+        string = string + project[i-1].project_name;
         string = string + '</h3> <p>';
-        string = string + a.project[i-1].project_intro;
+        string = string + project[i-1].project_intro;
         string = string + '</p> </div> </div>';
 	}
 	document.getElementById("my-collection-show").innerHTML += string;
