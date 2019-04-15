@@ -8,7 +8,6 @@
 
         <form action="edit" method="post">
             {{ method_field('PUT') }}
-
             <label for="project_name">
                 项目名称：
                 <input type="text"
@@ -18,7 +17,7 @@
                 >
             </label>
             <br>
-            <label for="project_reward">
+            <label for="project_kind">
                 项目类型：
                 <input type="text"
                        name="project_kind"

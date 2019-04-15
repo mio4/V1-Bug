@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="zh_CN">
 <head>
     <title>@yield('title')</title>
 </head>

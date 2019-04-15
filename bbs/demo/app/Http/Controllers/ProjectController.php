@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Validator;
 
 class ProjectController extends Controller
 {
+
+    /**
+     * 创建项目逻辑，重定向至项目信息修改页面。
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function projectCreateProgress()
     {
         $projectData = [
@@ -25,6 +30,11 @@ class ProjectController extends Controller
         return redirect('project/'.$newProject->pid.'/edit');
     }
 
+    /**
+     * 项目信息修改页面。
+     * @param $project_id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function projectItemEditPage($project_id)
     {
         $searchProject = Project::where('pid', intVal($project_id))->firstOrFail();
@@ -42,6 +52,11 @@ class ProjectController extends Controller
         return view('project.editProject', $binding);
     }
 
+    /**
+     * 更新项目逻辑
+     * @param $project_id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function projectItemUpdateProgress($project_id)
     {
         $project = Project::where('pid', intVal($project_id))->firstOrFail();
@@ -79,7 +94,43 @@ class ProjectController extends Controller
         $project->update($input);
 
         // 创建成功，进入项目页面
-        // return redirect('project/'.$project_id);
-        return redirect('main');
+        return redirect('project/'.$project_id);
+        // return redirect('main');
+    }
+
+    /**
+     * 显示项目列表逻辑
+     */
+    public function projectListPage()
+    {
+
+    }
+
+    /**
+     * 管理项目逻辑
+     */
+    public function projectManageListPage()
+    {
+
+    }
+
+    /**
+     * 项目页面显示
+     */
+    public function projectItemPage($project_id)
+    {
+        $searchProject = Project::where('pid', intVal($project_id))->firstOrFail();
+
+        $binding = [
+            'title' => '项目',
+            'pid' => $searchProject->pid,
+            'project_name' => $searchProject->project_name,
+            'project_kind' => $searchProject->project_kind,
+            'project_reward' => $searchProject->project_reward,
+            'project_createTime' => $searchProject->project_createTime,
+            'project_info' => $searchProject->project_info,
+        ];
+
+        return view('project.project-page', $binding);
     }
 }
