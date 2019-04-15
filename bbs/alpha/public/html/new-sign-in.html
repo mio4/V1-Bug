@@ -85,10 +85,12 @@
                 <div class="col-md-7 col-lg-6 mt-xs-10">
                     <div class="site-setting-menu">
                         <ul class="nav justify-content-center justify-content-md-end">
-                            <li><a href="jifenguize.html">积分规则</a></li>
-                            <li><a href="password-revise.html">修改密码</a></li>
+                            <li><a href="point-rule.html">积分规则</a></li>
+                            <li><a href="info.html">修改密码</a></li>
                             <li><a href="new-sign-in.html">登录</a></li>
                             <li><a href="new-sign-in.html">注册</a></li>
+                            <li id="top-nickname"></li>
+                            <li id="top-image"></li>
                         </ul>
                     </div>
                 </div>
@@ -149,8 +151,8 @@
                 <li><a href="new-lab.html">实验室项目区</a></li>
             </ul>
         </li>
-        <li><a href="new-lab.html">个人信息</a></li>
-        <li><a href="new-info.html">关于我们</a></li>
+        <li><a href="info.html">个人信息</a></li>
+        <li><a href="about-us.html">关于我们</a></li>
     </ul>
 </nav>
                     </div>
@@ -162,7 +164,6 @@
     <!-- End Main Menu Area -->
 </header>
 <!--== End Header Section ==-->
-
 
 <!--== Start Page Breadcrumb ==-->
 <div class="page-breadcrumb-wrap">
@@ -191,7 +192,7 @@
                     <div class="login-reg-form-wrap  pr-lg-50">
                         <h2>已经拥有账户?</h2>
 
-                        <form action="#" method="post">
+                        <form id="form-sign-in">
                             <div class="single-input-item">
                                 <input id="username-sign-in" name="username-sign-in" type="email" placeholder="请输入邮箱/用户名" required />
                             </div>
@@ -214,9 +215,10 @@
                             </div>
 
                             <div class="single-input-item">
-                                <button class="btn">登录</button>
+                               
                             </div>
                         </form>
+                        <button class="btn" onClick="sign_in()">登录</button>
                     </div>
                 </div>
                 <!-- Login Content End -->
@@ -225,26 +227,26 @@
                 <div class="col-lg-7 mt-30 mt-lg-0">
                     <div class="login-reg-form-wrap">
                         <h2>注册</h2>
-                        <form action="#" method="post">
+                        <form id="form-sign-up">
 
                             <div class="single-input-item">
-                                <input id="email-sign-up" name="email-sign-up" type="email" placeholder="请输入邮箱" required />
+                                <input vaule id="email-sign-up" name="email-sign-up" type="email" placeholder="请输入邮箱" required />
                             </div>
 
                             <div class="single-input-item">
-                                <input id="username-sign-up" name="username-sign-up" type="text" placeholder="请输入用户名" required />
+                                <input vaule id="username-sign-up" name="username-sign-up" type="text" placeholder="请输入用户名" required />
                             </div>
 
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="single-input-item">
-                                        <input id="password-sign-up" name="password-sign-up" type="password" placeholder="请输入密码" required />
+                                        <input vaule id="password-sign-up" name="password-sign-up" type="password" placeholder="请输入密码" required />
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="single-input-item">
-                                        <input id="password-con-sign-up" name="password-con-sign-up" type="password" placeholder="请再次输入密码" required />
+                                        <input vaule id="password-con-sign-up" name="password-con-sign-up" type="password" placeholder="请再次输入密码" required />
                                     </div>
                                 </div>
                             </div>
@@ -258,7 +260,7 @@
                                         </div>
                                         <div class="custom-control custom-checkbox mt-4">
                                             <input type="checkbox" class="custom-control-input" id="I-agree">
-                                            <label class="custom-control-label" for="I-agree">我同意服务协议</label>
+                                            <label class="custom-control-label" for="I-agree" onClick="read_con()">我同意服务协议</label>
                                         </div>
 
                                     </div>
@@ -272,10 +274,11 @@
                             <!--<div>
                                 <button class="btn">阅读服务协议</button>
                             </div>-->
-                            <div class="single-input-item">
-                                <button class="btn">注册</button>
+                            <div>
+                                
                             </div>
                         </form>
+                        <button class="btn mt-3" onClick="sign_up()">注册</button>
                     </div>
                 </div>
                 <!-- Register Content End -->
@@ -371,8 +374,8 @@
         <div class="container">
             <div class="row">
                 <!-- Copyright Text Area -->
-                <div class="col-md-6 m-auto text-center text-md-left order-last order-md-first">
-                    <p>Copyright &copy; 2018.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+                <div class="col-md-3 m-auto text-center text-md-left order-last order-md-first">
+                    <p>Copyright &copy; V1-Bug制造有限公司</p>
                 </div>
                 <!-- Copyright Text Area -->
             </div>
@@ -396,12 +399,10 @@
             <div class="modal-body">
                 <div class="quick-view-content single-product-page-content">
                     <div class="row">
-  
-
                         <!-- Product Details Start -->
                         <div class="col-lg-7 col-md-6 mt-5 mt-md-0">
                                 <h2>阅读服务协议</h2>
-                                <p class="products-desc">Ideal for cold-weathered training worked lorem ipsum outdoors, the Chaz Hoodie promises superior warmth with every wear. Thick material blocks out the wind as ribbed cuffs and bottom band seal in body heat Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, reprehenderit.
+                                <p class="products-desc">
 <h5>【首部及导言】</h5>
 <p align="left" style="text-indent:2em;"><strong>欢迎您使用我们的服务！</strong></p>
 <p align="left" style="text-indent:2em;">为使用WEDO的服务，您应当阅读并遵守《WEDO服务协议》(以下简称“本协议”)。请您务必审慎阅读、充分理解各条款内容。除非您已充分阅读、完全理解并接受本协议所有条款，否则您无权使用我们服务。您使用我们服务，或者以其他任何明示或者默示方式表示接受本协议的，均视为您已阅读并同意签署本协议。本协议即在您与我们之间产生法律效力，成为对双方均具有约束力的法律文件。 如果您因年龄、智力等因素而不具有完全民事行为能力，请在法定监护人(以下简称"监护人")的陪同下阅读和判断是否同意本协议，并特别注意未成年人使用条款。 如果您是中国大陆地区以外的用户，您订立或履行本协议还需要同时遵守您所属和/或所处国家或地区的法律。</p>
@@ -486,7 +487,6 @@
                                 </p>
 
                                 <div class="product-quantity d-flex align-items-center">
-
                                     <button data-dismiss="modal" class="btn">确定</button>
                                 </div>
                         </div>
@@ -520,5 +520,9 @@
 
 <!--=== Active Js ===-->
 <script src="assets/js/active.js"></script>
+
+<!--=== Function Js ===-->
+<script src="../js/sign-in.js"></script>
+<script src="../js/sign-up.js"></script>
 </body>
 </html>
