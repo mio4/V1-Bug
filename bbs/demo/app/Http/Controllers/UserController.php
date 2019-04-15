@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DataEntity\User;
 use App\Http\Controllers\Controller;
+use http\Env\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -29,13 +30,13 @@ class UserController extends Controller
             'title' => '注册'
         ];
 
-        return view('sign-up', $binding);
+        // return view('sign-up', $binding);
+        return redirect()->to('html/new-sign-in.html');
     }
 
     public function signUpProcess()
     {
         $input = request()->all();
-        // var_dump($input);
 
         $rules = [
             'user_name' => [
@@ -102,7 +103,8 @@ class UserController extends Controller
         $binding = [
             'title' => '登陆'
         ];
-        return view('signIn', $binding);
+
+        return redirect()->to('html/new-sign-in.html');
     }
 
     public function signInProcess()
@@ -126,9 +128,10 @@ class UserController extends Controller
 
         if($validator->fails())
         {
-            return redirect('usr/sign-in')
-                ->withErrors($validator)        // 带错误信息的重定向
-                ->withInput();                  // 保存原输入
+            $response = [
+                'status' => 400,
+            ];
+            return response()->json($response);;
         }
 
         // 验证密码。
@@ -136,21 +139,21 @@ class UserController extends Controller
         $isPasswordCorrect = Hash::check($input['password'], $user->password);
         if(is_null($isPasswordCorrect))
         {
-            $errorMessage = [
-                'msg' => [
-                    '密码认证错误'
-                ]
+            $response = [
+                'status' => 400,
             ];
-            return redirect('usr/sign-in')
-                ->withErrors($errorMessage)
-                ->withInput();
+            return response()->json($response);
         }
 
         // 登陆成功，写session
         session()->put('uid', $user->uid);
 
-        // 返回首页
-        return redirect('main');
+        $response = [
+            'status' => 200,
+            'redirect' => 'main',
+        ];
+
+        return response()->json($response);
     }
 
     public function signOut()
