@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\testModel;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
 
@@ -133,6 +134,8 @@ class TestController extends Controller
         echo "data has been removed from session";
     }
 
+
+
     //-------------------- 测试Controller->Model --------------------
     public function testSelectOne(){
         $test_model = new TestModel();
@@ -141,7 +144,11 @@ class TestController extends Controller
     }
 
 
-
+    //-------------------- 测试Controller->Database --------------------
+    public function testConnection(){
+        $time = date("Y-m-d", time());
+        DB::insert("insert into user(user_name,password,user_email,user_kind,user_regTime) values(?,?,?,?,?)",['mio','mio','mio','mio',$time]);
+    }
 
 
 
