@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="zh_CN">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -127,17 +127,17 @@
                 <div class="col-2 col-lg-9 d-none d-lg-block">
                     <div class="main-menu-wrap">
                         <nav class="mainmenu">
-    <ul class="main-navbar clearfix">
-        <li class="dropdown-show"><a href="new-main.html" class="arrow-toggle">主界面</a>
-            <ul class="dropdown-nav sub-dropdown">
-                <li><a href="new-create.html">创意区</a></li>
-                <li><a href="new-lab.html">实验室项目区</a></li>
-            </ul>
-        </li>
-        <li><a href="info.html">个人信息</a></li>
-        <li><a href="about-us.html">关于我们</a></li>
-    </ul>
-</nav>
+                            <ul class="main-navbar clearfix">
+                                <li class="dropdown-show"><a href="new-main.html" class="arrow-toggle">主界面</a>
+                                    <ul class="dropdown-nav sub-dropdown">
+                                        <li><a href="new-create.html">创意区</a></li>
+                                        <li><a href="new-lab.html">实验室项目区</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="info.html">个人信息</a></li>
+                                <li><a href="about-us.html">关于我们</a></li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
                 <!-- Main Menu End -->
@@ -173,7 +173,7 @@
                 <!-- Login Content Start -->
                 <div class="col-lg-5">
                     <div class="login-reg-form-wrap  pr-lg-50">
-                        <h2>已经拥有账户?</h2>
+                        <h2>登陆</h2>
 
                         <form id="form-sign-in">
                             <div class="single-input-item">
@@ -201,7 +201,7 @@
                                
                             </div>
                         </form>
-                        <button class="btn" onClick="sign_in()">登录</button>
+                        <button class="btn" id="btn-sign-in">登录</button>
                     </div>
                 </div>
                 <!-- Login Content End -->
@@ -213,23 +213,23 @@
                         <form id="form-sign-up">
 
                             <div class="single-input-item">
-                                <input vaule id="email-sign-up" name="email-sign-up" type="email" placeholder="请输入邮箱" required />
+                                <input id="email-sign-up" name="email-sign-up" type="email" placeholder="请输入邮箱" required />
                             </div>
 
                             <div class="single-input-item">
-                                <input vaule id="username-sign-up" name="username-sign-up" type="text" placeholder="请输入用户名" required />
+                                <input id="username-sign-up" name="username-sign-up" type="text" placeholder="请输入用户名" required />
                             </div>
 
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="single-input-item">
-                                        <input vaule id="password-sign-up" name="password-sign-up" type="password" placeholder="请输入密码" required />
+                                        <input id="password-sign-up" name="password-sign-up" type="password" placeholder="请输入密码" required />
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="single-input-item">
-                                        <input vaule id="password-con-sign-up" name="password-con-sign-up" type="password" placeholder="请再次输入密码" required />
+                                        <input id="password-con-sign-up" name="password-con-sign-up" type="password" placeholder="请再次输入密码" required />
                                     </div>
                                 </div>
                             </div>
@@ -467,9 +467,8 @@
 <br/>
 <p align="left"><strong>WEDO开发者</strong></p>
 <br/>
-                                </p>
 
-                                <div class="product-quantity d-flex align-items-center">
+                            <div class="product-quantity d-flex align-items-center">
                                     <button data-dismiss="modal" class="btn">确定</button>
                                 </div>
                         </div>
@@ -505,7 +504,6 @@
 <script src="../js/active.js"></script>
 
 <!--=== Function Js ===-->
-<script src="../js/sign-in.js"></script>
-<script src="../js/sign-up.js"></script>
+<script src="../js/sign_page.js"></script>
 </body>
 </html>
