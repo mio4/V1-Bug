@@ -12,7 +12,7 @@
 
 # 注册登录
 
-## URL：/usr/sign_up
+### URL：/usr/sign_up
 
 说明：用户注册信息
 
@@ -39,7 +39,7 @@
 
 ***
 
-## URL：/usr/sign_in
+### URL：/usr/sign_in
 
 说明：用户登录信息
 
@@ -67,7 +67,7 @@
 
 # 个人信息
 
-## URL：/usr/{usr_id}/info/change_name
+### URL：/usr/{usr_id}/info/change_name
 
 说明：修改用户昵称
 
@@ -89,7 +89,7 @@
 
 ***
 
-## URL：/usr/{usr_id}/info/change_password
+### URL：/usr/{usr_id}/info/change_password
 
 说明：修改用户密码
 
@@ -116,7 +116,7 @@
 
 # 项目
 
-## URL：/project/delete_project
+### URL：/project/delete_project
 
 说明：删除创意项目
 
@@ -138,7 +138,7 @@
 
 ***
 
-## URL：/project/create_project
+### URL：/project/create_project
 
 说明：发布创意项目
 
@@ -167,7 +167,7 @@
 
 ***
 
-## URL：/project/{project_id}/comment
+### URL：/project/{project_id}/comment
 
 说明：发布评论
 
