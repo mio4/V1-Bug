@@ -11,6 +11,7 @@ function read_con(){
  * 检查注册合法性
  * @returns {boolean}
  */
+// TODO 修改错误提醒方法
 function sign_up_check(){
 	var tmp = document.getElementById("username_sign_up").value;
 	//alert(tmp);
@@ -75,7 +76,7 @@ $("#btn-sign-in").click(function(){
 				}
 				else{
 					alert("登录成功");
-					window.location.replace("");
+					window.location.replace("main.html");
 				}
 			}
 		});
@@ -120,7 +121,7 @@ $("#btn_sign_up").click(function(){
 				}
 				else{
 					alert("注册成功");
-					window.location.replace("../" + data.redirect);
+					window.location.replace("main.html");
 				}
 			}
 		});
