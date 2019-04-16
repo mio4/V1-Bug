@@ -54,10 +54,10 @@ $("#btn_sign_in").click(function(){
 	$.ajax(
 		{
 			type:"POST",
-			url:"../usr/sign-in",
+			url:"../user/sign_in",
 			data:
 				{
-					user_name : username,
+					name : username,
 					password : password,
 				},
 			dataType:"json",
@@ -75,7 +75,7 @@ $("#btn_sign_in").click(function(){
 				}
 				else{
 					alert("登录成功");
-					window.location.replace("../" + data.redirect);
+					window.location.replace("");
 				}
 			}
 		});
@@ -97,7 +97,7 @@ $("#btn_sign_up").click(function(){
 	$.ajax(
 		{
 			type:"POST",
-			url:"../usr/sign-up",
+			url:"../user/sign_up",
 			data:
 				{
 					user_name : username,
