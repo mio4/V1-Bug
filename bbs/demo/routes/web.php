@@ -45,6 +45,8 @@ Route::get("/testGetSession","TestController@testGetSession");
 Route::get("/testDelSession","TestController@testDelSession");
 //测试上传文件-必须使用POST
 Route::post("/testFileUpload","TestController@testFileUpload");
+//测试数据库连接
+Route::get("/testConnection","TestController@testConnection");
 
 //------------ 路由测试 ------------
 
@@ -65,11 +67,11 @@ Route::group(['prefix' => 'usr'], function(){
     // 登出请求
     Route::get('/sign-out', 'UserController@signOut');
     //修改用户昵称
-    Route::get('/info/name','UserController@changeName');
+    Route::post('/{uid}/info/name','UserController@changeName');
     //修改用户密码
-    Route::get('/info/password','UserController@changePwd');
+    Route::post('/{uid}/info/password','UserController@changePwd');
     //FIXME 邮箱不用修改
-    Route::get('/info/mail','UserController@changeEmail');
+    Route::post('/{uid}/info/mail','UserController@changeEmail');
 
 });
 //------------ 注册登录&修改个人信息 ------------

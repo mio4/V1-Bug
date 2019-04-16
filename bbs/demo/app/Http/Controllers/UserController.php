@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DataEntity\User;
 use App\Http\Controllers\Controller;
 use http\Env\Response;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -162,4 +163,65 @@ class UserController extends Controller
 
         return redirect('main');
     }
+
+    public function changeName(Request $request,$uid){
+        $data = json_decode($request->getContent(),true);
+        $username = $data["name"];
+        //1.TODO 判断用户名是否合法
+        //2.修改用户名
+        if(User::find($uid)){
+            User::where("uid",'=',$uid)->update(['user_name' => $username]);
+            $response = [
+                'status' => 200,
+            ];
+        }
+        else{
+            $response = [
+                'status' => 400,
+            ];
+        }
+        //3.FIXME 封装返回函数，返回status code
+        return response()->json($response);
+    }
+
+    public function changePwd(Request $request,$uid){ //same as change name
+        $data = json_decode($request->getContent(),true);
+        $password = $data["password"];
+        $password = Hash::make($password);
+        //1.判断密码是否合法
+
+        //2.修改密码
+        if(User::find($uid)){
+            User::where("uid",'=',$uid)->update(['password' => $password]);
+            $response = [
+                'status' => 200,
+            ];
+        }
+        else{
+            $response = [
+                'status' => 400,
+            ];
+        }
+        //3.返回status code
+        return response()->json($response);
+    }
+
+
+    /**
+     * @param $code
+     * @param $is_redirect
+     * @param null $redirect 封装统一的返回函数
+     */
+    public function finish($code,$is_redirect,$redirect = null){
+        if($code == 200){
+
+        }
+        else if($code == 400){
+
+        }
+    }
+
+
+
+
 }
