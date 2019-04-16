@@ -47,7 +47,6 @@ Route::get("/testDelSession","TestController@testDelSession");
 Route::post("/testFileUpload","TestController@testFileUpload");
 //测试数据库连接
 Route::get("/testConnection","TestController@testConnection");
-
 //------------ 路由测试 ------------
 
 //------------ 主要页面 ------------
@@ -55,7 +54,7 @@ Route::get('/main', 'MainController@mainPage');
 //------------ 主要页面 ------------
 
 //------------ 注册登录&修改个人信息 ------------
-Route::group(['prefix' => 'usr'], function(){
+Route::group(['prefix' => 'user'], function(){
     // 注册页面
     Route::get('/sign-up', 'UserController@signUpPage');
     // 注册请求
@@ -66,13 +65,17 @@ Route::group(['prefix' => 'usr'], function(){
     Route::post('/sign-in', 'UserController@signInProcess');
     // 登出请求
     Route::get('/sign-out', 'UserController@signOut');
-    //修改用户昵称
-    Route::post('/{uid}/info/name','UserController@changeName');
-    //修改用户密码
-    Route::post('/{uid}/info/password','UserController@changePwd');
-    //FIXME 邮箱不用修改
-    Route::post('/{uid}/info/mail','UserController@changeEmail');
+    //获取个人信息
+    Route::get('/info','UserController@getUserInfo');
+});
 
+Route::group(['prefix' => 'user/info/change'], function(){
+    //全量修改
+    Route::post('/','UserController@changeAll');
+    //修改用户昵称
+    Route::post('/name','UserController@changeName');
+    //修改用户密码
+    Route::post('/password','UserController@changePassword');
 });
 //------------ 注册登录&修改个人信息 ------------
 
@@ -95,9 +98,35 @@ Route::group(['prefix' => 'project'], function(){
         // 修改项目信息请求
         Route::put('/edit', 'ProjectController@projectItemUpdateProgress')
             ->middleware('user.online');
-
         // TODO 添加更多功能
     });
 });
-
 //------------ 项目管理 ------------
+
+//------------ 关注 ------------
+Route::group(['prefix' => 'project/star'],function(){
+    //关注项目
+    Route::post('/','StarController@starProject');
+    //获取关注项目的基本信息
+    Route::get('/','StarController@getStarProject');
+});
+Route::group(['prefix' => 'user/star'],function(){
+    //关注用户
+    Route::post('/','StarController@starUser');
+    //获取关注的用户基本信息
+    Route::get('/','StarController@getStarUser');
+});
+//------------ 关注 ------------
+
+//------------ 评论 ------------
+Route::group(['prefix' => 'project/comment'],function(){
+    //发表项目的评论
+    Route::post('/','CommentController@publishComment');
+    //对项目的评论发表回复
+    Route::post('/','CommentController@replyComment');
+    //获取项目的评论
+    Route::get('/','CommentController@getComment');
+    //获取评论的回复
+    Route::get('/','CommentController@getReply');
+});
+//------------ 评论 ------------
