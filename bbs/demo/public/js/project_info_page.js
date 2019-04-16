@@ -2,11 +2,13 @@
  * 页面载入，获取项目详细信息
  */
 window.onload = function(){
+    // TODO 获取项目ID
+
     // TODO 根据后端修改
     $.ajax(
         {
             type:"POST",
-            url:"../usr/1/sign-in",
+            url:"../project/info",
             data:
                 {
                     user_name : username,
