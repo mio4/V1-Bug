@@ -60,14 +60,26 @@
 | ------ | ------------------------------------------------------------ | ---- |
 | status | 返回成功与否 200：注册成功 401：登录失败（用户未注册） 403：没有权限（密码错误）404：网络繁忙 | int  |
 
-***
-
-
 
 
 # 个人信息
 
-### URL：/usr/{usr_id}/info/change_name
+### URL：/user/info/change/
+
+说明：全量修改
+
+方法：POST
+
+| 字段 | 含义     | 类型   | 限制                        |
+| ---- | -------- | ------ | --------------------------- |
+| name | 用户昵称 | string | 8-16个字符 只包含字母和数字 |
+| TODO |          |        |                             |
+
+
+
+
+
+### URL：/user/info/change/name
 
 说明：修改用户昵称
 
@@ -89,7 +101,7 @@
 
 ***
 
-### URL：/usr/{usr_id}/info/change_password
+### URL：/user/info/change/password
 
 说明：修改用户密码
 
@@ -109,36 +121,15 @@
 | ------ | ------------- | ---- |
 | status | 200：修改成功 | int  |
 
-***
 
 
+### URL：/user/info/change/字段 
 
+TODO
 
 # 项目
 
-### URL：/project/delete_project
-
-说明：删除创意项目
-
-方法：POST
-
-`header`：    `content-type`:`application/json`
-
-参数：
-
-| 字段       | 含义               | 类型 | 限制                 |
-| ---------- | ------------------ | ---- | -------------------- |
-| project_id | 要删除的创意项目ID | int  | 是存在于数据库的项目 |
-
-响应：
-
-| 字段   | 含义          | 类型 |
-| ------ | ------------- | ---- |
-| status | 200：修改成功 | int  |
-
-***
-
-### URL：/project/create_project
+### URL：/project/create
 
 说明：发布创意项目
 
@@ -165,11 +156,72 @@
 | ------ | ------------- | ---- |
 | status | 200：发布成功 | int  |
 
-***
 
-### URL：/project/{project_id}/comment
+### URL：/project/delete
 
-说明：发布评论
+说明：删除创意项目
+
+方法：POST
+
+`header`：    `content-type`:`application/json`
+
+参数：
+
+| 字段       | 含义               | 类型 | 限制                 |
+| ---------- | ------------------ | ---- | -------------------- |
+| project_id | 要删除的创意项目ID | int  | 是存在于数据库的项目 |
+
+响应：
+
+| 字段   | 含义          | 类型 |
+| ------ | ------------- | ---- |
+| status | 200：修改成功 | int  |
+
+
+
+
+
+### URL：/project/info
+
+说明：查询项目信息
+
+
+
+### URL：/project/info/basic
+
+说明：查询项目基本信息 TOOD
+
+
+
+
+
+
+
+
+
+
+
+# 关注
+
+### URL：/project/star
+
+
+
+
+
+
+
+### URL：/user/star
+
+
+
+
+
+# 评论
+
+### URL：/project/comment/publish
+
+说明：发布项目的评论
 
 方法：POST
 
@@ -188,21 +240,23 @@
 | ------ | ------------- | ---- |
 | status | 200：评论成功 | int  |
 
-***
+
+
+### URL：/project/comment/reply/publish
+
+说明：对项目的评论发表回复
 
 
 
+### URL：/project/comment/get
+
+说明：获取项目的评论
 
 
 
+### URL：/project/comment/reply/get
 
-
-
-
-
-
-
----
+说明：获取评论的回复
 
 # No-Use
 
