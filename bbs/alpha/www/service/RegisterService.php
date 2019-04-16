@@ -5,7 +5,7 @@
  */
 
 require_once '../config.php';
-require_once ROOT_PATH.'/dao/RegisterDao.php';
+require_once ROOT_PATH.'/dao/UserDao.php';
 require_once ROOT_PATH.'/exception/RegisterException.php';
 
 class RegisterService
@@ -25,7 +25,7 @@ class RegisterService
         //保存到数据库
         try
         {
-            RegisterDao::register($username, $password, $email, $type);
+            UserDao::register($username, $password, $email, $type);
         }
         catch (RegisterException $e)
         {

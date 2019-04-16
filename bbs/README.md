@@ -60,8 +60,22 @@ PS：具体查看代码
 
 
 
-
 # 草稿
+
+TODO
+
+- [ ] 开启/关闭Laravel CSRF校验
+- [ ] 
+
+```cmd
+# 视图教程
+https://blog.csdn.net/studyphp123/article/details/81871366
+
+```
+
+
+
+
 
 ### 版本说明
 
@@ -86,9 +100,8 @@ composer create-project laravel/laravel=5.3.* demo --prefer-dist
 ```cmd
 //生成Controller
 php artisan make:controller ControllerName
-
+//生成Model
+PHP artisan make:model testModel
 ```
 
 
-
----
