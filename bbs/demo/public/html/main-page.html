@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+﻿<!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="meta description">
 
-    <title>idea-post</title>
+    <title>main</title>
 
     <!--=== Favicon ===-->
 <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon"/>
@@ -24,8 +24,14 @@
 <link href="../css/helper.min.css" rel="stylesheet">
 <!--=== Main Style CSS ===-->
 <link href="../css/style.css" rel="stylesheet">
+<link href="../css/style-2.css" rel="stylesheet">
 <!--=== Other CSS ===-->
 <link href="../css/selfdefinition.css" rel="stylesheet">
+<!-- Owl Carousel -->
+<link type="text/css" rel="stylesheet" href="../css/owl.carousel.css" />
+<link type="text/css" rel="stylesheet" href="../css/owl.theme.default.css" />
+<!-- Magnific Popup -->
+<link type="text/css" rel="stylesheet" href="../css/magnific-popup.css" />
 <!-- Modernizer JS -->
 <script src="../js/vendor/modernizr-2.8.3.min.js"></script>
 
@@ -38,7 +44,7 @@
 </style>
 </head>
 
-<body class="bg-holiday">
+<body>
 <!--== Start Header Section ==-->
 <header id="header-area">
     <!-- Start PreHeader Area -->
@@ -71,8 +77,8 @@
                         <ul class="nav justify-content-center justify-content-md-end">
                             <li><a id="btn-user-info">个人信息</a></li>
                             <li><a id="btn-logout">登出</a></li>
-                            <!--<li><a href="point-rule.html">积分规则</a></li>-->
-                            <!--<li><a href="user-info.html">修改密码</a></li>-->
+                            <!--<li><a href="reward-rule-page.html">积分规则</a></li>-->
+                            <!--<li><a href="user-info-page.html">修改密码</a></li>-->
                             <!--<li><a href="sign-page.html">登录</a></li>-->
                             <!--<li><a href="sign-page.html">注册</a></li>-->
                             <li id="top-nickname"></li>
@@ -114,7 +120,7 @@
                 <!-- Mini Cart Area Start -->
                 <div class="col-12 col-md-3 col-xl-2 m-auto text-center text-lg-right mt-xs-15">
                     <div class="minicart-wrapper">
-                        <a href="lab-post.html" class="btn btn-minicart">发布实验室项目 <!--<sup class="cart-count">3</sup>--></a>
+                        <a href="project-post-page.html" class="btn btn-minicart">发布创意 <!--<sup class="cart-count">3</sup>--></a>
                     </div>
                 </div>
                 <!-- Mini Cart Area End -->
@@ -122,166 +128,186 @@
         </div>
     </div>
     <!-- End Header Middle Area -->
-
-    <!-- Start Main Menu Area -->
-    <div class="navigation-area" id="fixheader">
-        <div class="container">
-            <div class="row">
-                <!-- Main Menu Start -->
-                <div class="col-2 col-lg-9 d-none d-lg-block">
-                    <div class="main-menu-wrap">
-                        <nav class="mainmenu">
-
-    <ul class="main-navbar clearfix">
-        <li class="dropdown-show"><a href="main.html" class="arrow-toggle">主界面</a>
-            <ul class="dropdown-nav sub-dropdown">
-                <li><a href="idea.html">创意区</a></li>
-                <li><a href="lab.html">实验室项目区</a></li>
-            </ul>
-        </li>
-        <li><a href="user-info.html">个人信息</a></li>
-        <li><a href="about-us.html">关于我们</a></li>
-    </ul>
-</nav>
-
-                    </div>
-                </div>
-                <!-- Main Menu End -->
-            </div>
-        </div>
-    </div>
-    <!-- End Main Menu Area -->
 </header>
 <!--== End Header Section ==-->
 
-<!--== Start Page Breadcrumb ==-->
-<div class="page-breadcrumb-wrap">
+<!--== Start Slider Area ==-->
+<div class="slider-area-wrap">
+    <div class="home-slider-carousel owl-carousel">
+        <div class="single-slide-item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="slider-text">
+                            <h2>创意区</h2>
+                            <h3>体验寻找和发现的乐趣！</h3>
+                            <h4>在这里你可以查看其他人发布的创意，也可以发布自己的创意</h4>
+                            <a href="project-list-page.html" class="btn">立即查看</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="single-slide-item slide-item_2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="slider-text">
+                            <h2>实验室项目区</h2>
+                            <h3>征集志同道合的队友！</h3>
+                            <h4>在这里你可以看到一些正在进行的实验室项目，如果你是实验室官方认证账户，你也可以发布自己的实验室项目</h4>
+                            <a href="lab.html" class="btn">立即查看</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="single-slide-item slide-item_3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="slider-text">
+                            <h2>个人信息</h2>
+                            <h3>做最真实的自己！</h3>
+                            <h4>在这里你可以查看自己和其他人的信息，并且修改自己的个人信息</h4>
+                            <a href="user-info-page.html" class="btn">立即查看</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--== End Slider Area ==-->
+
+<!--== Start Call To Action ==-->
+<section id="call-to-action">
     <div class="container">
+        <div class="call-to-action-content">
+            <div class="row">
+                <!-- Single Call to Action Start -->
+                <div class="col-lg-3 col-sm-6 m-auto">
+                    <div class="single-action-item d-flex align-items-center">
+                        <div class="call-action-icon" style="margin-left:40px;">
+                            <i class="fa fa-smile-o"></i>
+                        </div>
+                        <div class="call-action-info">
+                            <h4>极致体验</h4>
+                            <p>不断完善用户界面</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Call to Action End -->
+
+                <!-- Single Call to Action Start -->
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-action-item d-flex align-items-center">
+                        <div class="call-action-icon" style="margin-left:40px;">
+                            <i class="fa fa-battery"></i>
+                        </div>
+                        <div class="call-action-info">
+                            <h4>超级续航</h4>
+                            <p>24&times;7提供服务</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Call to Action End -->
+
+                <!-- Single Call to Action Start -->
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-action-item d-flex align-items-center">
+                        <div class="call-action-icon" style="margin-left:40px;">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <div class="call-action-info">
+                            <h4>日常更新</h4>
+                            <p>每天检查更新数据库</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Call to Action End -->
+
+                <!-- Single Call to Action Start -->
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-action-item d-flex align-items-center">
+                        <div class="call-action-icon" style="margin-left:40px;">
+                            <i class="fa fa-key"></i>
+                        </div>
+                        <div class="call-action-info">
+                            <h4>保护隐私</h4>
+                            <p>使用加密算法</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Call to Action End -->
+            </div>
+        </div>
+    </div>
+</section>
+<!--== End Call To Action ==-->
+<div class="section sm-padding" id="numbers">
+
+    <!-- Background Image -->
+    <div class="bg-img" style="background-image: url('../img/background2.jpg');">
+        <div class="overlay"></div>
+    </div>
+    <!-- /Background Image -->
+
+    <!-- Container -->
+    <div class="container">
+
+        <!-- Row -->
         <div class="row">
-            <div class="col-lg-12">
-                <div class="page-breadcrumb">
-                    <ul class="nav">
-                        <li><a href="main.html">主界面</a></li>
-                        <li><a href="idea.html">创意区</a></li>
-                        <li><a href="idea-post.html" class="active">发布创意</a></li>
-                    </ul>
+
+            <!-- number -->
+            <div class="col-sm-3 col-xs-6">
+                <div class="number">
+                    <i class="fa fa-users"></i>
+                    <h3 class="white-text"><span class="counter">100</span></h3>
+                    <span class="white-text">用户</span>
                 </div>
             </div>
+            <!-- /number -->
+
+            <!-- number -->
+            <div class="col-sm-3 col-xs-6">
+                <div class="number">
+                    <i class="fa fa-comment"></i>
+                    <h3 class="white-text"><span class="counter">50</span></h3>
+                    <span class="white-text">创意</span>
+                </div>
+            </div>
+            <!-- /number -->
+
+            <!-- number -->
+            <div class="col-sm-3 col-xs-6">
+                <div class="number">
+                    <i class="fa fa-flask"></i>
+                    <h3 class="white-text"><span class="counter">30</span></h3>
+                    <span class="white-text">实验室项目</span>
+                </div>
+            </div>
+            <!-- /number -->
+
+            <!-- number -->
+            <div class="col-sm-3 col-xs-6">
+                <div class="number">
+                    <i class="fa fa-user-circle"></i>
+                    <h3 class="white-text"><span class="counter">6</span></h3>
+                    <span class="white-text">开发者</span>
+                </div>
+            </div>
+            <!-- /number -->
+
         </div>
+        <!-- /Row -->
+
     </div>
+    <!-- /Container -->
+
 </div>
-<!--== End Page Breadcrumb ==-->
-  
-   
-<!--== Page Content Wrapper Start ==-->
-<div id="page-content-wrapper">
-    <div class="container">
-        <div class="comment-form-wrap">
-            <h1>创建你的新创意</h1><br>
-        </div>
-        <form role="form">
-            <div class="single-input-item">
-                <h2 class="text-black-80">创意题目:</h2>
-                <input id="project-name" class="form-control" type="text" placeholder="请输入创意题目，最多30字..."/>
-            </div>
-            <div>
-                <label for="project-name" class="text-danger" >
-                    <span id="project-name-alert"></span>
-                </label>
-            </div>
-            <div class="row">
-                <div class="col-sm-2">
-                    <h2 class="text-black-80">创意类型:</h2>
-                </div>
-                <div class="col-sm-10">
-                    <div id="project-kind">
-                        <div class="radio-inline">
-                            <input type="radio" name="project-kind" id="life-project" value="0" checked>
-                            <label class="radio-inline" for="life-project">生活创意</label>
-                        </div>
-                        <div class="radio-inline">
-                            <input type="radio" name="project-kind" id="technology-project"  value="1">
-                            <label class="radio-inline" for="technology-project">科技创意</label>
-                        </div>
-                        <div class="radio-inline">
-                            <input type="radio" name="project-kind" id="lab-project"  value="2">
-                            <label class="radio-inline" for="lab-project">实验室项目</label>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="single-input-item">
-                        <h2 class="text-black-80">悬赏:</h2>
-                        <input id="project-reward" type="number" max="10000" min="0" class="form-control" placeholder="0~10000"/>
-                    </div>
-                    <div>
-                        <label for="project-reward" class="text-danger" >
-                            <span id="project-reward-alert"></span>
-                        </label>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="single-input-item">
-                        <h2 class="text-black-80">开发者人数限制:</h2>
-                        <input id="project-participant-max" type="number" max="10" min="0" class="form-control" placeholder="0~10"/>
-                    </div>
-                    <div>
-                        <label for="project-participant-max" class="text-danger" >
-                            <span id="project-participant-max-alert"></span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="single-input-item">
-                <h2 class="text-black-80">创意介绍:</h2>
-                <textarea id="project-info" cols="30" rows="6" class="form-control" placeholder="请输入创意介绍，最多300字符..."></textarea>
-            </div>
-            <div>
-                <label for="project-info" class="text-danger" >
-                    <span id="project-info-alert"></span>
-                </label>
-            </div>
-
-            <h1 class="m-t-40 m-b-20">添加图片</h1>
-            <div class="row text-center">
-                <div class = "card col-md-3 h-100 p-20 m-l-10 m-r-10">
-                    <div id="image-1" class="card-body">
-                        <div>
-                            <img src="../img/holiday.jpg" alt="概念图1" class="img-fluid"/>
-                        </div>
-                        <button type="button" class="btn m-t-20">上传图片</button>
-                    </div>
-                </div>
-                <div class = "card col-md-3 h-100 p-20 m-l-10 m-r-10">
-                    <div id="image-2" class="card-body">
-                        <div>
-                            <img src="../img/bulb.jpg" alt="概念图2" class="img-fluid"/>
-                        </div>
-                        <button type="button" class="btn m-t-20">上传图片</button>
-                    </div>
-
-                </div>
-                <div class = "card col-md-3 h-100 p-20 m-l-10 m-r-10">
-                    <div id="image-3" class="card-body">
-                        <div>
-                            <img src="../img/city.jpg" alt="概念图3" class="img-fluid"/>
-                        </div>
-                        <button type="button" class="btn m-t-20">上传图片</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-        <div class="single-input-item">
-            <button id="create-project" type="button" class="btn">提交</button>
-        </div>
-    </div>
-</div>
-<!--== Page Content Wrapper End ==-->
 
 <!--== Start Footer Area ==-->
 <footer id="footer-area">
@@ -398,11 +424,10 @@
 <script src="../js/ajax-mail.js"></script>
 <!--=== Plugins Min Js ===-->
 <script src="../js/plugins.js"></script>
-
 <!--=== Active Js ===-->
 <script src="../js/active.js"></script>
-
-<script src="../js/idea-post.js"></script>
+<!--=== Other Js ===-->
+<script type="text/javascript" src="../js/main.js"></script>
 <script type="text/javascript" src="../js/common-operate.js"></script>
 </body>
 </html>

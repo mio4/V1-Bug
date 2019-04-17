@@ -27,13 +27,6 @@
     background-size: 100% 100%; 
     background-attachment: fixed;
 }
-.bg-boat{
-	opacity:0.9;
-    background: url("../img/boat.jpg");
-    background-repeat:no-repeat; 
-    background-size: 100% 100%; 
-    background-attachment: fixed;
-}
 .bg-cabin{
 	opacity:0.9;
     background: url("../img/cabin.jpg");

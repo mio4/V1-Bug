@@ -67,7 +67,7 @@ $("#btn-sign-in").click(function(){
 			},
 			error : function() {
 				alert('网络繁忙');
-				window.location.replace("main.html"); // TODO 测试用
+				window.location.replace("main-page.html"); // TODO 测试用
 			},
 			success:function(data)
 			{
@@ -77,7 +77,7 @@ $("#btn-sign-in").click(function(){
 				}
 				else{
 					alert("登录成功");
-					window.location.replace("main.html");
+					window.location.replace("main-page.html");
 				}
 			}
 		});
@@ -122,7 +122,7 @@ $("#btn-sign-up").click(function(){
 				}
 				else{
 					alert("注册成功");
-					window.location.replace("main.html");
+					window.location.replace("main-page.html");
 				}
 			}
 		});

@@ -1,12 +1,12 @@
 /* -- typography -- */
 
-body {
+/*body {
     font-family: 'Varela Round', sans-serif;
     font-size: 16px;
     line-height: 1.6;
     overflow-x: hidden;
     color: #868F9B;
-}
+}*/
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
