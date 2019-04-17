@@ -2,7 +2,7 @@
 var projectInfoList = {};
 
 /**
- * 获取并加载个人创建项目列表信息
+ * 获取并加载项目列表信息
  */
 function load_project_list(){
     //
@@ -24,7 +24,7 @@ function load_project_list(){
     });
     // TODO 加载项目列表
     // 信息存在projectInfoList里
-    // 格式 {{name:项目名，reward:悬赏，create_time:发布时间，picture:图片URL},.......}
+    // 格式 {{pid:id，name:项目名，reward:悬赏，create_time:发布时间，picture:图片URL},.......}
     
 }
 
