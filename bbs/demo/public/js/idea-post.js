@@ -92,7 +92,7 @@ $("#create-project").click(function(){
             success:function(data){
                 if(data === 200){
                     // TODO
-                    window.location.href = "idea-detail.html" + "?pid=" + data.pid;
+                    window.location.href = "project-info-page.html" + "?pid=" + data.pid;
                 }
                 else{
                     //todo:显示修改失败
