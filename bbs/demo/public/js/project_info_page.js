@@ -16,7 +16,7 @@ var projectPicUrl = "";
 window.onload = function(){
 
     // 获取项目ID
-    var pid = get_url_param("pid");
+    projectId = get_url_param("pid");
 
     // 获取项目信息
     $.ajax(
@@ -41,7 +41,6 @@ window.onload = function(){
                 }
                 else if(data.status === 200){
                     projectName = data.name;
-                    projectId = data.pid;
                     projectKind = data.kind;
                     projectOwnerName = data.user_name;
                     projectOwnerId = data.uid;
