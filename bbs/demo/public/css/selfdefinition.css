@@ -6,6 +6,9 @@
 	margin-top: 40px;
 }
 
+.fake-link {
+	cursor:pointer;
+}
 .carousel-inner img {
   width: 100%;
   height: 100%;
