@@ -48,6 +48,12 @@ class StarController extends Controller
     }
 
     //TODO
+    public function getStarProjectByUid(Request $request){
+        $data = json_decode($request->getContent(),true);
+        $uid = $data['uid'];
+    }
+
+    //TODO
     public function starUser(Request $request){
         $data = json_decode($request->getContent(),true);
         $star_uid = $data['uid'];
