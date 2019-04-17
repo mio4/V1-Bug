@@ -11,6 +11,7 @@ function read_con(){
  * 检查注册合法性
  * @returns {boolean}
  */
+// TODO 修改错误提醒方法
 function sign_up_check(){
 	var tmp = document.getElementById("username_sign_up").value;
 	//alert(tmp);
@@ -66,6 +67,7 @@ $("#btn-sign-in").click(function(){
 			},
 			error : function() {
 				alert('网络繁忙');
+				window.location.replace("main.html"); // TODO 测试用
 			},
 			success:function(data)
 			{
@@ -75,7 +77,7 @@ $("#btn-sign-in").click(function(){
 				}
 				else{
 					alert("登录成功");
-					window.location.replace("");
+					window.location.replace("main.html");
 				}
 			}
 		});
@@ -84,7 +86,7 @@ $("#btn-sign-in").click(function(){
 /**
  * 注册Ajax请求
  */
-$("#btn_sign_up").click(function(){
+$("#btn-sign-up").click(function(){
 	if(!sign_up_check())
 	{
 		return;
@@ -120,7 +122,7 @@ $("#btn_sign_up").click(function(){
 				}
 				else{
 					alert("注册成功");
-					window.location.replace("../" + data.redirect);
+					window.location.replace("main.html");
 				}
 			}
 		});

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -69,10 +69,12 @@
                 <div class="col-md-7 col-lg-6 mt-xs-10">
                     <div class="site-setting-menu">
                         <ul class="nav justify-content-center justify-content-md-end">
-                            <li><a href="point-rule.html">积分规则</a></li>
-                            <li><a href="info.html">修改密码</a></li>
-                            <li><a href="sign-in-up.html">登录</a></li>
-                            <li><a href="sign-in-up.html">注册</a></li>
+                            <li><a id="btn-user-info">个人信息</a></li>
+                            <li><a id="btn-logout">登出</a></li>
+                            <!--<li><a href="point-rule.html">积分规则</a></li>-->
+                            <!--<li><a href="user-info.html">修改密码</a></li>-->
+                            <!--<li><a href="sign-page.html">登录</a></li>-->
+                            <!--<li><a href="sign-page.html">注册</a></li>-->
                             <li id="top-nickname"></li>
                             <li id="top-image"></li>
                         </ul>
@@ -136,7 +138,7 @@
                 <li><a href="lab.html">实验室项目区</a></li>
             </ul>
         </li>
-        <li><a href="info.html">个人信息</a></li>
+        <li><a href="user-info.html">个人信息</a></li>
         <li><a href="about-us.html">关于我们</a></li>
     </ul>
 </nav>
@@ -175,24 +177,24 @@
             <!-- Start Shop Page Content -->
             <div class="col-lg-12">
                 <div class="shop-page-content-wrap">
-                    <div class="products-settings-option d-block d-md-flex">
-                        <div class="product-cong-left d-flex align-items-center">
-                            <ul class="product-view d-flex align-items-center">
-                                <li class="box-gird current"><i class="fa fa-th"></i></li>
-                                <li class="list"><i class="fa fa-list-ul"></i></li>
-                            </ul>
-                            <span class="show-items">排列方式</span>
-                        </div>
+                    <!--<div class="products-settings-option d-block d-md-flex">-->
+                        <!--<div class="product-cong-left d-flex align-items-center">-->
+                            <!--<ul class="product-view d-flex align-items-center">-->
+                                <!--<li class="box-gird current"><i class="fa fa-th"></i></li>-->
+                                <!--<li class="list"><i class="fa fa-list-ul"></i></li>-->
+                            <!--</ul>-->
+                            <!--<span class="show-items">排列方式</span>-->
+                        <!--</div>-->
 
-                        <div class="product-sort_by d-flex align-items-center mt-3 mt-md-0">
-                            <label for="sort">排序方式:</label>
-                            <select name="sort" id="sort">
-                                <option value="时间">时间</option>
-                                <option value="名称">名称</option>
-                                <option value="热度">热度</option>
-                            </select>
-                        </div>
-                    </div>
+                        <!--<div class="product-sort_by d-flex align-items-center mt-3 mt-md-0">-->
+                            <!--<label for="sort">排序方式:</label>-->
+                            <!--<select name="sort" id="sort">-->
+                                <!--<option value="时间">时间</option>-->
+                                <!--<option value="名称">名称</option>-->
+                                <!--<option value="热度">热度</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+                    <!--</div>-->
 
                     <div class="shop-page-products-wrap">
                         <div class="products-wrapper">
@@ -201,17 +203,17 @@
                                 <div class="col-lg-3 col-sm-6">
                                     <div class="single-product-item">
                                         <figure class="product-thumb">
-                                            <a href="idea-detail.html"><img src="../img/product-1.jpg"
-                                                                               alt="Product"></a>
-                                            <a href="idea-detail.html" class="btn btn-round btn-cart" title="Quick View"><i
-                                                class="fa fa-eye"></i></a>
+                                            <a href="idea-detail.html">
+                                                <img src="../img/product-1.jpg" alt="Product">
+                                            </a>
+                                            <a href="idea-detail.html" class="btn btn-round btn-cart" title="Quick View">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
                                         </figure>
                                         <div class="product-details">
-                                            <h2 class="product-title"><a href="single-product.html">创意名称
+                                            <h2 class="product-title"><a href="idea-detail.html">001
                                                 </a></h2>
-                                            <p class="pro-desc"><br /></p>
                                             <p class="pro-desc">创意介绍</p>
-
                                         </div>
                                     </div>
                                 </div>
@@ -458,5 +460,6 @@
 
 <!--=== Active Js ===-->
 <script src="../js/active.js"></script>
+<script type="text/javascript" src="../js/common-operate.js"></script>
 </body>
 </html>
