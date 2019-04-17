@@ -7,10 +7,27 @@ var userRegTime = "4";
 var userReward = "0"; // TODO 增加该项
 var userKindList = ["", "普通用户", "实验室官方"];
 
+// 用户详细信息
+var userStarUserInfo = {};
+var userStarProjectInfo = {};
+var userOwnProjectInfo = {};
+var userParticipateProjectInfo = {};
+
 // 验证修改信息合法性
 var nickname_legal = false;
 var password_legal = false;
 var password_con_legal = false;
+
+/**
+ * 更新用户基础信息
+ */
+function refresh_user_info(){
+	$("#user-name").text(userName);
+	$("#user-email").text(userEmail);
+	$("#user-kind").text(userKind);
+	$("#user-regTime").text(userRegTime);
+}
+
 
 /**
  * 动态监视昵称修改正确性。
@@ -48,7 +65,9 @@ $("#change-name").click(function(){
         	},
         	dataType:"json",
         	success:function(data){
-        		if(data === 200){}
+        		if(data === 200){
+        			refresh_user_info();
+				}
         		else{
         			//todo:显示修改失败
         		}
@@ -169,6 +188,126 @@ $("#change-password").click(function(){
 	}
 });
 
+
+/**
+ * 获取并加载个人关注用户列表信息
+ */
+function load_user_star_list(){
+	$.ajax({
+		type : "POST",
+		url:"../user/star/get",
+		data:
+			{
+				uid : userId,
+			},
+		dataType:"json",
+		success:function(data){
+			if(data === 200){
+				userStarUserInfo = data.info;
+			}
+			else{
+				// TODO 加载信息失败
+			}
+		},
+		error:function(){
+			alert("网络繁忙请刷新。");
+		}
+	});
+	// TODO 加载个人关注用户列表
+	// 信息存在userStarUserInfo里
+	// 格式 {{用户名，头像的URL},{用户名，头像的URL},{用户名，头像的URL} .......}
+}
+
+/**
+ * 获取并加载个人收藏项目列表信息
+ */
+function load_project_star_list(){
+	$.ajax({
+		type : "POST",
+		url:"../project/star/get",
+		data:
+			{
+				uid : userId,
+			},
+		dataType:"json",
+		success:function(data){
+			if(data === 200){
+				userStarProjectInfo = data.info;
+			}
+			else{
+				// TODO 加载信息失败
+			}
+		},
+		error:function(){
+			alert("网络繁忙请刷新。");
+		}
+	});
+	// TODO 加载个人收藏项目列表
+	// 信息存在userStarProjectInfo里
+	// 格式 {{项目名，图片的URL},{项目名，图片的URL},{项目名，图片的URL} .......}
+
+}
+
+/**
+ * 获取并加载个人创建项目列表信息
+ */
+function load_project_own_list(){
+	//
+	$.ajax({
+		type : "POST",
+		url:"../project/info/basic/own",
+		data:
+			{
+				uid : userId,
+			},
+		dataType:"json",
+		success:function(data){
+			if(data === 200){
+				userOwnProjectInfo = data.info;
+			}
+			else{
+				// TODO 加载信息失败
+			}
+		},
+		error:function(){
+			alert("网络繁忙请刷新。");
+		}
+	});
+	// TODO 加载个人创建项目列表
+	// 信息存在userOwnProjectInfo里
+	// 格式 {{项目名，图片的URL},{项目名，图片的URL},{项目名，图片的URL} .......}
+}
+
+/**
+ * 获取并加载个人参加项目列表信息
+ */
+function load_project_participate_list(){
+	//
+	$.ajax({
+		type : "POST",
+		url:"../project/info/basic/participate",
+		data:
+			{
+				uid : userId,
+			},
+		dataType:"json",
+		success:function(data){
+			if(data === 200){
+				userParticipateProjectInfo = data.info;
+			}
+			else{
+				// TODO 加载信息失败
+			}
+		},
+		error:function(){
+			alert("网络繁忙请刷新。");
+		}
+	});
+	// TODO 加载个人参加项目列表
+	// 信息存在userParticipateProjectInfo里
+	// 格式 {{项目名，图片的URL},{项目名，图片的URL},{项目名，图片的URL} .......}
+}
+
 /**
  * 加载个人信息页面数据
  */
@@ -185,6 +324,7 @@ window.onload = function(){
 			success:function(data){
 				if(data === 200){
 					userName = data.name;
+					userId = data.uid;
 					userEmail = data.email;
 					userKind = userKindList[data.kind];
 					userRegTime = data.regTime;
@@ -227,8 +367,18 @@ window.onload = function(){
 		$("#btn-change-password").hide();
 	}
 
+	// 更新个人信息
 
-	// TODO 个人详细信息
+	refresh_user_info();
+
+	load_user_star_list();
+
+	load_project_star_list();
+
+	load_project_own_list();
+
+	load_project_participate_list();
+
 };
 
 var a = '{\
