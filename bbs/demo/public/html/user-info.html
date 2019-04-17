@@ -39,7 +39,7 @@
 
 </head>
 
-<body class="bg-city">
+<body class="bg-cabin">
 <!--== Start Header Section ==-->
 <header id="header-area">
     <!-- Start PreHeader Area -->
@@ -170,8 +170,10 @@
 </div>
 <!--== End Page Breadcrumb ==-->
 
+<!--== Page Content Wrapper Start ==-->
+<div id="page-content-wrapper">
   <div class="container">
-    <div class="row h-800">
+    <div class="row">
 	    <div class="col-md-4 text-center">
         <div class="card m-t-40">
           <img class="card-img-top w-100per" src="../img/usr.png" alt="头像">
@@ -259,7 +261,7 @@
             </li>
           </ul>
           <!-- Tab panes -->
-          <div id="info-tab-content" class="tab-content"><!--可以设计scroll安装的位置-->
+          <div class="tab-content" id="info-tab-content"><!--可以设计scroll安装的位置-->
             <div id="my-collection" class="container tab-pane active"><br>
               <div id="my-collection-show">
               </div>
@@ -408,32 +410,10 @@
 
     </div>
   </div>
-  
-  <!--<div class="modal fade" id="mail-mod">-->
-    <!--<div class="modal-dialog">-->
-      <!--<div class="modal-content">-->
-        <!--<div class="modal-header">-->
-          <!--<h3 class="modal-title">修改邮箱</h3>-->
-          <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
-        <!--</div>-->
-        <!--<form>-->
-          <!--<div class="modal-body">-->
-            <!--<div class="input-group input-group-lg">-->
-              <!--<div class="input-group-prepend">-->
-                <!--<span class="input-group-text w-100">邮箱</span>-->
-              <!--</div>-->
-              <!--<input type="email" class="form-control" placeholder="请输入新邮箱" id="mail-input" name="mail-input" required autofocus>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</form>-->
-        <!--<div class="modal-footer">-->
-            <!--<button type="button" class="btn btn-primary mr-3" data-dismiss="modal">返回</button>-->
-            <!--<button type="button" class="btn btn-primary" id="mail-ok">确定</button>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
+</div>
+<!--== Page Content Wrapper End ==-->
 
+<!--== Modal Area Start ==-->
   <div class="modal fade" id="change-name-box">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -504,6 +484,7 @@
       </div>
     </div>
   </div>
+<!--== Modal Area End ==-->
 
 <!--== Start Footer Area ==-->
 <footer id="footer-area">
