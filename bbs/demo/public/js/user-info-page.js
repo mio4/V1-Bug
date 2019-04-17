@@ -215,7 +215,7 @@ function load_user_star_list(){
 	});
 	// TODO 加载个人关注用户列表
 	// 信息存在userStarUserInfo里
-	// 格式 {{用户名，头像的URL},{用户名，头像的URL},{用户名，头像的URL} .......}
+	// 格式 {{name:用户名，picture:头像的URL},.......}
 }
 
 /**
@@ -244,7 +244,7 @@ function load_project_star_list(){
 	});
 	// TODO 加载个人收藏项目列表
 	// 信息存在userStarProjectInfo里
-	// 格式 {{项目名，图片的URL},{项目名，图片的URL},{项目名，图片的URL} .......}
+	// 格式 {{name:项目名，create_time:创建时间},.......}
 
 }
 
@@ -275,7 +275,7 @@ function load_project_own_list(){
 	});
 	// TODO 加载个人创建项目列表
 	// 信息存在userOwnProjectInfo里
-	// 格式 {{项目名，图片的URL},{项目名，图片的URL},{项目名，图片的URL} .......}
+	// 格式 {{name:项目名create_time:创建时间},.......}
 }
 
 /**
@@ -305,7 +305,7 @@ function load_project_participate_list(){
 	});
 	// TODO 加载个人参加项目列表
 	// 信息存在userParticipateProjectInfo里
-	// 格式 {{项目名，图片的URL},{项目名，图片的URL},{项目名，图片的URL} .......}
+	// 格式 {{name:项目名，create_time:创建时间},.......}
 }
 
 /**
