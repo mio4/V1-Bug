@@ -63,6 +63,23 @@ window.onload = function(){
     $("#project-reward").innerText = projectReward;
     $("#project-participant-max").innerText = projectMaxParticipant;
     $("#project-create-time").innerText = projectCreateTime;
+    switch (projectKind) {
+        case 0:{
+            $("#project-kind").innerText = "生活创意";
+            break;
+        }
+        case 1:{
+            $("#project-kind").innerText = "科技创意";
+            break;
+        }
+        case 2:{
+            $("#project-kind").innerText = "实验室项目";
+            break;
+        }
+        default:{
+            $("#project-kind").innerText = "普通项目";
+        }
+    }
 
     // TODO 更新评论及回复
 };

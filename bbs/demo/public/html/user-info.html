@@ -70,10 +70,12 @@
                 <div class="col-md-7 col-lg-6 mt-xs-10">
                     <div class="site-setting-menu">
                         <ul class="nav justify-content-center justify-content-md-end">
-                            <li><a href="point-rule.html">积分规则</a></li>
-                            <li><a href="user-info.html">修改密码</a></li>
-                            <li><a href="sign-in-up.html">登录</a></li>
-                            <li><a href="sign-in-up.html">注册</a></li>
+                            <li><a id="btn-user-info">个人信息</a></li>
+                            <li><a id="btn-logout">登出</a></li>
+                            <!--<li><a href="point-rule.html">积分规则</a></li>-->
+                            <!--<li><a href="user-info.html">修改密码</a></li>-->
+                            <!--<li><a href="sign-in-up.html">登录</a></li>-->
+                            <!--<li><a href="sign-in-up.html">注册</a></li>-->
                             <li id="top-nickname"></li>
                             <li id="top-image"></li>
                         </ul>
@@ -175,8 +177,8 @@
           <img class="card-img-top w-100per" src="../img/usr.png" alt="头像">
           <div class="card-body">
             <h2 id="user-name" class="card-title">昵称</h2>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#change-name-box" >修改昵称</button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#change-passwrod-box" >修改密码</button>
+            <button id="btn-change-name" type="button" class="btn btn-primary" data-toggle="modal" data-target="#change-name-box" >修改昵称</button>
+            <button id="btn-change-password" type="button" class="btn btn-primary" data-toggle="modal" data-target="#change-password-box" >修改密码</button>
           </div>
         </div>
 
@@ -658,7 +660,8 @@
 <script src="../js/active.js"></script>
 
 <!--=== Function Js ===-->
-<script src="../js/user-info.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/user-info-page.js"></script>
 </body>
 </html>
     

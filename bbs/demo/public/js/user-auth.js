@@ -67,6 +67,7 @@ $("#btn-sign-in").click(function(){
 			},
 			error : function() {
 				alert('网络繁忙');
+				window.location.replace("main.html"); // TODO 测试用
 			},
 			success:function(data)
 			{
@@ -85,7 +86,7 @@ $("#btn-sign-in").click(function(){
 /**
  * 注册Ajax请求
  */
-$("#btn_sign_up").click(function(){
+$("#btn-sign-up").click(function(){
 	if(!sign_up_check())
 	{
 		return;
@@ -123,6 +124,26 @@ $("#btn_sign_up").click(function(){
 					alert("注册成功");
 					window.location.replace("main.html");
 				}
+			}
+		});
+});
+
+$("#btn-logout").click(function(){
+	$.ajax(
+		{
+			type:"GET",
+			url:"../user/logout",
+			dataType:"json",
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+			},
+			error : function() {
+				alert('网络繁忙');
+				window.location.replace("sign-in-up.html"); // TODO 测试用
+			},
+			success:function()
+			{
+				window.location.replace("sign-in-up.html");
 			}
 		});
 });

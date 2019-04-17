@@ -176,31 +176,57 @@ window.onload = function(){
 
 	// 从url获取页面用户ID
 	userId = get_url_param('uid');
-
-	// 个人信息
-	$.ajax({
-		type : "POST",
-		url:"../user/info",
-		data:
-			{
-				uid:userId,
+	if(userId === null){
+		console.log("OK");
+		$.ajax({
+			type : "GET",
+			url:"../user/info",
+			dataType:"json",
+			success:function(data){
+				if(data === 200){
+					userName = data.name;
+					userEmail = data.email;
+					userKind = userKindList[data.kind];
+					userRegTime = data.regTime;
+				}
+				else{
+					// TODO 加载信息失败
+				}
 			},
-		dataType:"json",
-		success:function(data){
-			if(data === 200){
-				userName = data.name;
-				userEmail = data.email;
-				userKind = userKindList[data.kind];
-				userRegTime = data.regTime;
+			error:function(){
+				alert("网络繁忙请刷新。");
 			}
-			else{
-				// TODO 加载信息失败
+		});
+	}
+	else{
+		// 个人信息
+		$.ajax({
+			type : "POST",
+			url:"../user/info",
+			data:
+				{
+					uid:userId,
+				},
+			dataType:"json",
+			success:function(data){
+				if(data === 200){
+					userName = data.name;
+					userEmail = data.email;
+					userKind = userKindList[data.kind];
+					userRegTime = data.regTime;
+				}
+				else{
+					// TODO 加载信息失败
+				}
+			},
+			error:function(){
+				alert("网络繁忙请刷新。");
 			}
-		},
-		error:function(){
-			alert("网络繁忙请刷新。");
-		}
-	});
+		});
+		$("#btn-change-name").hide();
+		$("#btn-change-password").hide();
+	}
+
 
 	// TODO 个人详细信息
 };
