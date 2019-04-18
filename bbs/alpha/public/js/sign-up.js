@@ -35,6 +35,8 @@ function sign_up(){
       }
     };
 	xmlhttp.send("RegInfo="+JSON.stringify(data));
+	console.log("happy");
+	console.log("RegInfo="+JSON.stringify(data));
 }
 function sign_up_check(){
 	var tmp = document.getElementById("username-sign-up").value;

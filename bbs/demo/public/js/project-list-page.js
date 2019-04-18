@@ -18,8 +18,8 @@ var projectInfoList = [a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13];
 /**
  * 全局变量
  */
-num_per_page=12;
-current_page=1;
+var num_per_page=12;
+var current_page=1;
 
 
 /**
@@ -53,8 +53,6 @@ function load_project_list(){
 /**
  * 加载页面要显示的所有项目，并分页
  */
-console.log("长度");
-console.log(projectInfoList.length);
 window.onload = function (){
     //load_project_list(); //使用模拟数据，没有真正从后端获取
     current_page = 1;

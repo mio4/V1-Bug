@@ -8,10 +8,33 @@ var userReward = "0"; // TODO 增加该项
 var userKindList = ["", "普通用户", "实验室官方"];
 
 // 用户详细信息
-var userStarUserInfo = {};
-var userStarProjectInfo = {};
-var userOwnProjectInfo = {};
-var userParticipateProjectInfo = {};
+var userStarUserInfo = [];
+var userStarProjectInfo = [];
+var userOwnProjectInfo = [];
+var userParticipateProjectInfo = [];
+var num_per_page=10; // 每页显示数量
+var current_page=1; // 当前页码
+var current_tab="SUI"; // 当前tab页面
+var SUI_total;
+var SUI_left;
+var SUI_pages;
+var SPI_total;
+var SPI_left;
+var SPI_pages;
+var OPI_total;
+var OPI_left;
+var OPI_pages;
+var PPI_total;
+var PPI_left;
+var PPI_pages;
+var data;
+/**
+*表示方法介绍
+*userStarUserInfo => SUI;
+*userStarProjectInfo => SPI;
+*userOwnProjectInfo => OPI;
+*userParticipateProjectInfo => PPI;
+*/
 
 // 验证修改信息合法性
 var nickname_legal = false;
@@ -380,6 +403,175 @@ window.onload = function(){
 	load_project_participate_list();
 
 };
+
+/**
+ * 显示加载个人关注用户列表，并分页
+ */
+window.onload = function (){
+	current_page = 1;
+	current_tab = 1;
+	data = [userStarProjectInfo, userStarProjectInfo, userOwnProjectInfo, userParticipateProjectInfo];
+	
+	//加载每个tab表的基本信息
+	SUI_total = userStarUserInfo.length;
+	SUI_left = SUI_total % num_per_page;
+	SUI_pages = (SUI_total - SUI_left) / num_per_page;
+	if(SUI_left > 0){
+		SUI_pages += 1;
+	}
+	SPI_total = userStarProjectInfo.length;
+	SPI_left = SPI_total % num_per_page;
+	SPI_pages = (SPI_total - SPI_left) / num_per_page;
+	if(SPI_left > 0){
+		SPI_pages += 1;
+	}
+	OPI_total = userOwnProjectInfo.length;
+	OPI_left = OPI_total % num_per_page;
+	OPI_pages = (OPI_total - OPI_left) / num_per_page;
+	if(OPI_left > 0){
+		OPI_pages += 1;
+	}
+	PPI_total = userParticipateProjectInfo.length;
+	PPI_left = PPI_total % num_per_page;
+	PPI_pages = (PPI_total - PPI_left) / num_per_page;
+	if(PPI_left > 0){
+		PPI_pages += 1;
+	}
+	
+	//用收藏项目列表初始化页面显示内容
+	click-tab("SUI");
+	/*
+	document.getElementById("SUI-page-index").innerHTML="";
+	document.getElementById("SUI-page-index").innerHTML += '<li><a class="fake-link" aria-label="Previous" onclick="click_previous()">&laquo;</a></li>';
+	var string="";
+	for(var i=1;i <= SUI_pages;i++){
+		string = string + '<li><a class="fake-link" id="SUI-page-';
+		string = string + i.toString();
+		string = string + '" onclick="click_page_index(';
+		string = string + i.toString();
+		string = string + ', "SUI")">';
+		string = string + i.toString();
+		string = string + '</a></li>';
+	}
+	document.getElementById("SUI-page-index").innerHTML += string;
+	document.getElementById("SUI-page-index").innerHTML += '<li><a class="fake-link" aria-label="Next" onclick="click_next()>&raquo;</a></li>';
+	*/
+	return ;
+}
+
+/**
+ * 点击tab标签
+ */
+ function click_tab(tab_kind){
+	 current_tab = tab_kind;
+	 var pages = 1;
+	 var eleid = tab_kind + "-page-index";
+	 var elestring1 = '<li><a class="fake-link" id="' + tab_kind + '-page-';
+	 var elestring2 = ', "' + tab_kind + '")">'
+	 if(tab_kind == "SUI"){
+		 pages = SUI_pages;
+	 }
+	 else if(tab_kind == "SPI"){
+		 pages = SPI_pages;
+	 }
+	 else if(tab_kind == "OPI"){
+		 pages = OPI_pages；
+	 }
+	 else if(tab_kind == "PPI"){
+		 pages = PPI_pages;
+	 }
+	 var page_index = document.getElementById(eleid);
+	 page_index.innerHTML = "";
+	 page_index.innerHTML += '<li><a class="fake-link" aria-label="Previous" onclick="click_previous()">&laquo;</a></li>';
+	 var string = "";
+	 for(var i=1;i <= pages;i++){
+		string = string + elestring1;
+		string = string + i.toString();
+		string = string + '" onclick="click_page_index(';
+		string = string + i.toString();
+		string = string + elestring2;
+		string = string + i.toString();
+		string = string + '</a></li>'; 
+	 }
+	 page_index.innerHTML += string;
+	 page_index.innerHTML += '<li><a class="fake-link" aria-label="Next" onclick="click_next()>&raquo;</a></li>';
+	 return ;
+ }
+ 
+ /**
+ * 点击页码触发函数
+ */
+ function click_page(page_num, tab_kind){
+	current_page = page_num;
+	current_tab = tab_kind;
+	var pages = 1;
+	var page_start = 1;
+	var page_end = 1;
+	var total = 1;
+	var eleid = tab_kind + "-page-show";
+	var 
+	if(tab_kind == "SUI"){
+		 pages = SUI_pages;
+		 total = SUI_total;
+	 }
+	 else if(tab_kind == "SPI"){
+		 pages = SPI_pages;
+		 total = SPI_total;
+	 }
+	 else if(tab_kind == "OPI"){
+		 pages = OPI_pages；
+		 total = OPI_total;
+	 }
+	 else if(tab_kind == "PPI"){
+		 pages = PPI_pages;
+		 total = PPI_total;
+	 }
+    //更改页码显示状态
+    for(var i=1;i <= pages;i++){
+        var elename = tab_kind + "-page-" + i.toString();
+        if(i != page_num){
+            document.getElementById(elename).setAttribute("class","fake-link");
+        }
+        else{
+            document.getElementById(elename).setAttribute("class","fake-link current");
+        }
+    }
+
+    //添加内容
+    page_start = (page_num-1) * num_per_page + 1;
+    if(page_num < pages){
+        page_end = page_num * num_per_page;
+    }
+    else{
+        page_end = total;
+    }
+	var page_show = document.getElementById(eleid);
+	page_show.innerHTML = "";
+	var string = ""
+	for(var i=page_start;i <= page_end;i++){
+		string = string +  
+		 '<div class="media border p-3 mb-5" style="height:100px"> \
+                <img src="../img/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon"> \
+                <div class="media-body"> \
+                  <h3>';
+        string = string + project[i-1].project_name;
+        string = string + '</h3> <p>';
+        string = string + project[i-1].project_intro;
+        string = string + '</p> </div> </div>';
+	}
+	
+	 
+	 
+		 
+		 
+ 
+/**
+*表示方法介绍
+*userStarUserInfo => SUI;
+*userStarProjectInfo => SPI;
+*userOwnProjectInfo => OPI;
+*userParticipateProjectInfo => PPI;
+*/
 
 var a = '{\
     "status": 1,\
