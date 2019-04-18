@@ -16,8 +16,12 @@ function get_url_param(name) {
 }
 
 /**
- *
+ * 重定向至用户页面
  */
 function redirect_to_user(uid){
-    window.location.href = "info.html" + "?uid=" + uid;
+    window.location.href = "user-info-page.html" + "?uid=" + uid;
+}
+
+function redirect_to_project(pid){
+    window.location.href = "project-info-page.html" + "?pid=" + pid;
 }
