@@ -1196,7 +1196,7 @@ img {
 
 /* Slider Area */
 .home-slider-carousel .single-slide-item {
-  background-image: url("../img/slider-img-1.jpg");
+  background-image: url("../img/slider-1.jpg");
   background-size: cover;
   background-position: center center;
   padding: 200px 0;
@@ -1218,9 +1218,9 @@ img {
     width: 100%;
     z-index: -1; }
   .home-slider-carousel .single-slide-item.slide-item_2 {
-    background-image: url("../img/slider-img-2.jpg"); }
+    background-image: url("../img/slider-2.jpg"); }
   .home-slider-carousel .single-slide-item.slide-item_3 {
-    background-image: url("../img/slider-img-3.jpg"); }
+    background-image: url("../img/slider-3.jpg"); }
   .home-slider-carousel .single-slide-item .slider-text * {
     color: #fff;
     font-weight: 300; }

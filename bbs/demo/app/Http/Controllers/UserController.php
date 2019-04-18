@@ -40,29 +40,23 @@ class UserController extends Controller
         $input = request()->all();
         $response = [];
         $rules = [
-            'user_name' => [
+            'name' => [
                 'required',
                 'max:16',
                 'min:8',
             ],
-            'user_email' => [
+            'email' => [
                 'required',
                 'email'
             ],
             'password' => [
                 'required',
-                'same:password_confirmation',
                 'min:8',
                 'max:16'
             ],
-            'password_confirmation' => [
+            'kind' => [
                 'required',
-                'min:8',
-                'max:16'
-            ],
-            'user_kind' => [
-                'required',
-                'in:G,O'
+                'in:1,2,3'
             ]
         ];
 
@@ -75,8 +69,8 @@ class UserController extends Controller
             return response()->json($validator);
         }
 
-        $searchName = User::where('user_name', $input['user_name'])->get();
-        $searchEmail = User::where('user_email', $input['user_email'])->get();
+        $searchName = User::where('user_name', $input['name'])->get();
+        $searchEmail = User::where('user_email', $input['email'])->get();
         if($searchName->count() != 0 || $searchEmail->count() != 0)
         {
             $response['status'] = 400;
@@ -86,8 +80,15 @@ class UserController extends Controller
 
         $input['password'] = Hash::make($input['password']);    // 使用APP_KEY进行加密
         $input['user_regTime'] = date("Y-m-d");
-        $User = User::create($input);
-
+        $userInfo = array(
+            "user_name" => $input["name"],
+            "password" => $input["password"],
+            "user_email" => $input["email"],
+            "user_kind" => $input["kind"],
+            "user_regTime" => $input["user_regTime"]
+        );
+//        $User = User::create($input);
+        $User = User::create($userInfo);
         if(null != $User)
         {
             $response['status'] = 200;
@@ -115,7 +116,7 @@ class UserController extends Controller
         $response = [];
 
         $rules = [
-            'user_name' => [
+            'name' => [
                 'required',
                 'max:16',
                 'min:8',
@@ -136,12 +137,7 @@ class UserController extends Controller
         }
 
         // 验证密码。
-        $user = User::where('user_name', $input['user_name'])->first();
-        if(is_null($user))
-        {
-            $response['status'] = 400;
-            return response()->json($response);
-        }
+        $user = User::where('user_name', $input['name'])->firstOrFail();
         $isPasswordCorrect = Hash::check($input['password'], $user->password);
         if(is_null($isPasswordCorrect))
         {
@@ -163,6 +159,46 @@ class UserController extends Controller
         return redirect('main');
     }
 
+    public function getUserInfo(Request $request){
+        $session = $request->session();
+        $uid = $session->get('uid');
+        $user = User::find($uid);
+        $email = $user['user_email'];
+        $response = array(
+            "email" => $user["user_email"],
+            "name" => $user["user_name"],
+            "password" => $user["password"],
+            "regTime" => $user["user_regTime"],
+            "kind" => $user["user_kind"],
+        );
+        return response()->json($response);
+    }
+
+    public function changeAll(Request $request){
+        $data = json_decode($request->getContent(),true);
+        $session = $request->session();
+        $uid = $session->get('uid');
+        $changeInfo = array(
+            'user_email' => $data["email"],
+            'user_name' => $data["name"],
+            'password' => $data["password"],
+            'user_kind' => $data["kind"]
+        );
+        if(User::find($uid)){
+            User::where("uid","=",$uid)->update($changeInfo);
+            $response = array(
+                'status' => 200,
+            );
+        }
+        else{
+            $response = array(
+                'status' => 400,
+            );
+        }
+        return response()->json($response);
+    }
+
+
     public function changeName(Request $request,$uid){
         $data = json_decode($request->getContent(),true);
         $username = $data["name"];
@@ -179,16 +215,14 @@ class UserController extends Controller
                 'status' => 400,
             ];
         }
-        //3.FIXME 封装返回函数，返回status code
         return response()->json($response);
     }
 
-    public function changePwd(Request $request,$uid){ //same as change name
+    public function changePassword(Request $request,$uid){ //same as change name
         $data = json_decode($request->getContent(),true);
         $password = $data["password"];
         $password = Hash::make($password);
-        //1.判断密码是否合法
-
+        //TODO 1.判断密码是否合法
         //2.修改密码
         if(User::find($uid)){
             User::where("uid",'=',$uid)->update(['password' => $password]);
@@ -201,26 +235,6 @@ class UserController extends Controller
                 'status' => 400,
             ];
         }
-        //3.返回status code
         return response()->json($response);
     }
-
-
-    /**
-     * @param $code
-     * @param $is_redirect
-     * @param null $redirect 封装统一的返回函数
-     */
-    public function finish($code,$is_redirect,$redirect = null){
-        if($code == 200){
-
-        }
-        else if($code == 400){
-
-        }
-    }
-
-
-
-
 }

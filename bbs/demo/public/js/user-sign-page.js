@@ -11,6 +11,7 @@ function read_con(){
  * 检查注册合法性
  * @returns {boolean}
  */
+// TODO 修改错误提醒方法
 function sign_up_check(){
 	var tmp = document.getElementById("username_sign_up").value;
 	//alert(tmp);
@@ -48,16 +49,16 @@ function sign_up_check(){
 /**
  * 登陆Ajax请求
  */
-$("#btn_sign_in").click(function(){
-	var username = $("#username_sign_in").val();
-	var password = $("#password_sign_in").val();
+$("#btn-sign-in").click(function(){
+	var username = $("#username-sign-in").val();
+	var password = $("#password-sign-in").val();
 	$.ajax(
 		{
 			type:"POST",
-			url:"../usr/sign-in",
+			url:"../user/sign_in",
 			data:
 				{
-					user_name : username,
+					name : username,
 					password : password,
 				},
 			dataType:"json",
@@ -66,6 +67,7 @@ $("#btn_sign_in").click(function(){
 			},
 			error : function() {
 				alert('网络繁忙');
+				window.location.replace("main-page.html"); // TODO 测试用
 			},
 			success:function(data)
 			{
@@ -75,7 +77,7 @@ $("#btn_sign_in").click(function(){
 				}
 				else{
 					alert("登录成功");
-					window.location.replace("../" + data.redirect);
+					window.location.replace("main-page.html");
 				}
 			}
 		});
@@ -84,27 +86,26 @@ $("#btn_sign_in").click(function(){
 /**
  * 注册Ajax请求
  */
-$("#btn_sign_up").click(function(){
+$("#btn-sign-up").click(function(){
 	if(!sign_up_check())
 	{
 		return;
 	}
-	var username = $("#username_sign_up").val();
-	var password = $("#password_sign_up").val();
-	var email = $("#email_sign_up").val();
-	var password_confirmation = $("#password_con_sign_up").val();
-	var isOfficial = $("#I_am_official").val() ? 'O' : 'G';
+	var username = $("#username-sign-up").val();
+	var password = $("#password-sign-up").val();
+	var email = $("#email-sign-up").val();
+	var password_confirmation = $("#password-con-sign-up").val();
+	var isOfficial = $("#I-am-official").val() ? 1 : 0;
 	$.ajax(
 		{
 			type:"POST",
-			url:"../usr/sign-up",
+			url:"../user/sign_up",
 			data:
 				{
-					user_name : username,
+					name : username,
 					password : password,
-					password_confirmation : password_confirmation,
-					user_email : email,
-					user_kind : isOfficial,
+					email : email,
+					kind : isOfficial,
 				},
 			dataType:"json",
 			headers: {
@@ -121,7 +122,7 @@ $("#btn_sign_up").click(function(){
 				}
 				else{
 					alert("注册成功");
-					window.location.replace("../" + data.redirect);
+					window.location.replace("main-page.html");
 				}
 			}
 		});
