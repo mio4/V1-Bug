@@ -1,12 +1,13 @@
 DROP TABLE IF EXISTS `project`;
 CREATE TABLE IF NOT EXISTS `project`(
     `pid`           int(8) primary key auto_increment,
-    `project_owner` varchar(32) not null references `user`(`user_name`),
+    `project_owner` int(8) not null references `user`(`uid`),
     `project_name`  varchar(32) not null,
     `project_reward`int(8) not null,
     `project_photo` varchar(128),
     `project_info`  text not null,
-    `project_kind`  varchar(1) not null,
+    `project_kind`  int(8) not null,
+    `particitan_max` int(8) not null,
     `project_createTime` date not null
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -36,8 +37,8 @@ CREATE TABLE IF NOT EXISTS `reply`(
 
 
 -- 为了实现一个用户能够关注多个项目，一个项目能够被多个用户关注的"多对多关系"设计的中间表
-DROP TABLE IF EXISTS `user_project`
-CREATE TABLE `user_project`(
+DROP TABLE IF EXISTS `user_star_project`
+CREATE TABLE `user_star_project`(
     `up_id` int(8) auto_increment,
     `uid` int(8) not null,
     `pid` int(8) not null,

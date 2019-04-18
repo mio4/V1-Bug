@@ -86,20 +86,35 @@ Route::group(['prefix' => 'project'], function(){
     // 创建项目
     Route::get('/create', 'ProjectController@projectCreateProgress')
         ->middleware('user.online');
-    //    // 管理项目清单
-    Route::get('/manage', 'ProjectController@projectManageListPage');
+    // 关闭项目
+    Route::post('/close', 'ProjectController@projectCloseProgress');
 
-    Route::group(['prefix' => '{project_id}'], function(){
-        // 浏览项目页面
-        Route::get('/', 'ProjectController@projectItemPage');
-        // 修改项目信息页面
-        Route::get('/edit', 'ProjectController@projectItemEditPage')
-            ->middleware('user.online');
-        // 修改项目信息请求
-        Route::put('/edit', 'ProjectController@projectItemUpdateProgress')
-            ->middleware('user.online');
-        // TODO 添加更多功能
+    Route::group(['prefix' => 'info'], function(){
+        // 项目信息
+        Route::post('/', 'ProjectController@projectInfoGet');
+
+        Route::group(['prefix' => 'basic'], function(){
+            // 项目基本信息
+            Route::post('/', 'ProjectController@projectBasicInfoGet');
+            // 个人创建项目基本信息
+            Route::post('/own', 'ProjectController@projectOwnBasicInfoGet');
+            // 个人参加项目基本信息
+            Route::post('/own', 'ProjectController@projectParticipateBasicInfoGet');
+        });
+
     });
+
+//    Route::group(['prefix' => '{project_id}'], function(){
+//        // 浏览项目页面
+//        Route::get('/', 'ProjectController@projectItemPage');
+//        // 修改项目信息页面
+//        Route::get('/edit', 'ProjectController@projectItemEditPage')
+//            ->middleware('user.online');
+//        // 修改项目信息请求
+//        Route::put('/edit', 'ProjectController@projectItemUpdateProgress')
+//            ->middleware('user.online');
+//        // TODO 添加更多功能
+//    });
 });
 //------------ 项目管理 ------------
 
