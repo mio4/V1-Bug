@@ -18,8 +18,8 @@ var projectInfoList = [a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13];
 /**
  * 全局变量
  */
-num_per_page=12;
-current_page=1;
+var num_per_page=12;
+var current_page=1;
 
 
 /**
@@ -53,8 +53,6 @@ function load_project_list(){
 /**
  * 加载页面要显示的所有项目，并分页
  */
-console.log("长度");
-console.log(projectInfoList.length);
 window.onload = function (){
     var i;              //循环用变量
     //load_project_list(); //使用模拟数据，没有真正从后端获取
@@ -65,8 +63,9 @@ window.onload = function (){
     if(left > 0){
         pages += 1;
     }
-    document.getElementById("page-index").innerHTML="";
-    document.getElementById("page-index").innerHTML += '<li><a class="fake-link" aria-label="Previous" onclick="click_previous()">&laquo;</a></li>';
+    var page_index = document.getElementById("page-index");
+    page_index.innerHTML="";
+    page_index.innerHTML += '<li><a class="fake-link" aria-label="Previous" onclick="click_previous()">&laquo;</a></li>';
     var string = "";
     for(i = 1;i <= pages;i++){
         string = string + '<li><a class="fake-link" id="page-';
@@ -77,11 +76,12 @@ window.onload = function (){
         string = string + i.toString();
         string = string + '</a></li>';
     }
-    document.getElementById("page-index").innerHTML += string;
-    document.getElementById("page-index").innerHTML += '<li><a class="fake-link" aria-label="Next" onclick="click_next()">&raquo;</a></li>';
-    document.getElementById("page-1").setAttribute("class","fake-link current");
+    page_index.innerHTML += string;
+    page_index.innerHTML += '<li><a class="fake-link" aria-label="Next" onclick="click_next()">&raquo;</a></li>';
+    //document.getElementById("page-1").setAttribute("class","fake-link current");
 
-    //添加内容
+    click_page_index(1);
+    /*//添加内容
     page_start = 1;
     if(1 < pages){
         page_end = num_per_page;

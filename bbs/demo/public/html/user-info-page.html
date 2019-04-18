@@ -248,26 +248,26 @@
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
-              <a class="nav-link active" data-toggle="tab" href="#my-collection">收藏</a>
+              <a class="nav-link active" data-toggle="tab" href="#my-collection" onclick='click_tab("SPI")'>收藏</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#my-follow">关注</a>
+              <a class="nav-link" data-toggle="tab" href="#my-follow" onclick='click_tab("SUI")'>关注</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#my-release">我发布的项目</a>
+              <a class="nav-link" data-toggle="tab" href="#my-release" onclick='click_tab("OPI")'>我发布的项目</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#my-join">我参与的项目</a>
+              <a class="nav-link" data-toggle="tab" href="#my-join" onclick='click_tab("PPI")'>我参与的项目</a>
             </li>
           </ul>
           <!-- Tab panes -->
           <div class="tab-content" id="info-tab-content"><!--可以设计scroll安装的位置-->
             <div id="my-collection" class="container tab-pane active"><br>
-              <div id="my-collection-show">
+              <div id="SPI-page-show">
               </div>
               <div class="products-settings-option d-block d-md-flex mb-3">
                 <nav class="page-pagination">
-                  <ul id="my-collection-pages" class="pagination">
+                  <ul id="SPI-page-index" class="pagination">
                     <!--li><a href="#" aria-label="Previous">&laquo;</a></li>
                     <li><a class="current" href="#">1</a></li>
                     <li><a href="#">2</a></li>
@@ -279,182 +279,55 @@
             </div>
 
             <div id="my-follow" class="container tab-pane fade"><br>
-              <div class="media border p-3 mb-5 h-100">
-                <img src="../img/usr.png" alt="头像" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>昵称一</h3>
-                  <p>邮箱一<p>    
-                </div>
-              </div>
-              <div class="media border p-3 mb-5 h-100">
-                <img src="../img/usr.png" alt="头像" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>昵称二</h3>
-                  <p>邮箱二<p>   
-                </div>
-              </div>
-              <div class="media border p-3 mb-5 h-100">
-                <img src="../img/usr.png" alt="头像" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>昵称三</h3>
-                  <p>邮箱三<p>      
-                </div>
-              </div>
-              <div class="media border p-3 mb-5 h-100">
-                <img src="../img/usr.png" alt="头像" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>昵称四</h3>
-                  <p>邮箱四<p>    
-                </div>
+			  <div id="SUI-page-show">
               </div>
               <div class="products-settings-option d-block d-md-flex mb-3">
                 <nav class="page-pagination">
-                  <ul class="pagination">
-                    <li><a href="#" aria-label="Previous">&laquo;</a></li>
+                  <ul id="SUI-page-index" class="pagination">
+                    <!--li><a href="#" aria-label="Previous">&laquo;</a></li>
                     <li><a class="current" href="#">1</a></li>
                     <li><a href="#">2</a></li>
                     <li><a href="#">3</a></li>
-                    <li><a href="#" aria-label="Next">&raquo;</a></li>
+                    <li><a href="#" aria-label="Next">&raquo;</a></li-->
                   </ul>
                 </nav>
               </div>
             </div>
 
             <div id="my-release" class="container tab-pane fade"><br>
-              <div class="media border p-3 mb-5 h-100">
-                <img src="../img/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>创意一</h3>
-                  <p>创意内容介绍</p>    
-                </div>
-              </div>
-              <div class="media border p-3 mb-5 h-100">
-                <img src="../img/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>创意二</h3>
-                  <p>创意内容介绍</p>  
-                </div>
-              </div>
-              <div class="media border p-3 mb-5 h-100">
-                <img src="../img/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>创意三</h3>
-                  <p>创意内容介绍</p>     
-                </div>
-              </div>
-              <div class="media border p-3 mb-5 h-100">
-                <img src="../img/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>创意四</h3>
-                  <p>创意内容介绍</p>   
-                </div>
-              </div>
-              <div class="media border p-3 mb-5 h-100">
-                <img src="../img/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>创意一</h3>
-                  <p>创意内容介绍</p>    
-                </div>
-              </div>
-              <div class="media border p-3 mb-5 h-100">
-                <img src="../img/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>创意二</h3>
-                  <p>创意内容介绍</p>  
-                </div>
-              </div>
-              <div class="media border p-3 mb-5 h-100">
-                <img src="../img/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>创意三</h3>
-                  <p>创意内容介绍</p>     
-                </div>
-              </div>
-              <div class="media border p-3 mb-5 h-100">
-                <img src="../img/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>创意四</h3>
-                  <p>创意内容介绍</p>   
-                </div>
-              </div>
-              <div class="media border p-3 mb-5 h-100">
-                <img src="../img/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>创意一</h3>
-                  <p>创意内容介绍</p>    
-                </div>
-              </div>
-              <div class="media border p-3 mb-5 h-100">
-                <img src="../img/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>创意二</h3>
-                  <p>创意内容介绍</p>  
-                </div>
-              </div>
-              <div class="media border p-3 mb-5 h-100">
-                <img src="../img/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>创意三</h3>
-                  <p>创意内容介绍</p>     
-                </div>
-              </div>
-              <div class="media border p-3 mb-5 h-100">
-                <img src="../img/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>创意四</h3>
-                  <p>创意内容介绍</p>   
-                </div>
+			  <div id="OPI-page-show">
               </div>
               <div class="products-settings-option d-block d-md-flex mb-3">
                 <nav class="page-pagination">
-                  <ul id="my-release-pages" class="pagination">
-                    <li><a href="#" aria-label="Previous">&laquo;</a></li>
+                  <ul id="OPI-page-index" class="pagination">
+                    <!--li><a href="#" aria-label="Previous">&laquo;</a></li>
                     <li><a class="current" href="#">1</a></li>
                     <li><a href="#">2</a></li>
                     <li><a href="#">3</a></li>
-                    <li><a href="#" aria-label="Next">&raquo;</a></li>
+                    <li><a href="#" aria-label="Next">&raquo;</a></li-->
                   </ul>
                 </nav>
               </div>
             </div>
 
             <div id="my-join" class="container tab-pane fade"><br>
-              <div class="media border p-3 mb-5 h-100">
+			  <div id="PPI-page-show">
+              </div>
+              <!--div class="media border p-3 mb-5 h-100">
                 <img src="../img/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
                 <div class="media-body">
                   <h3>创意一</h3>
                   <p>创意内容介绍</p>    
                 </div>
-              </div>
-              <div class="media border p-3 mb-5 h-100">
-                <img src="../img/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>创意二</h3>
-                  <p>创意内容介绍</p>  
-                </div>
-              </div>
-              <div class="media border p-3 mb-5 h-100">
-                <img src="../img/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>创意三</h3>
-                  <p>创意内容介绍</p>     
-                </div>
-              </div>
-              <div class="media border p-3 mb-5 h-100">
-                <img src="../img/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon">
-                <div class="media-body">
-                  <h3>创意四</h3>
-                  <p>创意内容介绍</p>   
-                </div>
-              </div>
+              </div-->
               <div class="products-settings-option d-block d-md-flex mb-3">
                 <nav class="page-pagination">
-                  <ul class="pagination">
-                    <li><a href="#" aria-label="Previous">&laquo;</a></li>
+                  <ul id="PPI-page-index" class="pagination">
+                    <!--li><a href="#" aria-label="Previous">&laquo;</a></li>
                     <li><a class="current" href="#">1</a></li>
                     <li><a href="#">2</a></li>
                     <li><a href="#">3</a></li>
-                    <li><a href="#" aria-label="Next">&raquo;</a></li>
+                    <li><a href="#" aria-label="Next">&raquo;</a></li-->
                   </ul>
                 </nav>
               </div>
@@ -467,35 +340,6 @@
     </div>
   </div>
 </div>
-<<<<<<< HEAD:bbs/demo/public/html/user-info.html
-  
-  <!--<div class="modal fade" id="mail-mod">-->
-    <!--<div class="modal-dialog">-->
-      <!--<div class="modal-content">-->
-        <!--<div class="modal-header">-->
-          <!--<h3 class="modal-title">修改邮箱</h3>-->
-          <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
-        <!--</div>-->
-        <!--<form>-->
-          <!--<div class="modal-body">-->
-            <!--<div class="input-group input-group-lg">-->
-              <!--<div class="input-group-prepend">-->
-                <!--<span class="input-group-text w-100">邮箱</span>-->
-              <!--</div>-->
-              <!--<input type="email" class="form-control" placeholder="请输入新邮箱" id="mail-input" name="mail-input" required autofocus>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</form>-->
-        <!--<div class="modal-footer">-->
-            <!--<button type="button" class="btn btn-primary mr-3" data-dismiss="modal">返回</button>-->
-            <!--<button type="button" class="btn btn-primary" id="mail-ok">确定</button>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-=======
-<!--== Page Content Wrapper End ==-->
->>>>>>> develop-v0.1-alpha:bbs/demo/public/html/user-info-page.html
 
 <!--== Modal Area Start ==-->
   <div class="modal fade" id="change-name-box">

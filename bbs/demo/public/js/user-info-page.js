@@ -7,11 +7,59 @@ var userRegTime = "4";
 var userReward = "0"; // TODO 增加该项
 var userKindList = ["", "普通用户", "实验室官方"];
 
+//模拟数据
+a1 = JSON.parse('{"uid":"id", "name":"用户名1", "picture":"头像的URL"}');
+a2 = JSON.parse('{"uid":"id", "name":"用户名2", "picture":"头像的URL"}');
+a3 = JSON.parse('{"uid":"id", "name":"用户名3", "picture":"头像的URL"}');
+a4 = JSON.parse('{"uid":"id", "name":"用户名4", "picture":"头像的URL"}');
+
+b1 = JSON.parse('{"pid":"pid", "name":"收藏项目名1", "create_time":"创建时间"}');
+b2 = JSON.parse('{"pid":"pid", "name":"收藏项目名2", "create_time":"创建时间"}');
+b3 = JSON.parse('{"pid":"pid", "name":"收藏项目名3", "create_time":"创建时间"}');
+b4 = JSON.parse('{"pid":"pid", "name":"收藏项目名4", "create_time":"创建时间"}');
+
+c1 = JSON.parse('{"pid":"pid", "name":"发布项目名1", "create_time":"创建时间"}');
+c2 = JSON.parse('{"pid":"pid", "name":"发布项目名2", "create_time":"创建时间"}');
+c3 = JSON.parse('{"pid":"pid", "name":"发布项目名3", "create_time":"创建时间"}');
+c4 = JSON.parse('{"pid":"pid", "name":"发布项目名4", "create_time":"创建时间"}');
+
+d1 = JSON.parse('{"pid":"id", "name":"参与项目名1", "create_time":"创建时间"}');
+d2 = JSON.parse('{"pid":"id", "name":"参与项目名2", "create_time":"创建时间"}');
+d3 = JSON.parse('{"pid":"id", "name":"参与项目名3", "create_time":"创建时间"}');
+d4 = JSON.parse('{"pid":"id", "name":"参与项目名4", "create_time":"创建时间"}');
+d5 = JSON.parse('{"pid":"id", "name":"参与项目名5", "create_time":"创建时间"}');
+d6 = JSON.parse('{"pid":"id", "name":"参与项目名6", "create_time":"创建时间"}');
+d7 = JSON.parse('{"pid":"id", "name":"参与项目名7", "create_time":"创建时间"}');
+d8 = JSON.parse('{"pid":"id", "name":"参与项目名8", "create_time":"创建时间"}');
+
 // 用户详细信息
-var userStarUserInfo = {};
-var userStarProjectInfo = {};
-var userOwnProjectInfo = {};
-var userParticipateProjectInfo = {};
+let userStarUserInfo = [a1, a2, a3, a4];
+let userStarProjectInfo = [b1, b2, b3, b4];
+let userOwnProjectInfo = [];
+let userParticipateProjectInfo = [d1, d2, d3, d4, d5, d6, d7, d8];
+var num_per_page=3; // 每页显示数量
+var current_page=1; // 当前页码
+var current_tab="SPI"; // 当前tab页面
+let SUI_total;
+let SUI_left;
+let SUI_pages;
+let SPI_total;
+let SPI_left;
+let SPI_pages;
+let OPI_total;
+let OPI_left;
+let OPI_pages;
+let PPI_total;
+let PPI_left;
+let PPI_pages;
+let data;
+/**
+*表示方法介绍
+*userStarUserInfo => SUI;
+*userStarProjectInfo => SPI;
+*userOwnProjectInfo => OPI;
+*userParticipateProjectInfo => PPI;
+*/
 
 // 验证修改信息合法性
 var nickname_legal = false;
@@ -316,7 +364,6 @@ window.onload = function(){
 	// 从url获取页面用户ID
 	userId = get_url_param('uid');
 	if(userId === null){
-		console.log("OK");
 		$.ajax({
 			type : "GET",
 			url:"../user/info",
@@ -381,6 +428,204 @@ window.onload = function(){
 
 };
 
+/**
+ * 显示加载个人关注用户列表，并分页
+ */
+window.onload = function (){
+	current_page = 1;
+	current_tab = "SPI";
+	data = [userStarUserInfo, userStarProjectInfo, userOwnProjectInfo, userParticipateProjectInfo];
+	
+	//加载每个tab表的基本信息
+	SUI_total = userStarUserInfo.length;
+	SUI_left = SUI_total % num_per_page;
+	SUI_pages = (SUI_total - SUI_left) / num_per_page;
+	if(SUI_left > 0){
+		SUI_pages += 1;
+	}
+	SPI_total = userStarProjectInfo.length;
+	SPI_left = SPI_total % num_per_page;
+	SPI_pages = (SPI_total - SPI_left) / num_per_page;
+	if(SPI_left > 0){
+		SPI_pages += 1;
+	}
+	OPI_total = userOwnProjectInfo.length;
+	OPI_left = OPI_total % num_per_page;
+	OPI_pages = (OPI_total - OPI_left) / num_per_page;
+	if(OPI_left > 0){
+		OPI_pages += 1;
+	}
+	PPI_total = userParticipateProjectInfo.length;
+	PPI_left = PPI_total % num_per_page;
+	PPI_pages = (PPI_total - PPI_left) / num_per_page;
+	if(PPI_left > 0){
+		PPI_pages += 1;
+	}
+	
+	//用收藏项目列表初始化页面显示内容
+	click_tab(current_tab);
+	/*
+	document.getElementById("SUI-page-index").innerHTML="";
+	document.getElementById("SUI-page-index").innerHTML += '<li><a class="fake-link" aria-label="Previous" onclick="click_previous()">&laquo;</a></li>';
+	var string="";
+	for(var i=1;i <= SUI_pages;i++){
+		string = string + '<li><a class="fake-link" id="SUI-page-';
+		string = string + i.toString();
+		string = string + '" onclick="click_page_index(';
+		string = string + i.toString();
+		string = string + ', "SUI")">';
+		string = string + i.toString();
+		string = string + '</a></li>';
+	}
+	document.getElementById("SUI-page-index").innerHTML += string;
+	document.getElementById("SUI-page-index").innerHTML += '<li><a class="fake-link" aria-label="Next" onclick="click_next()>&raquo;</a></li>';
+	*/
+}
+
+/**
+ * 点击tab标签
+ */
+ function click_tab(tab_kind){
+	 current_tab = tab_kind;
+	 var pages = 1;
+	 var eleid = tab_kind + "-page-index";
+	 var first_page = tab_kind + "-page-1";
+	 var elestring1 = '<li><a class="fake-link" id="' + tab_kind + '-page-';
+	 if(tab_kind === "SUI"){
+		 pages = SUI_pages;
+	 }
+	 else if(tab_kind === "SPI"){
+		 pages = SPI_pages;
+	 }
+	 else if(tab_kind === "OPI"){
+		 pages = OPI_pages;
+	 }
+	 else if(tab_kind === "PPI"){
+		 pages = PPI_pages;
+	 }
+	 var page_index = document.getElementById(eleid);
+	 page_index.innerHTML = "";
+	 page_index.innerHTML += '<li><a class="fake-link" aria-label="Previous" onclick="click_previous()">&laquo;</a></li>';
+	 var string = "";
+	 for(var i=1;i <= pages;i++){
+		string = string + elestring1;
+		string = string + i.toString();
+		string = string + '" onclick="click_page_index(';
+		string = string + i.toString();
+		string = string + ')">';
+		string = string + i.toString();
+		string = string + '</a></li>'; 
+	 }
+	 page_index.innerHTML += string;
+	 page_index.innerHTML += '<li><a class="fake-link" aria-label="Next" onclick="click_next()">&raquo;</a></li>';
+	 click_page_index(1);
+ }
+ 
+ /**
+ * 点击页码触发函数
+ */
+ function click_page_index(page_num) {
+	 current_page = page_num;
+	 var pages;
+	 var page_start;
+	 var page_end;
+	 var total;
+	 var eleid = current_tab + "-page-show";
+	 var tab_num;
+	 if (current_tab === "SUI") {
+		 pages = SUI_pages;
+		 total = SUI_total;
+		 tab_num = 1;
+	 } else if (current_tab === "SPI") {
+		 pages = SPI_pages;
+		 total = SPI_total;
+		 tab_num = 2;
+	 } else if (current_tab === "OPI") {
+		 pages = OPI_pages;
+		 total = OPI_total;
+		 tab_num = 3;
+	 } else if (current_tab === "PPI") {
+		 pages = PPI_pages;
+		 total = PPI_total;
+		 tab_num = 4;
+	 }
+
+	 //更改页码显示状态
+	 for (var i=1; i <= pages; i++) {
+		 var elename = current_tab + "-page-" + i.toString();
+		 if (i !== page_num) {
+			 document.getElementById(elename).setAttribute("class", "fake-link");
+		 } else {
+			 document.getElementById(elename).setAttribute("class", "fake-link current");
+		 }
+	 }
+
+	 //添加内容
+	 page_start = (page_num - 1) * num_per_page + 1;
+	 if (page_num < pages) {
+		 page_end = page_num * num_per_page;
+	 } else {
+		 page_end = total;
+	 }
+	 var page_show = document.getElementById(eleid);
+	 page_show.innerHTML = "";
+	 var string = "";
+	 for (var i = page_start; i <= page_end; i++) {
+		 string = string +
+			 '<div class="media border p-3 mb-5 h-100"> \
+                    <img src="../img/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon"> \
+                    <div class="media-body"> \
+                      <h3>';
+		 string = string + data[tab_num - 1][i - 1].name;
+		 string = string + '</h3> <p>';
+		 string = string + data[tab_num - 1][i - 1].create_time;
+		 string = string + '</p> </div> </div>';
+	 }
+	 page_show.innerHTML += string;
+ }
+
+/**
+ * 点击上一页触发函数
+ */
+function click_previous(){
+	if(current_page === 1){
+		return ;
+	}
+	click_page_index(current_page - 1);
+}
+
+/**
+ * 点击下一页触发函数
+ */
+function click_next(){
+	var pages;
+	if (current_tab === "SUI") {
+		pages = SUI_pages;
+	} else if (current_tab === "SPI") {
+		pages = SPI_pages;
+	} else if (current_tab === "OPI") {
+		pages = OPI_pages;
+	} else if (current_tab === "PPI") {
+		pages = PPI_pages;
+	}
+	if(current_page === pages){
+		return ;
+	}
+	click_page_index(current_page + 1);
+}
+	 
+	 
+		 
+		 
+ 
+/**
+*表示方法介绍
+*userStarUserInfo => SUI;
+*userStarProjectInfo => SPI;
+*userOwnProjectInfo => OPI;
+*userParticipateProjectInfo => PPI;
+*/
+
 var a = '{\
     "status": 1,\
     "total": 7,\
@@ -424,7 +669,7 @@ var a = '{\
 
 
 // TODO 获取收藏等信息，并进行显示
-a = JSON.parse(a);
+/*a = JSON.parse(a);
 num_per_page=2;
 //JSON.stringify(a);
 var status = a.status;
@@ -477,4 +722,4 @@ function click_page_collection(page_num){
         string = string + '</p> </div> </div>';
 	}
 	document.getElementById("my-collection-show").innerHTML += string;
-}
+}*/
