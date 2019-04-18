@@ -109,16 +109,18 @@ Route::group(['prefix' => 'project'], function(){
 Route::group(['prefix' => 'project/star'],function(){
     //关注项目
     Route::post('/','StarController@starProject');
-    //获取关注项目的基本信息
-    Route::get('/','StarController@getStarProject');
+//    获取关注项目的基本信息
+//    Route::get('/','StarController@getStarProject');
     //查看用户的收藏列表
     Route::post('/get','StarController@getStarProjectByUid');
 });
 Route::group(['prefix' => 'user/star'],function(){
     //关注用户
     Route::post('/','StarController@starUser');
-    //获取关注的用户基本信息
-    Route::get('/','StarController@getStarUser');
+    //根据uid获取用户的关注列表
+    Route::post('/get','StarController@getUserStarList');
+
+    Route::post('/hello','StarController@test');
 });
 //------------ 关注 ------------
 
