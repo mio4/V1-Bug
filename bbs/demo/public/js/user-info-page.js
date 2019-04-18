@@ -8,34 +8,34 @@ var userReward = "0"; // TODO 增加该项
 var userKindList = ["", "普通用户", "实验室官方"];
 
 //模拟数据
-a1 = JSON.parse('{"uid":"id", "name":"用户名1", "picture":"头像的URL"}');
-a2 = JSON.parse('{"uid":"id", "name":"用户名2", "picture":"头像的URL"}');
-a3 = JSON.parse('{"uid":"id", "name":"用户名3", "picture":"头像的URL"}');
-a4 = JSON.parse('{"uid":"id", "name":"用户名4", "picture":"头像的URL"}');
+a1 = JSON.parse('{"uid":"1", "name":"用户名1", "picture":"头像的URL"}');
+a2 = JSON.parse('{"uid":"2", "name":"用户名2", "picture":"头像的URL"}');
+a3 = JSON.parse('{"uid":"3", "name":"用户名3", "picture":"头像的URL"}');
+a4 = JSON.parse('{"uid":"4", "name":"用户名4", "picture":"头像的URL"}');
 
-b1 = JSON.parse('{"pid":"pid", "name":"收藏项目名1", "create_time":"创建时间"}');
-b2 = JSON.parse('{"pid":"pid", "name":"收藏项目名2", "create_time":"创建时间"}');
-b3 = JSON.parse('{"pid":"pid", "name":"收藏项目名3", "create_time":"创建时间"}');
-b4 = JSON.parse('{"pid":"pid", "name":"收藏项目名4", "create_time":"创建时间"}');
+b1 = JSON.parse('{"pid":"1", "name":"收藏项目名1", "create_time":"创建时间"}');
+b2 = JSON.parse('{"pid":"2", "name":"收藏项目名2", "create_time":"创建时间"}');
+b3 = JSON.parse('{"pid":"3", "name":"收藏项目名3", "create_time":"创建时间"}');
+b4 = JSON.parse('{"pid":"4", "name":"收藏项目名4", "create_time":"创建时间"}');
 
-c1 = JSON.parse('{"pid":"pid", "name":"发布项目名1", "create_time":"创建时间"}');
-c2 = JSON.parse('{"pid":"pid", "name":"发布项目名2", "create_time":"创建时间"}');
-c3 = JSON.parse('{"pid":"pid", "name":"发布项目名3", "create_time":"创建时间"}');
-c4 = JSON.parse('{"pid":"pid", "name":"发布项目名4", "create_time":"创建时间"}');
+c1 = JSON.parse('{"pid":"5", "name":"发布项目名1", "create_time":"创建时间"}');
+c2 = JSON.parse('{"pid":"6", "name":"发布项目名2", "create_time":"创建时间"}');
+c3 = JSON.parse('{"pid":"7", "name":"发布项目名3", "create_time":"创建时间"}');
+c4 = JSON.parse('{"pid":"8", "name":"发布项目名4", "create_time":"创建时间"}');
 
-d1 = JSON.parse('{"pid":"id", "name":"参与项目名1", "create_time":"创建时间"}');
-d2 = JSON.parse('{"pid":"id", "name":"参与项目名2", "create_time":"创建时间"}');
-d3 = JSON.parse('{"pid":"id", "name":"参与项目名3", "create_time":"创建时间"}');
-d4 = JSON.parse('{"pid":"id", "name":"参与项目名4", "create_time":"创建时间"}');
-d5 = JSON.parse('{"pid":"id", "name":"参与项目名5", "create_time":"创建时间"}');
-d6 = JSON.parse('{"pid":"id", "name":"参与项目名6", "create_time":"创建时间"}');
-d7 = JSON.parse('{"pid":"id", "name":"参与项目名7", "create_time":"创建时间"}');
-d8 = JSON.parse('{"pid":"id", "name":"参与项目名8", "create_time":"创建时间"}');
+d1 = JSON.parse('{"pid":"9", "name":"参与项目名1", "create_time":"创建时间"}');
+d2 = JSON.parse('{"pid":"10", "name":"参与项目名2", "create_time":"创建时间"}');
+d3 = JSON.parse('{"pid":"11", "name":"参与项目名3", "create_time":"创建时间"}');
+d4 = JSON.parse('{"pid":"12", "name":"参与项目名4", "create_time":"创建时间"}');
+d5 = JSON.parse('{"pid":"13", "name":"参与项目名5", "create_time":"创建时间"}');
+d6 = JSON.parse('{"pid":"14", "name":"参与项目名6", "create_time":"创建时间"}');
+d7 = JSON.parse('{"pid":"15", "name":"参与项目名7", "create_time":"创建时间"}');
+d8 = JSON.parse('{"pid":"16", "name":"参与项目名8", "create_time":"创建时间"}');
 
 // 用户详细信息
 let userStarUserInfo = [a1, a2, a3, a4];
 let userStarProjectInfo = [b1, b2, b3, b4];
-let userOwnProjectInfo = [];
+let userOwnProjectInfo = [c1, c2, c3 ,c4];
 let userParticipateProjectInfo = [d1, d2, d3, d4, d5, d6, d7, d8];
 var num_per_page=3; // 每页显示数量
 var current_page=1; // 当前页码
