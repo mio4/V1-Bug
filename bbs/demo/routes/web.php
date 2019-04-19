@@ -55,14 +55,10 @@ Route::get('/main', 'MainController@mainPage');
 
 //------------ 注册登录&修改个人信息 ------------
 Route::group(['prefix' => 'user'], function(){
-    // 注册页面
-    Route::get('/sign-up', 'UserController@signUpPage');
     // 注册请求
-    Route::post('/sign-up', 'UserController@signUpProcess');
-    // 登陆页面
-    Route::get('/sign-in', 'UserController@signInPage');
+    Route::post('/sign_up', 'UserController@signUpProcess');
     // 登录请求
-    Route::post('/sign-in', 'UserController@signInProcess');
+    Route::post('/sign_in', 'UserController@signInProcess');
     // 登出请求
     Route::get('/logout', 'UserController@logOut');
     //获取个人信息——GET
@@ -86,7 +82,7 @@ Route::group(['prefix' => 'project'], function(){
     // 浏览项目列表
     Route::get('/', 'ProjectController@projectListPage');
     // 创建项目
-    Route::get('/create', 'ProjectController@projectCreateProgress')
+    Route::post('/create', 'ProjectController@projectCreateProgress')
         ->middleware('user.online');
     // 关闭项目
     Route::post('/close', 'ProjectController@projectCloseProgress')

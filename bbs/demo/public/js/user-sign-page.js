@@ -13,7 +13,7 @@ function read_con(){
  */
 // TODO 修改错误提醒方法
 function sign_up_check(){
-	var tmp = document.getElementById("username_sign_up").value;
+	var tmp = document.getElementById("username-sign-up").value;
 	//alert(tmp);
 	var p = /^[0-9a-zA-Z]+$/;
 	if(!p.test(tmp)){
@@ -25,7 +25,7 @@ function sign_up_check(){
 		return false;
 	}
 
-	tmp = document.getElementById("password_sign_up").value;
+	tmp = document.getElementById("password-sign-up").value;
 	if(!p.test(tmp)){
 		alert("密码只能包含数字和字母");
 		return false;
@@ -34,7 +34,7 @@ function sign_up_check(){
 		alert("密码长度必须在8至16位之间");
 		return false;
 	}
-	var tmp2 = document.getElementById("password_con_sign_up").value;
+	var tmp2 = document.getElementById("password-con-sign-up").value;
 	if(tmp!==tmp2){
 		alert("两次输入密码不一致");
 		return false;
@@ -58,7 +58,7 @@ $("#btn-sign-in").click(function(){
 			url:"../user/sign_in",
 			data:
 				{
-					name : username,
+					email : username,
 					password : password,
 				},
 			dataType:"json",
@@ -71,13 +71,12 @@ $("#btn-sign-in").click(function(){
 			},
 			success:function(data)
 			{
-				if(data.status===400){
-					alert('登录失败');
-					// TODO:登陆失败的操作。
-				}
-				else{
+				if(data.status===200){
 					alert("登录成功");
 					window.location.replace("main-page.html");
+				}
+				else{
+					alert('登录失败，请重试');
 				}
 			}
 		});
@@ -116,13 +115,12 @@ $("#btn-sign-up").click(function(){
 			},
 			success:function(data)
 			{
-				if(data.status===400){
-					alert('注册失败' + data.message);
-					// TODO:登陆失败的操作。
+				if(data.status===200){
+					alert("注册成功");
+					window.location.reload(true);
 				}
 				else{
-					alert("注册成功");
-					window.location.replace("main-page.html");
+					alert('注册失败，请重试' + data.message);
 				}
 			}
 		});

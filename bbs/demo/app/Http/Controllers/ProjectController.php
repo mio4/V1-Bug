@@ -12,57 +12,36 @@ use Illuminate\Support\Facades\Validator;
 class ProjectController extends Controller
 {
 
-    /**
-     * 更新项目信息
-     * @param $project  Project
-     * @param $data     array
-     * @return int
-     */
-    private function updateProjectInfo($project, $data){
-        $rules = [
-            'project_name' => [
-                'required',
-                'min:1',
-                'max:30'
-            ],
-            'project_info' => [
-                'required',
-                'min:10',
-                'max:300',
-            ],
-            'project_kind' => [
-                'required',
-                'integer',
-                'in:0,1,2',
-            ],
-            'project_reward' => [
-                'required',
-                'integer',
-                'min:0',
-                'max:10000'
-            ],
-            'participant_max' => [
-                'requires',
-                'min:0',
-                'max:10',
-                'integer',
-            ]
-            // TODO 图片
-        ];
-
-        $validator = Validator::make($data, $rules);
-
-        // 验证失败，返回创建界面
-        if($validator->fails())
-        {
-            return 400;
-        }
-
-        $project->update($data);
-
-        // 创建成功
-        return 200;
-    }
+    protected $rules = [
+        'project_name' => [
+            'required',
+            'min:1',
+            'max:30'
+        ],
+        'project_info' => [
+            'required',
+            'min:10',
+            'max:300',
+        ],
+        'project_kind' => [
+            'required',
+            'integer',
+            'in:0,1,2',
+        ],
+        'project_reward' => [
+            'required',
+            'integer',
+            'min:0',
+            'max:10000'
+        ],
+        'participant_max' => [
+            'required',
+            'min:0',
+            'max:10',
+            'integer',
+        ]
+        // TODO 图片
+    ];
 
     /**
      * 创建项目，重定向至项目信息修改页面。
@@ -78,16 +57,26 @@ class ProjectController extends Controller
             'project_name' => $input['name'],
             'project_owner' => session()->get('uid'),
             'project_info' => $input['info'],
-            'project_kind' => $input['kind'],
-            'project_reward' => $input['reward'],
-            'participant_max' => $input['participant_max'],
+            'project_kind' => intval($input['kind']),
+            'project_reward' => intval($input['reward']),
+            'participant_max' => intval($input['participant_max']),
             'project_photo' => '',
             'project_createTime' => date('Y-m-d')
         ];
 
         $newProject = Project::create($projectData);
 
-        $response['status'] = $this->updateProjectInfo($newProject, $projectData);
+        $validator = Validator::make($projectData, $this->rules);
+
+
+        if($validator->fails())
+        {
+            $response['status'] = 400;
+        }
+        else{
+            $response['status'] = 200;
+            $response['pid'] = $newProject['pid'];
+        }
 
         return response()->json($response);
     }
@@ -201,8 +190,9 @@ class ProjectController extends Controller
     public function projectInfoGet(){
         $input = request()->all();
         $project = Project::where('pid', $input['pid'])->first();
-        $user = User::where('uid', $project->project_owner);
+        $user = User::where('uid', $project->project_owner)->first();
         $retJson = [
+            'status'            => 200,
             'name'              => $project->project_name,
             'uid'               => $project->project_owner,
             'user_name'         => $user->user_name,
@@ -233,6 +223,7 @@ class ProjectController extends Controller
                 'picture'           => '', // TODO 增加图片功能
             ];
         }
+        $retJson['status'] = 200;
         return response()->json($retJson);
     }
 
@@ -253,6 +244,7 @@ class ProjectController extends Controller
                 'create_time' => $project->prokect_createTime,
             ];
         }
+        $retJson['status'] = 200;
         return response()->json($retJson);
     }
 
@@ -274,6 +266,7 @@ class ProjectController extends Controller
                 'create_time' => $project->prokect_createTime,
             ];
         }
+        $retJson['status'] = 200;
         return response()->json($retJson);
     }
 
@@ -335,6 +328,7 @@ class ProjectController extends Controller
                 'create_time' => $project['project_createTime'],
             ];
         }
+        $retJson['status'] = 200;
         return response()->json($retJson);
     }
 }

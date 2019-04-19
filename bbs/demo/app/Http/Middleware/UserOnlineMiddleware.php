@@ -20,12 +20,10 @@ class UserOnlineMiddleware
         if(is_null($uid))
         {
             $errorMessage = [
-                'msg' => [
-                    '请登录'
-                ]
+                'status' => 401,
+                'message' => '请登录'
             ];
-            return redirect('usr/sign-in')
-                ->withErrors($errorMessage);
+            return response()->json($errorMessage);
         }
         return $next($request);
     }

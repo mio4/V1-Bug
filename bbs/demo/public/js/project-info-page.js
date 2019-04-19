@@ -9,6 +9,32 @@ var projectCreateTime = "";
 var projectInfo = "";
 var projectPicUrl = "";
 
+function refreshInfo(){
+    // 更新项目信息
+    $("#project-name").text(projectName);
+    $("#project-owner").text(projectOwnerName);
+    $("#project-info").html("&emsp;&emsp;" + projectInfo);
+    $("#project-reward").text(projectReward);
+    $("#project-participant-max").text(projectMaxParticipant);
+    $("#project-create-time").text(projectCreateTime);
+    switch (projectKind) {
+        case 0:{
+            $("#project-kind").text("生活创意");
+            break;
+        }
+        case 1:{
+            $("#project-kind").text("科技创意");
+            break;
+        }
+        case 2:{
+            $("#project-kind").text("实验室项目");
+            break;
+        }
+        default:{
+            $("#project-kind").text("普通项目");
+        }
+    }
+}
 
 /**
  * 页面载入，获取项目详细信息
@@ -25,7 +51,7 @@ window.onload = function(){
             url:"../project/info",
             data:
                 {
-                    pid : pid,
+                    pid : projectId,
                 },
             dataType:"json",
             headers: {
@@ -41,6 +67,7 @@ window.onload = function(){
                 }
                 else if(data.status === 200){
                     projectName = data.name;
+                    console.log(projectName);
                     projectKind = data.kind;
                     projectOwnerName = data.user_name;
                     projectOwnerId = data.uid;
@@ -49,37 +76,13 @@ window.onload = function(){
                     projectCreateTime = data.create_time;
                     projectInfo = data.info;
                     // projectPicUrl = data.picture; TODO 获取图片
+                    refreshInfo();
                 }
                 else{
                     // TODO 其他错误信息处理
                 }
             }
         });
-
-    // 更新项目信息
-    $("#project-name").innerText = projectName;
-    $("#project-owner").innerText = projectOwnerName;
-    $("#project-info").innerText ="&emsp;&emsp;" + projectInfo;
-    $("#project-reward").innerText = projectReward;
-    $("#project-participant-max").innerText = projectMaxParticipant;
-    $("#project-create-time").innerText = projectCreateTime;
-    switch (projectKind) {
-        case 0:{
-            $("#project-kind").innerText = "生活创意";
-            break;
-        }
-        case 1:{
-            $("#project-kind").innerText = "科技创意";
-            break;
-        }
-        case 2:{
-            $("#project-kind").innerText = "实验室项目";
-            break;
-        }
-        default:{
-            $("#project-kind").innerText = "普通项目";
-        }
-    }
 
     // TODO 更新评论及回复
 };
