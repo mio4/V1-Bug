@@ -6,14 +6,16 @@ var projectInfoValidateValidate = false;
 $("#project-name").blur(function(){
     var projectName = $("#project-name").val();
     projectNameValidate = false;
+    console.log(projectName);
     if(projectName.length === 0){
-        console.log("OK");
         $("#project-name-alert").html("<bold>*请输入创意名称</bold>");
     }
     else if(projectName.length > 30){
         $("#project-name-alert").html("<bold>*名称应在30字以内</bold>");
     }
     else{
+        console.log("OK");
+        $("#project-name-alert").empty();
         projectNameValidate = true;
     }
 });
@@ -28,6 +30,7 @@ $("#project-reward").blur(function(){
         $("#project-reward-alert").html("<bold>*悬赏应在0至10000之间</bold>");
     }
     else{
+        $("#project-reward-alert").empty();
         projectRewardValidate = true;
     }
 });
@@ -42,6 +45,7 @@ $("#project-participant-max").blur(function(){
         $("#project-participant-max-alert").html("<bold>*开发者人数应在0至10之间</bold>");
     }
     else{
+        $("#project-participant-max-alert").empty();
         projectParticipantMaxValidate = true;
     }
 });
@@ -56,6 +60,7 @@ $("#project-info").blur(function(){
         $("#project-info-alert").html("<bold>*创意介绍应在10至300字之间</bold>");
     }
     else{
+        $("#project-info-alert").empty();
         projectInfoValidateValidate = true;
     }
 });
@@ -66,41 +71,39 @@ $("#create-project").click(function(){
         || !projectParticipantMaxValidate
         || !projectInfoValidateValidate)
     {
+        alert("请完善创意信息");
         return;
     }
 
     var projectName = $("#project-name").val();
     var projectReward = $("#project-reward").val();
     var projectParticipant = $("#project-participant-max").val();
-    var projectInfo = $("#project-info-alert").val();
+    var projectInfo = $("#project-info").val();
     var projectKind = $("input[name='project-kind']:checked").val();
     var projectPicture = null;
 
-    if(password_legal && password_con_legal){
-        $.ajax({
-            type : "POST",
-            url:"../project/crate",
-            data:
-                {
-                    name : projectName,
-                    kind : projectKind,
-                    reward : projectReward,
-                    participant_max : projectParticipant,
-                    info : projectInfo,
-                },
-            dataType:"json",
-            success:function(data){
-                if(data === 200){
-                    // TODO
-                    window.location.href = "project-info-page.html" + "?pid=" + data.pid;
-                }
-                else{
-                    //todo:显示修改失败
-                }
+    $.ajax({
+        type : "POST",
+        url:"../project/create",
+        data:
+            {
+                name : projectName,
+                kind : projectKind,
+                reward : projectReward,
+                participant_max : projectParticipant,
+                info : projectInfo,
             },
-            error:function(){
-                alert("网络繁忙请重试。");
+        dataType:"json",
+        success:function(data){
+            if(data.status === 200){
+                window.location.href = "project-info-page.html" + "?pid=" + data.pid;
             }
-        });
-    }
+            else{
+                //todo:显示修改失败
+            }
+        },
+        error:function(){
+            alert("网络繁忙请重试。");
+        }
+    });
 });

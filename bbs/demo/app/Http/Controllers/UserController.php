@@ -25,16 +25,6 @@ class UserController extends Controller
         return $arrs;
     }
 
-    public function signUpPage()
-    {
-        $binding =[
-            'title' => '注册'
-        ];
-
-        // return view('sign-up', $binding);
-        return redirect()->to('html/new-sign-in.html');
-    }
-
     public function signUpProcess()
     {
         $input = request()->all();
@@ -42,6 +32,7 @@ class UserController extends Controller
         $rules = [
             'name' => [
                 'required',
+                'alpha_num',
                 'max:16',
                 'min:8',
             ],
@@ -51,6 +42,7 @@ class UserController extends Controller
             ],
             'password' => [
                 'required',
+                'alpha_num',
                 'min:8',
                 'max:16'
             ],
@@ -87,12 +79,10 @@ class UserController extends Controller
             "user_kind" => $input["kind"],
             "user_regTime" => $input["user_regTime"]
         );
-//        $User = User::create($input);
         $User = User::create($userInfo);
         if(null != $User)
         {
             $response['status'] = 200;
-            $response['redirect'] = 'main';
         }
         else{
             $response['status'] = 400;
@@ -101,28 +91,19 @@ class UserController extends Controller
         return response()->json($response);
     }
 
-    public function signInPage()
-    {
-        $binding = [
-            'title' => '登陆'
-        ];
-
-        return redirect()->to('html/new-sign-in.html');
-    }
-
     public function signInProcess()
     {
         $input = request()->all();
         $response = [];
 
         $rules = [
-            'name' => [
+            'email' => [
                 'required',
-                'max:16',
-                'min:8',
+                'email'
             ],
             'password' => [
                 'required',
+                'alpha_num',
                 'min:8',
                 'max:16'
             ]
@@ -132,23 +113,22 @@ class UserController extends Controller
 
         if($validator->fails())
         {
-            $response['status'] = 400;
+            $response['status'] = 401;
             return response()->json($response);
         }
 
         // 验证密码。
-        $user = User::where('user_name', $input['name'])->firstOrFail();
+        $user = User::where('user_email', $input['email'])->first();
         $isPasswordCorrect = Hash::check($input['password'], $user->password);
         if(is_null($isPasswordCorrect))
         {
-            $response['status'] = 400;
+            $response['status'] = 402;
             return response()->json($response);
         }
 
         // 登陆成功，写session
         session()->put('uid', $user->uid);
         $response['status'] = 200;
-        $response['redirect'] = 'main';
         return response()->json($response);
     }
 
@@ -158,8 +138,12 @@ class UserController extends Controller
      */
     public function logOut()
     {
+        $response = [
+            'status' => 400,
+        ];
         session()->forget('uid');
-        return redirect('main');
+        $response['status'] = 200;
+        return response()->json($response);
     }
 
     /**

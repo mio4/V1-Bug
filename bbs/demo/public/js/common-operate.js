@@ -17,3 +17,7 @@ $("#btn-logout").click(function(){
             }
         });
 });
+
+$("#btn-user-info").click(function(){
+    window.location.href = 'user-info-page.html';
+});
