@@ -17,6 +17,7 @@ class Project extends Model
         'project_kind',
         'project_reward',
         'project_photo',
+        'participant_max',
         'project_createTime',
     ];
 
