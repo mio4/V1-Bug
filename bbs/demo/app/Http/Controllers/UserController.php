@@ -152,18 +152,44 @@ class UserController extends Controller
         return response()->json($response);
     }
 
-    public function signOut()
+    /**
+     * 注销逻辑：从session中删除uid
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function logOut()
     {
         session()->forget('uid');
-
         return redirect('main');
     }
 
-    public function getUserInfo(Request $request){
+    /**
+     * 通过Session获取uid
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getCurUserInfo(Request $request){
         $session = $request->session();
         $uid = $session->get('uid');
         $user = User::find($uid);
-        $email = $user['user_email'];
+        $response = array(
+            "email" => $user["user_email"],
+            "name" => $user["user_name"],
+            "password" => $user["password"],
+            "regTime" => $user["user_regTime"],
+            "kind" => $user["user_kind"],
+        );
+        return response()->json($response);
+    }
+
+    /**
+     * 通过POST获取uid
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getUserInfoByUid(Request $request){
+        $data = json_decode($request->getContent(),true);
+        $uid = $data['uid'];
+        $user = User::find($uid);
         $response = array(
             "email" => $user["user_email"],
             "name" => $user["user_name"],

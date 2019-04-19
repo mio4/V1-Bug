@@ -64,9 +64,11 @@ Route::group(['prefix' => 'user'], function(){
     // 登录请求
     Route::post('/sign-in', 'UserController@signInProcess');
     // 登出请求
-    Route::get('/sign-out', 'UserController@signOut');
-    //获取个人信息
-    Route::get('/info','UserController@getUserInfo');
+    Route::get('/logout', 'UserController@logOut');
+    //获取个人信息——GET
+    Route::get('/info','UserController@getCurUserInfo');
+    //获取个人信息——POST
+    Route::post('/info','UserController@getUserInfoByUid');
 });
 
 Route::group(['prefix' => 'user/info/change'], function(){
@@ -132,26 +134,30 @@ Route::group(['prefix' => 'project'], function(){
 Route::group(['prefix' => 'project/star'],function(){
     //关注项目
     Route::post('/','StarController@starProject');
-    //获取关注项目的基本信息
-    Route::get('/','StarController@getStarProject');
+//    获取关注项目的基本信息
+//    Route::get('/','StarController@getStarProject');
+    //查看用户的收藏列表
+    Route::post('/get','StarController@getStarProjectByUid');
 });
 Route::group(['prefix' => 'user/star'],function(){
     //关注用户
     Route::post('/','StarController@starUser');
-    //获取关注的用户基本信息
-    Route::get('/','StarController@getStarUser');
+    //根据uid获取用户的关注列表
+    Route::post('/get','StarController@getUserStarList');
+
+    Route::post('/hello','StarController@test');
 });
 //------------ 关注 ------------
 
 //------------ 评论 ------------
 Route::group(['prefix' => 'project/comment'],function(){
     //发表项目的评论
-    Route::post('/','CommentController@publishComment');
+    Route::post('/publish','CommentController@publishComment');
     //对项目的评论发表回复
-    Route::post('/','CommentController@replyComment');
+    Route::post('/reply/publish','CommentController@replyComment');
     //获取项目的评论
-    Route::get('/','CommentController@getComment');
+    Route::post('/get','CommentController@getComment');
     //获取评论的回复
-    Route::get('/','CommentController@getReply');
+    Route::post('/reply/get','CommentController@getReply');
 });
 //------------ 评论 ------------

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\DataEntity\User;
+use App\DataEntity\Project;
 use App\DataEntity\UserProject;
+use App\DataEntity\UserStar;
 use Illuminate\Http\Request;
 
 /**
@@ -41,26 +44,122 @@ class StarController extends Controller
         return response()->json($response);
     }
 
-    //TODO
-    public function getStarProject(Request $request){
-        $session = $request->session();
-        $uid = $session->get('uid');
-    }
+//    /**
+//     *
+//     * @param Request $request
+//     * @return \Illuminate\Http\JsonResponse
+//     */
+//    public function getStarProject(Request $request){
+//        $session = $request->session();
+//        $u1_id = $session->get('uid');
+//        $data = json_decode($request->getContent(),true);
+//        $u2_id = $data["uid"];
+//        $starInfo = array(
+//            "u1_id" => $u1_id,
+//            "u2_id" => $u2_id
+//        );
+//        try{
+//            UserProject::create($starInfo);
+//            $response = array(
+//                "status" => 200
+//            );
+//        } catch (\Exception $exception){
+//            $response = array(
+//                "status" => 400
+//            );
+//        }
+//        return response()->json($response);
+//    }
 
-    //TODO
-    public function starUser(Request $request){
+    /**
+     * 查看用户的收藏列表
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getStarProjectByUid(Request $request){
         $data = json_decode($request->getContent(),true);
-        $star_uid = $data['uid'];
-        $session = $request->session();
-        $cur_uid = $session->get('uid');
+        $uid = $data['uid'];
 
-
+        $result = array();
+        try{
+            $data = UserProject::where("uid","=",$uid)->get();
+            foreach($data as $single_data){
+                $pid = $single_data["pid"];
+                $project_res = Project::find($pid);
+                $project = array();
+                $project["pid"] = $project_res["pid"];
+                $project["name"] = $project_res["project_name"];
+                $project["picture"] = $project_res["project_photo"];
+                $project["create_time"] = $project_res["project_createTime"];
+                array_push($result,$project);
+            }
+        } catch (\Exception $exception){
+            $result = array(
+                "status" => 400
+            );
+        }
+        return response()->json($result);
     }
 
-    //TODO
-    public function getStarUser(Request $request){
+    /**
+     * 关注用户
+     * 1. user_star表中添加一条数据
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function starUser(Request $request){
         $session = $request->session();
-        $uid = $session->get('uid');
+        $u1_id = $session->get('uid');
+        $data = json_decode($request->getContent(),true);
+        $u2_id = $data["uid"];
+        $starInfo = array(
+            "u1_id" => $u1_id,
+            "u2_id" => $u2_id
+        );
+        try{
+            UserStar::create($starInfo);
+            $response = array(
+                "status" => 200
+            );
+        } catch (\Exception $exception){
+            $response = array(
+                "status" => 400
+            );
+        }
+        return response()->json($response);
+    }
+
+    /**
+     * 根据uid查询用户的关注列表
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getUserStarList(Request $request){
+        $data = json_decode($request->getContent(),true);
+        $u1_id = $data['uid'];
+        $result["info"] = array();
+
+        try{
+            $data = UserStar::where("u1_id","=",$u1_id)->get();
+            foreach($data as $single_data){
+                $u2_id = $single_data["u2_id"];
+                $user_res = User::find($u2_id);
+                $user = array();
+                $user["uid"] = $u2_id;
+                $user["name"] = $user_res["user_name"];
+                $user["picture"] = $user_res["picture"];
+                array_push($result["info"],$user);
+            }
+        } catch (\Exception $exception){
+            $result = array(
+                "status" => 400
+            );
+        }
+        return response()->json($result);
+    }
+
+    public function test(){
+        echo "hello";
     }
 }
 
