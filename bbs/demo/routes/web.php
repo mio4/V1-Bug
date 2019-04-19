@@ -87,7 +87,10 @@ Route::group(['prefix' => 'project'], function(){
     Route::get('/create', 'ProjectController@projectCreateProgress')
         ->middleware('user.online');
     // 关闭项目
-    Route::post('/close', 'ProjectController@projectCloseProgress');
+    Route::post('/close', 'ProjectController@projectCloseProgress')
+        ->middleware('user.online');
+    // 参加项目
+    Route::post('/participate', 'ProjectController@projectParticipateProgress');
 
     Route::group(['prefix' => 'info'], function(){
         // 项目信息
@@ -99,10 +102,17 @@ Route::group(['prefix' => 'project'], function(){
             // 个人创建项目基本信息
             Route::post('/own', 'ProjectController@projectOwnBasicInfoGet');
             // 个人参加项目基本信息
-            Route::post('/own', 'ProjectController@projectParticipateBasicInfoGet');
+            Route::post('/participate', 'ProjectController@projectParticipateBasicInfoGet');
         });
-
     });
+
+    Route::group(['prefix' => 'star'], function(){
+        // 收藏项目
+        Route::post('/', 'ProjectController@projectStarProgress');
+        // 获取个人收藏项目列表
+        Route::post('/get', 'ProjectCOntroller@projectStarGet');
+    });
+
 
 //    Route::group(['prefix' => '{project_id}'], function(){
 //        // 浏览项目页面

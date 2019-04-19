@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\DataEntity\ProjectDeveloper;
+use App\DataEntity\ProjectStar;
 use App\DataEntity\User;
 use App\Http\Controllers;
 use App\DataEntity\Project;
@@ -234,11 +236,105 @@ class ProjectController extends Controller
         return response()->json($retJson);
     }
 
+    /**
+     * 返回某用户创建的项目基础信息列表
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function projectOwnBasicInfoGet(){
-
+        $retJson = [];
+        $retSum = 0;
+        $input = request()->all();
+        $projects = Project::select('pid', 'project_name', 'project_createTime')
+            ->where('project_owner', $input['uid'])->get();
+        foreach($projects as $project){
+            $retJson[$retSum++] = [
+                'pid' => $project->pid,
+                'name' => $project->project_name,
+                'create_time' => $project->prokect_createTime,
+            ];
+        }
+        return response()->json($retJson);
     }
 
+    /**
+     * 返回某用户参与的项目
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function projectParticipateBasicInfoGet(){
+        $retJson = [];
+        $retSum = 0;
+        $input = request()->all();
+        $participateRecordList = ProjectDeveloper::select('pid')->where('uid', $input['uid'])->get();
+        foreach($participateRecordList as $record){
+            $project = Project::select('pid', 'project_name', 'project_createTime')
+                ->where('pid', $record['pid'])->first();
+            $retJson[$retSum++] = [
+                'pid' => $project->pid,
+                'name' => $project->project_name,
+                'create_time' => $project->prokect_createTime,
+            ];
+        }
+        return response()->json($retJson);
+    }
 
+    /**
+     * 参加某项目
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function projectParticipateProgress(){
+        $input = request()->all();
+        $response = [
+            'status' => 400,
+        ];
+        $participateRecord = [
+            'pid' => $input['pid'],
+            'uid' => session()->get('uid'),
+        ];
+
+        ProjectDeveloper::create($participateRecord);
+        $response['status'] = 200;
+
+        return response()->json($response);
+    }
+
+    /**
+     * 收藏项目
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function projectStarProgress(){
+        $input = request()->all();
+        $response = [
+            'status' => 400,
+        ];
+        $starRecord = [
+            'pid' => $input['pid'],
+            'uid' => session()->get('uid'),
+        ];
+
+        ProjectStar::create($starRecord);
+        $response['status'] = 200;
+
+        return response()->json($response);
+    }
+
+    /**
+     * 返回某用户收藏的所有项目基础信息列表
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function projectStarGet(){
+        $input = request()->all();
+        $retJson = [];
+        $retSum = 0;
+        $starRecordLists = ProjectStar::select('pid')->where('uid', $input['uid'])->get();
+        foreach($starRecordLists as $record){
+            $project = Project::select('pid', 'project_name', 'project_createTime')
+                ->where('pid', $record['pid'])->first();
+            $retJson[$retSum++] = [
+                'pid' => $project['pid'],
+                'name' => $project['project_name'],
+                'create_time' => $project['project_createTime'],
+            ];
+        }
+        return response()->json($retJson);
     }
 }

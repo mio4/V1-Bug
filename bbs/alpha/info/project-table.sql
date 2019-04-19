@@ -37,22 +37,18 @@ CREATE TABLE IF NOT EXISTS `reply`(
 
 
 -- 为了实现一个用户能够关注多个项目，一个项目能够被多个用户关注的"多对多关系"设计的中间表
-DROP TABLE IF EXISTS `user_star_project`
-CREATE TABLE `user_star_project`(
-    `up_id` int(8) auto_increment,
-    `uid` int(8) not null,
-    `pid` int(8) not null,
-    PRIMARY KEY(`up_id`)
+DROP TABLE IF EXISTS `project_star`
+CREATE TABLE `project_star`(
+    `uid` int(8) primary key references `user`(`uid`),
+    `pid` int(8) primary key references `project`(`pid`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
-ALTER TABLE user_project ADD CONSTRAINT u_fk FOREIGN KEY(uid) REFERENCES user(uid);
-ALTER TABLE user_project ADD CONSTRAINT p_fk FOREIGN KEY(pid) REFERENCES project(pid);
 -- 测试添加数据
 insert into user (uid,user_name,password,user_email,user_kind,user_regTime) values (10,10,10,10,10,'2019-04-16');
 insert into project(pid,project_owner,project_name,project_reward,project_info,project_kind,project_createTime) values (10,10,10,10,10,1,'2019-04-16');
-insert into user_project (uid,pid) values (10,10);
+insert into project_star (uid,pid) values (10,10);
 
-DROP TABLE IF EXISTS `projectDeveloper`;
-CREATE TABLE IF NOT EXISTS `projectDeveloper`(
+DROP TABLE IF EXISTS `project_developer`;
+CREATE TABLE IF NOT EXISTS `project-developer`(
     `pid`           int(8) primary key references `project`(`pid`),
     `uid`           int(8) primary key references `user`(`uid`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
