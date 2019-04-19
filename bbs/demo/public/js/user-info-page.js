@@ -252,6 +252,9 @@ function load_user_star_list(){
 		success:function(data){
 			if(data === 200){
 				userStarUserInfo = data.info;
+				// TODO 加载个人关注用户列表
+				// 信息存在userStarUserInfo里
+				// 格式 {{uid:id，name:用户名，picture:头像的URL},.......}
 			}
 			else{
 				// TODO 加载信息失败
@@ -261,9 +264,6 @@ function load_user_star_list(){
 			alert("网络繁忙请刷新。");
 		}
 	});
-	// TODO 加载个人关注用户列表
-	// 信息存在userStarUserInfo里
-	// 格式 {{uid:id，name:用户名，picture:头像的URL},.......}
 }
 
 /**
@@ -281,6 +281,9 @@ function load_project_star_list(){
 		success:function(data){
 			if(data === 200){
 				userStarProjectInfo = data.info;
+				// TODO 加载个人收藏项目列表
+				// 信息存在userStarProjectInfo里
+				// 格式 {{pid:id，name:项目名，create_time:创建时间},.......}
 			}
 			else{
 				// TODO 加载信息失败
@@ -290,10 +293,6 @@ function load_project_star_list(){
 			alert("网络繁忙请刷新。");
 		}
 	});
-	// TODO 加载个人收藏项目列表
-	// 信息存在userStarProjectInfo里
-	// 格式 {{pid:id，name:项目名，create_time:创建时间},.......}
-
 }
 
 /**
@@ -312,6 +311,9 @@ function load_project_own_list(){
 		success:function(data){
 			if(data === 200){
 				userOwnProjectInfo = data.info;
+				// TODO 加载个人创建项目列表
+				// 信息存在userOwnProjectInfo里
+				// 格式 {{pid:pid，name:项目名，create_time:创建时间},.......}
 			}
 			else{
 				// TODO 加载信息失败
@@ -321,9 +323,7 @@ function load_project_own_list(){
 			alert("网络繁忙请刷新。");
 		}
 	});
-	// TODO 加载个人创建项目列表
-	// 信息存在userOwnProjectInfo里
-	// 格式 {{pid:pid，name:项目名，create_time:创建时间},.......}
+
 }
 
 /**
@@ -342,6 +342,9 @@ function load_project_participate_list(){
 		success:function(data){
 			if(data === 200){
 				userParticipateProjectInfo = data.info;
+				// TODO 加载个人参加项目列表
+				// 信息存在userParticipateProjectInfo里
+				// 格式 {{pid:id，name:项目名，create_time:创建时间},.......}
 			}
 			else{
 				// TODO 加载信息失败
@@ -351,9 +354,6 @@ function load_project_participate_list(){
 			alert("网络繁忙请刷新。");
 		}
 	});
-	// TODO 加载个人参加项目列表
-	// 信息存在userParticipateProjectInfo里
-	// 格式 {{pid:id，name:项目名，create_time:创建时间},.......}
 }
 
 /**
@@ -363,7 +363,9 @@ window.onload = function(){
 
 	// 从url获取页面用户ID
 	userId = get_url_param('uid');
+	console.log("IN");
 	if(userId === null){
+		console.log("1");
 		$.ajax({
 			type : "GET",
 			url:"../user/info",
@@ -375,6 +377,7 @@ window.onload = function(){
 					userEmail = data.email;
 					userKind = userKindList[data.kind];
 					userRegTime = data.regTime;
+					refresh_user_info();
 				}
 				else{
 					// TODO 加载信息失败
@@ -416,7 +419,7 @@ window.onload = function(){
 
 	// 更新个人信息
 
-	refresh_user_info();
+
 
 	load_user_star_list();
 
@@ -426,12 +429,14 @@ window.onload = function(){
 
 	load_project_participate_list();
 
+	refresh_detail_info();
+
 };
 
 /**
  * 显示加载个人关注用户列表，并分页
  */
-window.onload = function (){
+function refresh_detail_info(){
 	current_page = 1;
 	current_tab = "SPI";
 	data = [userStarUserInfo, userStarProjectInfo, userOwnProjectInfo, userParticipateProjectInfo];
