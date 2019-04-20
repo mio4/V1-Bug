@@ -67,12 +67,10 @@ $("#btn-sign-in").click(function(){
 			},
 			error : function() {
 				alert('网络繁忙');
-				window.location.replace("main-page.html"); // TODO 测试用
 			},
 			success:function(data)
 			{
 				if(data.status===200){
-					alert("登录成功");
 					window.location.replace("main-page.html");
 				}
 				else{
@@ -120,7 +118,7 @@ $("#btn-sign-up").click(function(){
 					window.location.reload(true);
 				}
 				else{
-					alert('注册失败，请重试' + data.message);
+					alert('注册失败，请重试');
 				}
 			}
 		});
