@@ -96,7 +96,7 @@ Route::group(['prefix' => 'project'], function(){
 
         Route::group(['prefix' => 'basic'], function(){
             // 项目基本信息
-            Route::post('/', 'ProjectController@projectBasicInfoGet');
+            Route::get('/', 'ProjectController@projectBasicInfoGet');
             // 个人创建项目基本信息
             Route::post('/own', 'ProjectController@projectOwnBasicInfoGet');
             // 个人参加项目基本信息

@@ -32,8 +32,9 @@ function load_project_list(){
         url:"../project/info/basic",
         dataType:"json",
         success:function(data){
-            if(data === 200){
-                projectInfoList = data.info;
+            if(data.status === 200){
+                projectInfoList = data;
+                refresh_project_list()
             }
             else{
                 // TODO 加载信息失败
@@ -55,9 +56,12 @@ function load_project_list(){
  */
 window.onload = function (){
     var i;              //循环用变量
-    //load_project_list(); //使用模拟数据，没有真正从后端获取
+    load_project_list(); //使用模拟数据，没有真正从后端获取
+};
+
+function refresh_project_list(){
     current_page = 1;
-    total = projectInfoList.length;
+    total = JSONLength(projectInfoList) - 1;
     left = total % num_per_page;
     pages = (total - left) / num_per_page;
     if(left > 0){
@@ -114,8 +118,8 @@ window.onload = function (){
                 </div> \
             </div>';
     }
-    document.getElementById("page-show").innerHTML += string;
-};
+    document.getElementById("page-show").innerHTML += string;*/
+}
 
 /**
  * 点击页码触发函数

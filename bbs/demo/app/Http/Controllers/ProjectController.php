@@ -226,11 +226,12 @@ class ProjectController extends Controller
      * 返回所有项目的基础信息
      * @return \Illuminate\Http\JsonResponse
      */
-    public function projectInfoBasicGet(){
+    public function projectBasicInfoGet(){
         $retJson = [];
         $retSum = 0;
         foreach(Project::cursor() as $project){
             $retJson[$retSum++] = [
+                'pid'               => $project->pid,
                 'name'              => $project->project_name,
                 'kind'              => $project->project_kind,
                 'reward'            => $project->project_reward,
