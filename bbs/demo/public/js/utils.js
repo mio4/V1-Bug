@@ -25,3 +25,17 @@ function redirect_to_user(uid){
 function redirect_to_project(pid){
     window.location.href = "project-info-page.html" + "?pid=" + pid;
 }
+
+/**
+ *
+ * @return {number}
+ */
+function JSONLength(obj) {
+    var size = 0;
+    var key;
+    for (key in obj) {   //obj中存在几个关键字
+        if (obj.hasOwnProperty(key))
+            size++;
+    }
+    return size;
+};
