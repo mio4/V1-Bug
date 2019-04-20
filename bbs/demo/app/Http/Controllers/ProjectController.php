@@ -7,6 +7,7 @@ use App\DataEntity\ProjectStar;
 use App\DataEntity\User;
 use App\Http\Controllers;
 use App\DataEntity\Project;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class ProjectController extends Controller
@@ -48,7 +49,7 @@ class ProjectController extends Controller
      * 创建项目，重定向至项目信息修改页面。
      * @return \Illuminate\Http\JsonResponse
      */
-    public function projectCreateProgress()
+    public function projectCreateProgress(Request $request)
     {
         $input = request()->all();
         $response = [
@@ -56,8 +57,8 @@ class ProjectController extends Controller
         ];
 
         //获取上传的图片
-        $photo = $_FILES['picture'];
-        $userId = $_SESSION['uid'];
+        $photo = $_FILES['picture']['tmp_name'];
+        $userId = $request->session()->get('uid');
         $photoName = $userId . time().rand(0,1000);
         //获取图片后缀
         $ext = pathinfo($_FILES['picture']['name'])['extension'];
@@ -85,7 +86,7 @@ class ProjectController extends Controller
         }
         else{
             //图片保存到服务器指定位置
-            if(move_uploaded_file($photo['tmp_name'],'./'.$photoName)){
+            if(move_uploaded_file($photo,'./'.$photoName)){
                 $response['status'] = 200;
                 $response['pid'] = $newProject['pid'];
             }
