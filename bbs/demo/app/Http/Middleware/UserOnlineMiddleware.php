@@ -23,7 +23,8 @@ class UserOnlineMiddleware
                 'status' => 401,
                 'message' => '请登录'
             ];
-            return response()->json($errorMessage);
+            return redirect()->to('html/sign-page.html');
+            // return response()->json($errorMessage);
         }
         return $next($request);
     }
