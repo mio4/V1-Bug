@@ -44,6 +44,7 @@ class ProjectController extends Controller
     ];
 
     /**
+     * 项目图片命名方式：用户ID + 随机数
      * 创建项目，重定向至项目信息修改页面。
      * @return \Illuminate\Http\JsonResponse
      */
@@ -53,6 +54,16 @@ class ProjectController extends Controller
         $response = [
             'status' => 400
         ];
+
+        //获取上传的图片
+        $photo = $_FILES['picture'];
+        $userId = $_SESSION['uid'];
+        $photoName = $userId . time().rand(0,1000);
+        //获取图片后缀
+        $ext = pathinfo($_FILES['picture']['name'])['extension'];
+        //保存在服务器的文件名
+        $photoName = $photoName . '.' . $ext;
+        //TODO 校验图片后缀是否是img/jpg/png等
         $projectData = [
             'project_name' => $input['name'],
             'project_owner' => session()->get('uid'),
@@ -60,7 +71,7 @@ class ProjectController extends Controller
             'project_kind' => intval($input['kind']),
             'project_reward' => intval($input['reward']),
             'participant_max' => intval($input['participant_max']),
-            'project_photo' => '',
+            'project_photo' => $photoName,
             'project_createTime' => date('Y-m-d')
         ];
 
@@ -68,14 +79,19 @@ class ProjectController extends Controller
 
         $validator = Validator::make($projectData, $this->rules);
 
-
         if($validator->fails())
         {
             $response['status'] = 400;
         }
         else{
-            $response['status'] = 200;
-            $response['pid'] = $newProject['pid'];
+            //图片保存到服务器指定位置
+            if(move_uploaded_file($photo['tmp_name'],'./'.$photoName)){
+                $response['status'] = 200;
+                $response['pid'] = $newProject['pid'];
+            }
+            else{ //失败则返回4xx
+                $response['status'] = 400;
+            }
         }
 
         return response()->json($response);

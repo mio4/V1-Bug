@@ -156,6 +156,8 @@ class UserController extends Controller
         $uid = $session->get('uid');
         $user = User::find($uid);
         $response = array(
+            "status" => "200",
+            "uid" => $uid,
             "email" => $user["user_email"],
             "name" => $user["user_name"],
             "password" => $user["password"],
@@ -175,6 +177,7 @@ class UserController extends Controller
         $uid = $data['uid'];
         $user = User::find($uid);
         $response = array(
+            "status" => "200",
             "email" => $user["user_email"],
             "name" => $user["user_name"],
             "password" => $user["password"],
@@ -189,6 +192,7 @@ class UserController extends Controller
         $session = $request->session();
         $uid = $session->get('uid');
         $changeInfo = array(
+            'status' => '200',
             'user_email' => $data["email"],
             'user_name' => $data["name"],
             'password' => $data["password"],
