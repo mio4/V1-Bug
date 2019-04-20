@@ -81,8 +81,11 @@ Route::group(['prefix' => 'user/info/change'], function(){
 Route::group(['prefix' => 'project'], function(){
     // 浏览项目列表
     Route::get('/', 'ProjectController@projectListPage');
-    // 创建项目
+    // 创建项目——基本信息
     Route::post('/create', 'ProjectController@projectCreateProgress')
+        ->middleware('user.online');
+    //创建项目——上传图片
+    Route::post('/create/picture', 'ProjectController@projectCreateUploadFileProgress')
         ->middleware('user.online');
     // 关闭项目
     Route::post('/close', 'ProjectController@projectCloseProgress')

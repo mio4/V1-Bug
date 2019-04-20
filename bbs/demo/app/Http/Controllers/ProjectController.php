@@ -55,16 +55,7 @@ class ProjectController extends Controller
         $response = [
             'status' => 400
         ];
-
-        //获取上传的图片
-        $photo = $_FILES['picture']['tmp_name'];
-        $userId = $request->session()->get('uid');
-        $photoName = $userId . time().rand(0,1000);
-        //获取图片后缀
-        $ext = pathinfo($_FILES['picture']['name'])['extension'];
-        //保存在服务器的文件名
-        $photoName = $photoName . '.' . $ext;
-        //TODO 校验图片后缀是否是img/jpg/png等
+        $photoName = $request->session()->get("photoName");
         $projectData = [
             'project_name' => $input['name'],
             'project_owner' => session()->get('uid'),
@@ -76,8 +67,6 @@ class ProjectController extends Controller
             'project_createTime' => date('Y-m-d')
         ];
 
-        $newProject = Project::create($projectData);
-
         $validator = Validator::make($projectData, $this->rules);
 
         if($validator->fails())
@@ -85,16 +74,39 @@ class ProjectController extends Controller
             $response['status'] = 400;
         }
         else{
-            //图片保存到服务器指定位置
-            if(move_uploaded_file($photo,'./'.$photoName)){
-                $response['status'] = 200;
-                $response['pid'] = $newProject['pid'];
-            }
-            else{ //失败则返回4xx
-                $response['status'] = 400;
-            }
+            $response['status'] = 200;
+            $newProject = Project::create($projectData);
+            //TODO 判断是否创建成功
         }
 
+        return response()->json($response);
+    }
+
+
+    /**
+     * 上传并且保存项目图片
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function projectCreateUploadFileProgress(Request $request){
+        //获取上传的图片
+        $photo = $_FILES['picture']['tmp_name'];
+        $userId = $request->session()->get('uid');
+        $photoName = $userId . time().rand(0,1000);
+        //获取图片后缀
+        $ext = pathinfo($_FILES['picture']['name'])['extension'];
+        //保存在服务器的文件名
+        $photoName = $photoName . '.' . $ext;
+        //TODO 校验图片后缀是否是img/jpg/png等
+        //图片保存到服务器指定位置，同时添加路径信息到session
+        //FIXME 改变图片保存的位置
+        if(move_uploaded_file($photo,'./'.$photoName)){
+            $response['status'] = 200;
+            session()->put('photoName',$photoName);
+        }
+        else{ //失败则返回4xx
+            $response['status'] = 400;
+        }
         return response()->json($response);
     }
 
