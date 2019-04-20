@@ -8,7 +8,7 @@ var userReward = "0"; // TODO 增加该项
 var userKindList = ["", "普通用户", "实验室官方"];
 
 //模拟数据
-a1 = JSON.parse('{"uid":"1", "name":"用户名1", "picture":"头像的URL"}');
+/*a1 = JSON.parse('{"uid":"1", "name":"用户名1", "picture":"头像的URL"}');
 a2 = JSON.parse('{"uid":"2", "name":"用户名2", "picture":"头像的URL"}');
 a3 = JSON.parse('{"uid":"3", "name":"用户名3", "picture":"头像的URL"}');
 a4 = JSON.parse('{"uid":"4", "name":"用户名4", "picture":"头像的URL"}');
@@ -30,29 +30,28 @@ d4 = JSON.parse('{"pid":"12", "name":"参与项目名4", "create_time":"创建�
 d5 = JSON.parse('{"pid":"13", "name":"参与项目名5", "create_time":"创建时间"}');
 d6 = JSON.parse('{"pid":"14", "name":"参与项目名6", "create_time":"创建时间"}');
 d7 = JSON.parse('{"pid":"15", "name":"参与项目名7", "create_time":"创建时间"}');
-d8 = JSON.parse('{"pid":"16", "name":"参与项目名8", "create_time":"创建时间"}');
+d8 = JSON.parse('{"pid":"16", "name":"参与项目名8", "create_time":"创建时间"}');*/
 
 // 用户详细信息
-let userStarUserInfo = [a1, a2, a3, a4];
-let userStarProjectInfo = [b1, b2, b3, b4];
-let userOwnProjectInfo = [c1, c2, c3 ,c4];
-let userParticipateProjectInfo = [d1, d2, d3, d4, d5, d6, d7, d8];
-var num_per_page=3; // 每页显示数量
+var userStarUserInfo;
+var userStarProjectInfo;
+var userOwnProjectInfo;
+var userParticipateProjectInfo;
+var num_per_page=10; // 每页显示数量（可以更改）
 var current_page=1; // 当前页码
 var current_tab="SPI"; // 当前tab页面
-let SUI_total;
-let SUI_left;
-let SUI_pages;
-let SPI_total;
-let SPI_left;
-let SPI_pages;
-let OPI_total;
-let OPI_left;
-let OPI_pages;
-let PPI_total;
-let PPI_left;
-let PPI_pages;
-let data;
+var SUI_total;
+var SUI_left;
+var SUI_pages;
+var SPI_total;
+var SPI_left;
+var SPI_pages;
+var OPI_total;
+var OPI_left;
+var OPI_pages;
+var PPI_total;
+var PPI_left;
+var PPI_pages;
 /**
 *表示方法介绍
 *userStarUserInfo => SUI;
@@ -250,11 +249,20 @@ function load_user_star_list(){
 			},
 		dataType:"json",
 		success:function(data){
-			if(data === 200){
-				userStarUserInfo = data.info;
+			if(data.status === 200){
+				userStarUserInfo = data;
 				// TODO 加载个人关注用户列表
 				// 信息存在userStarUserInfo里
 				// 格式 {{uid:id，name:用户名，picture:头像的URL},.......}
+				SUI_total = JSONLength(userStarUserInfo);
+				SUI_left = SUI_total % num_per_page;
+				SUI_pages = (SUI_total - SUI_left) / num_per_page;
+				if(SUI_left > 0){
+					SUI_pages += 1;
+				}
+				current_page = 1;
+				current_tab = "SUI";
+				click_tab(current_tab);
 			}
 			else{
 				// TODO 加载信息失败
@@ -279,11 +287,20 @@ function load_project_star_list(){
 			},
 		dataType:"json",
 		success:function(data){
-			if(data === 200){
-				userStarProjectInfo = data.info;
+			if(data.status === 200){
+				userStarProjectInfo = data;
 				// TODO 加载个人收藏项目列表
 				// 信息存在userStarProjectInfo里
 				// 格式 {{pid:id，name:项目名，create_time:创建时间},.......}
+				SPI_total = JSONLength(userStarProjectInfo) - 1;
+				SPI_left = SPI_total % num_per_page;
+				SPI_pages = (SPI_total - SPI_left) / num_per_page;
+				if(SPI_left > 0){
+					SPI_pages += 1;
+				}
+				current_page = 1;
+				current_tab = "SPI";
+				click_tab(current_tab);
 			}
 			else{
 				// TODO 加载信息失败
@@ -309,11 +326,20 @@ function load_project_own_list(){
 			},
 		dataType:"json",
 		success:function(data){
-			if(data === 200){
-				userOwnProjectInfo = data.info;
+			if(data.status === 200){
+				userOwnProjectInfo = data;
 				// TODO 加载个人创建项目列表
 				// 信息存在userOwnProjectInfo里
 				// 格式 {{pid:pid，name:项目名，create_time:创建时间},.......}
+				OPI_total = JSONLength(userOwnProjectInfo) - 1;
+				OPI_left = OPI_total % num_per_page;
+				OPI_pages = (OPI_total - OPI_left) / num_per_page;
+				if(OPI_left > 0){
+					OPI_pages += 1;
+				}
+				current_page = 1;
+				current_tab = "OPI";
+				click_tab(current_tab);
 			}
 			else{
 				// TODO 加载信息失败
@@ -340,11 +366,20 @@ function load_project_participate_list(){
 			},
 		dataType:"json",
 		success:function(data){
-			if(data === 200){
-				userParticipateProjectInfo = data.info;
+			if(data.status === 200){
+				userParticipateProjectInfo = data;
 				// TODO 加载个人参加项目列表
 				// 信息存在userParticipateProjectInfo里
 				// 格式 {{pid:id，name:项目名，create_time:创建时间},.......}
+				PPI_total = JSONLength(userParticipateProjectInfo);
+				PPI_left = PPI_total % num_per_page;
+				PPI_pages = (PPI_total - PPI_left) / num_per_page;
+				if(PPI_left > 0){
+					PPI_pages += 1;
+				}
+				current_page = 1;
+				current_tab = "PPI";
+				click_tab(current_tab);
 			}
 			else{
 				// TODO 加载信息失败
@@ -371,7 +406,8 @@ window.onload = function(){
 			url:"../user/info",
 			dataType:"json",
 			success:function(data){
-				if(data === 200){
+				if(data.status === 200){
+					console.log(data);
 					userName = data.name;
 					userId = data.uid;
 					userEmail = data.email;
@@ -421,27 +457,27 @@ window.onload = function(){
 
 
 
-	load_user_star_list();
+	// load_user_star_list();
+	//
+	// load_project_star_list();
+	//
+	// load_project_own_list();
+	//
+	// load_project_participate_list();
 
 	load_project_star_list();
-
-	load_project_own_list();
-
-	load_project_participate_list();
-
-	refresh_detail_info();
 
 };
 
 /**
  * 显示加载个人关注用户列表，并分页
  */
-function refresh_detail_info(){
+/*function refresh_detail_info(){
 	current_page = 1;
 	current_tab = "SPI";
 	data = [userStarUserInfo, userStarProjectInfo, userOwnProjectInfo, userParticipateProjectInfo];
 	
-	//加载每个tab表的基本信息
+	加载每个tab表的基本信息
 	SUI_total = userStarUserInfo.length;
 	SUI_left = SUI_total % num_per_page;
 	SUI_pages = (SUI_total - SUI_left) / num_per_page;
@@ -467,25 +503,10 @@ function refresh_detail_info(){
 		PPI_pages += 1;
 	}
 	
-	//用收藏项目列表初始化页面显示内容
+	用收藏项目列表初始化页面显示内容
 	click_tab(current_tab);
-	/*
-	document.getElementById("SUI-page-index").innerHTML="";
-	document.getElementById("SUI-page-index").innerHTML += '<li><a class="fake-link" aria-label="Previous" onclick="click_previous()">&laquo;</a></li>';
-	var string="";
-	for(var i=1;i <= SUI_pages;i++){
-		string = string + '<li><a class="fake-link" id="SUI-page-';
-		string = string + i.toString();
-		string = string + '" onclick="click_page_index(';
-		string = string + i.toString();
-		string = string + ', "SUI")">';
-		string = string + i.toString();
-		string = string + '</a></li>';
-	}
-	document.getElementById("SUI-page-index").innerHTML += string;
-	document.getElementById("SUI-page-index").innerHTML += '<li><a class="fake-link" aria-label="Next" onclick="click_next()>&raquo;</a></li>';
-	*/
-}
+
+}*/
 
 /**
  * 点击tab标签
@@ -519,7 +540,7 @@ function refresh_detail_info(){
 		string = string + i.toString();
 		string = string + ')">';
 		string = string + i.toString();
-		string = string + '</a></li>'; 
+		string = string + '</a></li>';
 	 }
 	 page_index.innerHTML += string;
 	 page_index.innerHTML += '<li><a class="fake-link" aria-label="Next" onclick="click_next()">&raquo;</a></li>';
@@ -575,16 +596,58 @@ function refresh_detail_info(){
 	 var page_show = document.getElementById(eleid);
 	 page_show.innerHTML = "";
 	 var string = "";
-	 for (var i = page_start; i <= page_end; i++) {
-		 string = string +
-			 '<div class="media border p-3 mb-5 h-100"> \
-                    <img src="../img/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon"> \
-                    <div class="media-body"> \
-                      <h3>';
-		 string = string + data[tab_num - 1][i - 1].name;
-		 string = string + '</h3> <p>';
-		 string = string + data[tab_num - 1][i - 1].create_time;
-		 string = string + '</p> </div> </div>';
+	 //感觉不把if写在for里面的话，执行起来效率高些
+	 if(current_tab === "SUI"){
+		 for (var i = page_start; i <= page_end; i++) {
+			 string = string +
+				 '<div class="media border p-3 mb-5 h-100"> \
+                        <img src="../img/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon"> \
+                        <div class="media-body"> \
+                          <h3>';
+			 string = string + userStarUserInfo[i - 1].name;
+			 string = string + '</h3> <p>';
+			 string = string + userStarUserInfo[i - 1].create_time;
+			 string = string + '</p> </div> </div>';
+		 }
+	 }
+	 else if(current_tab === "SPI"){
+		 for (var i = page_start; i <= page_end; i++) {
+			 string = string +
+				 '<div class="media border p-3 mb-5 h-100"> \
+                        <img src="../img/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon"> \
+                        <div class="media-body"> \
+                          <h3>';
+			 string = string + userStarProjectInfo[i - 1].name;
+			 string = string + '</h3> <p>';
+			 string = string + userStarProjectInfo[i - 1].create_time;
+			 string = string + '</p> </div> </div>';
+		 }
+	 }
+	 else if(current_tab === "OPI"){
+		 for (var i = page_start; i <= page_end; i++) {
+			 string = string +
+				 '<div class="media border p-3 mb-5 h-100"> \
+                        <img src="../img/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon"> \
+                        <div class="media-body"> \
+                          <h3>';
+			 string = string + userOwnProjectInfo[i - 1].name;
+			 string = string + '</h3> <p>';
+			 string = string + userOwnProjectInfo[i - 1].create_time;
+			 string = string + '</p> </div> </div>';
+		 }
+	 }
+	 else if(current_tab === "PPI"){
+		 for (var i = page_start; i <= page_end; i++) {
+			 string = string +
+				 '<div class="media border p-3 mb-5 h-100"> \
+                        <img src="../img/bulb.jpg" alt="创意图片" class="mr-3 mt-3 rounded-circle big-icon"> \
+                        <div class="media-body"> \
+                          <h3>';
+			 string = string + userParticipateProjectInfo[i - 1].name;
+			 string = string + '</h3> <p>';
+			 string = string + userParticipateProjectInfo[i - 1].create_time;
+			 string = string + '</p> </div> </div>';
+		 }
 	 }
 	 page_show.innerHTML += string;
  }

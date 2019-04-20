@@ -62,8 +62,8 @@ ALTER TABLE user_star ADD CONSTRAINT u2_fk FOREIGN KEY(u2_id) REFERENCES user(ui
 -- TODO
 
 
-DROP TABLE IF EXISTS `projectDeveloper`;
-CREATE TABLE IF NOT EXISTS `projectDeveloper`(
+DROP TABLE IF EXISTS `project_developer`;
+CREATE TABLE IF NOT EXISTS `project_developer`(
     `pid`           int(8) references `project`(`pid`),
     `uid`           int(8) references `user`(`uid`),
     PRIMARY KEY (`uid`, `pid`)
