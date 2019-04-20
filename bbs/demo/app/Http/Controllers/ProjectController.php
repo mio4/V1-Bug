@@ -241,7 +241,7 @@ class ProjectController extends Controller
             $retJson[$retSum++] = [
                 'pid' => $project->pid,
                 'name' => $project->project_name,
-                'create_time' => $project->prokect_createTime,
+                'create_time' => $project->project_createTime,
             ];
         }
         $retJson['status'] = 200;

@@ -249,12 +249,12 @@ function load_user_star_list(){
 			},
 		dataType:"json",
 		success:function(data){
-			if(data === 200){
-				userStarUserInfo = data.info;
+			if(data.status === 200){
+				userStarUserInfo = data;
 				// TODO 加载个人关注用户列表
 				// 信息存在userStarUserInfo里
 				// 格式 {{uid:id，name:用户名，picture:头像的URL},.......}
-				SUI_total = userStarUserInfo.length;
+				SUI_total = JSONLength(userStarUserInfo);
 				SUI_left = SUI_total % num_per_page;
 				SUI_pages = (SUI_total - SUI_left) / num_per_page;
 				if(SUI_left > 0){
@@ -287,12 +287,12 @@ function load_project_star_list(){
 			},
 		dataType:"json",
 		success:function(data){
-			if(data === 200){
-				userStarProjectInfo = data.info;
+			if(data.status === 200){
+				userStarProjectInfo = data;
 				// TODO 加载个人收藏项目列表
 				// 信息存在userStarProjectInfo里
 				// 格式 {{pid:id，name:项目名，create_time:创建时间},.......}
-				SPI_total = userStarProjectInfo.length;
+				SPI_total = JSONLength(userStarProjectInfo) - 1;
 				SPI_left = SPI_total % num_per_page;
 				SPI_pages = (SPI_total - SPI_left) / num_per_page;
 				if(SPI_left > 0){
@@ -326,12 +326,12 @@ function load_project_own_list(){
 			},
 		dataType:"json",
 		success:function(data){
-			if(data === 200){
-				userOwnProjectInfo = data.info;
+			if(data.status === 200){
+				userOwnProjectInfo = data;
 				// TODO 加载个人创建项目列表
 				// 信息存在userOwnProjectInfo里
 				// 格式 {{pid:pid，name:项目名，create_time:创建时间},.......}
-				OPI_total = userOwnProjectInfo.length;
+				OPI_total = JSONLength(userOwnProjectInfo) - 1;
 				OPI_left = OPI_total % num_per_page;
 				OPI_pages = (OPI_total - OPI_left) / num_per_page;
 				if(OPI_left > 0){
@@ -366,12 +366,12 @@ function load_project_participate_list(){
 			},
 		dataType:"json",
 		success:function(data){
-			if(data === 200){
-				userParticipateProjectInfo = data.info;
+			if(data.status === 200){
+				userParticipateProjectInfo = data;
 				// TODO 加载个人参加项目列表
 				// 信息存在userParticipateProjectInfo里
 				// 格式 {{pid:id，name:项目名，create_time:创建时间},.......}
-				PPI_total = userParticipateProjectInfo.length;
+				PPI_total = JSONLength(userParticipateProjectInfo);
 				PPI_left = PPI_total % num_per_page;
 				PPI_pages = (PPI_total - PPI_left) / num_per_page;
 				if(PPI_left > 0){
@@ -540,7 +540,7 @@ window.onload = function(){
 		string = string + i.toString();
 		string = string + ')">';
 		string = string + i.toString();
-		string = string + '</a></li>'; 
+		string = string + '</a></li>';
 	 }
 	 page_index.innerHTML += string;
 	 page_index.innerHTML += '<li><a class="fake-link" aria-label="Next" onclick="click_next()">&raquo;</a></li>';

@@ -9,6 +9,7 @@ var projectCreateTime = "";
 var projectInfo = "";
 var projectPicUrl = "";
 
+
 function refreshInfo(){
     // 更新项目信息
     $("#project-name").text(projectName);
