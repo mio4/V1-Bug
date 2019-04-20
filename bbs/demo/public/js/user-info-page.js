@@ -406,7 +406,8 @@ window.onload = function(){
 			url:"../user/info",
 			dataType:"json",
 			success:function(data){
-				if(data === 200){
+				if(data.status === 200){
+					console.log(data);
 					userName = data.name;
 					userId = data.uid;
 					userEmail = data.email;
@@ -456,15 +457,13 @@ window.onload = function(){
 
 
 
-	/*load_user_star_list();
-
-	load_project_star_list();
-
-	load_project_own_list();
-
-	load_project_participate_list();
-
-	refresh_detail_info();*/
+	// load_user_star_list();
+	//
+	// load_project_star_list();
+	//
+	// load_project_own_list();
+	//
+	// load_project_participate_list();
 
 	load_project_star_list();
 
