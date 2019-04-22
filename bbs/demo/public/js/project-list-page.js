@@ -56,6 +56,7 @@ function load_project_list(){
 window.onload = function (){
     var i;              //循环用变量
     //load_project_list(); //使用模拟数据，没有真正从后端获取
+    console.log(233); 
     current_page = 1;
     total = projectInfoList.length;
     left = total % num_per_page;
@@ -81,41 +82,7 @@ window.onload = function (){
     //document.getElementById("page-1").setAttribute("class","fake-link current");
 
     click_page_index(1);
-    /*//添加内容
-    page_start = 1;
-    if(1 < pages){
-        page_end = num_per_page;
-    }
-    else{
-        page_end = total;
-    }
-    document.getElementById("page-show").innerHTML = "";
-    string = "";
-    for(i = page_start;i<=page_end;i++){
-        string = string +
-            '<div class="col-lg-3 col-sm-6"> \
-                <div class="single-product-item"> \
-                    <figure class="product-thumb"> \
-                        <a onclick="redirect_to_project(' + projectInfoList[i-1].pid +')"> \
-                            <img src="../img/product-1.jpg" alt="Product"> \
-                        </a> \
-                        <a class="btn btn-round btn-cart" title="Quick View" onclick="redirect_to_project(' + projectInfoList[i-1].pid +')"> \
-                            <i class="fa fa-eye"></i> \
-                        </a> \
-                    </figure> \
-                    <div class="product-details"> \
-                        <h2 class="product-title"> \
-                            <a onclick="redirect_to_project(' + projectInfoList[i-1].pid + ')">\
-                                ' + projectInfoList[i-1].name + '\
-                            </a> \
-                        </h2> \
-                        <p class="pro-desc">创意介绍</p> \
-                    </div> \
-                </div> \
-            </div>';
-    }
-    document.getElementById("page-show").innerHTML += string;
-};
+}
 
 /**
  * 点击页码触发函数
