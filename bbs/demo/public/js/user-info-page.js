@@ -8,7 +8,7 @@ var userReward = "0"; // TODO 增加该项
 var userKindList = ["", "普通用户", "实验室官方"];
 
 //模拟数据
-/*a1 = JSON.parse('{"uid":"1", "name":"用户名1", "picture":"头像的URL"}');
+a1 = JSON.parse('{"uid":"1", "name":"用户名1", "picture":"头像的URL"}');
 a2 = JSON.parse('{"uid":"2", "name":"用户名2", "picture":"头像的URL"}');
 a3 = JSON.parse('{"uid":"3", "name":"用户名3", "picture":"头像的URL"}');
 a4 = JSON.parse('{"uid":"4", "name":"用户名4", "picture":"头像的URL"}');
@@ -30,14 +30,21 @@ d4 = JSON.parse('{"pid":"12", "name":"参与项目名4", "create_time":"创建�
 d5 = JSON.parse('{"pid":"13", "name":"参与项目名5", "create_time":"创建时间"}');
 d6 = JSON.parse('{"pid":"14", "name":"参与项目名6", "create_time":"创建时间"}');
 d7 = JSON.parse('{"pid":"15", "name":"参与项目名7", "create_time":"创建时间"}');
-d8 = JSON.parse('{"pid":"16", "name":"参与项目名8", "create_time":"创建时间"}');*/
+d8 = JSON.parse('{"pid":"16", "name":"参与项目名8", "create_time":"创建时间"}');
 
 // 用户详细信息
-var userStarUserInfo;
-var userStarProjectInfo;
-var userOwnProjectInfo;
-var userParticipateProjectInfo;
-var num_per_page=10; // 每页显示数量（可以更改）
+/**
+ *表示方法介绍
+ *userStarUserInfo => SUI;
+ *userStarProjectInfo => SPI;
+ *userOwnProjectInfo => OPI;
+ *userParticipateProjectInfo => PPI;
+ */
+var userStarUserInfo = [a1, a2, a3, a4];
+var userStarProjectInfo = [b1, b2, b3, b4];
+var userOwnProjectInfo = [c1, c2, c3, c4];
+var userParticipateProjectInfo = [d1, d2, d3, d4, d5, d6, d7, d8];
+var num_per_page=3; // 每页显示数量（可以更改，建议为10）
 var current_page=1; // 当前页码
 var current_tab="SPI"; // 当前tab页面
 var SUI_total;
@@ -391,6 +398,55 @@ function load_project_participate_list(){
 	});
 }
 
+//模拟获取后端数据
+function fake_load_user_star_list(){
+	SUI_total = userStarUserInfo.length;
+	SUI_left = SUI_total % num_per_page;
+	SUI_pages = (SUI_total - SUI_left) / num_per_page;
+	if(SUI_left > 0){
+		SUI_pages += 1;
+	}
+	current_page = 1;
+	current_tab = "SUI";
+	click_tab(current_tab);
+}
+
+function fake_load_project_star_list(){
+	SPI_total = userStarProjectInfo.length;
+	SPI_left = SPI_total % num_per_page;
+	SPI_pages = (SPI_total - SPI_left) / num_per_page;
+	if(SPI_left > 0){
+		SPI_pages += 1;
+	}
+	current_page = 1;
+	current_tab = "SPI";
+	click_tab(current_tab);
+}
+
+function fake_load_project_own_list(){
+	OPI_total = userOwnProjectInfo.length;
+	OPI_left = OPI_total % num_per_page;
+	OPI_pages = (OPI_total - OPI_left) / num_per_page;
+	if(OPI_left > 0){
+		OPI_pages += 1;
+	}
+	current_page = 1;
+	current_tab = "OPI";
+	click_tab(current_tab);
+}
+
+function fake_load_project_participate_list(){
+	PPI_total = userParticipateProjectInfo.length;
+	PPI_left = PPI_total % num_per_page;
+	PPI_pages = (PPI_total - PPI_left) / num_per_page;
+	if(PPI_left > 0){
+		PPI_pages += 1;
+	}
+	current_page = 1;
+	current_tab = "PPI";
+	click_tab(current_tab);
+}
+
 /**
  * 加载个人信息页面数据
  */
@@ -466,7 +522,7 @@ window.onload = function(){
 
 	refresh_detail_info();*/
 
-	load_project_star_list();
+	fake_load_project_star_list();
 
 };
 
@@ -607,7 +663,7 @@ window.onload = function(){
                           <h3>';
 			 string = string + userStarUserInfo[i - 1].name;
 			 string = string + '</h3> <p>';
-			 string = string + userStarUserInfo[i - 1].create_time;
+			 string = string + userStarUserInfo[i - 1].picture;
 			 string = string + '</p> </div> </div>';
 		 }
 	 }
